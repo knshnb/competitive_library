@@ -1,4 +1,3 @@
-#define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
 #define ll long long
 #define REP(i, n) for (ll (i) = 0; (i) < (n); (i)++)
