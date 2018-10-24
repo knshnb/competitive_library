@@ -13,7 +13,8 @@ using VVVI = vector<VVI>;
 class UnionFind {
 public:
   VI par, rank;
-  UnionFind(int n) {
+  int cnt; // 集合の数
+  UnionFind(int n) : cnt(n) {
     par = VI(n); iota(par.begin(), par.end(), 0);
     rank = VI(n, 0);
   }
@@ -34,6 +35,7 @@ public:
       par[y] = x;
       if (rank[x] == rank[y]) { rank[x]++; }
     }
+    cnt--;
   }
   bool same(int x, int y) {
     return root(x) == root(y);
