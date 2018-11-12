@@ -15,7 +15,7 @@ struct Eratosthenes {
   vector<bool> is_prime;
   VI primes;
   Eratosthenes(int n) {
-    is_prime = vector<bool>(n, true);
+    is_prime = vector<bool>(n, true); is_prime[1] = false;
     REPI (i, 2, n) {
       if (!is_prime[i]) { continue; }
       for (int j = i * 2; j < n; j += i) {
