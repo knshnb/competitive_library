@@ -22,16 +22,19 @@ template <class T> ostream& operator<<(ostream &s, const vector<vector<T>>& dd) 
 struct Fast { Fast() { cin.tie(0); ios::sync_with_stdio(false); } } fast;
 const int MOD = 1e9 + 7;
 
-// divs[x]: xの約数のvector
+// ret[x]: xの約数のvector
 // 構築: O(nlogn)
-VVI divisor(int n) {
-  VVI divs(n + 1);
-  REPI (i, 1, n + 1) {
-    for (int j = i; j < n + 1; j += i) {
-      divs[j].push_back(i);
+vector<vector<signed>> divisor(signed n) {
+  vector<vector<signed>> ret(n + 1);
+  for (signed i = 1; i < n + 1; i++) {
+    ret[i].reserve(log(n) + 1);
+  }
+  for (signed i = 1; i < n + 1; i++) {
+    for (signed j = i; j < n + 1; j += i) {
+      ret[j].push_back(i);
     }
   }
-  return divs;
+  return ret;
 }
 
 signed main() {
