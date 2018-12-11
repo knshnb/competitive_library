@@ -48,7 +48,7 @@ public:
   }
   SegTree(const VT& a, function<T(T, T)> f_ = [](int a, int b) { return min(a, b); }, T unit = 1e15)
   : orig_n(a.size()), f(f_), UNIT(unit) {
-    for (N = 1; N < a.size(); N *= 2);
+    for (N = 1; N < orig_n; N *= 2);
     dat = VT(2 * N - 1);
     REP (i, a.size()) {
       dat[N - 1 + i] = a[i];
