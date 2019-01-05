@@ -24,6 +24,16 @@ template <class T> ostream& operator<<(ostream &s, const vector<vector<T>>& dd) 
 struct Fast { Fast() { cin.tie(0); ios::sync_with_stdio(false); } } fast;
 const int MOD = 1e9 + 7;
 
+template <class T>
+T pow(T x, int n) {
+  T ret = 1;
+  while (n) {
+    if (n & 1) ret *= x;
+    x *= x; n >>= 1;
+  }
+  return ret;
+}
+
 template <int MD>
 struct ModInt {
   int x;
@@ -40,16 +50,7 @@ struct ModInt {
   ModInt operator*(ModInt that) const { return ModInt(*this) *= that; }
   ModInt operator-(ModInt that) const { return ModInt(*this) -= that; }
   ModInt operator/(ModInt that) const { return ModInt(*this) /= that; }
-  ModInt pow(int n) const {
-    ModInt x = *this, r = 1;
-    while (n) {
-      if (n & 1) r *= x;
-      x *= x;
-      n >>= 1;
-    }
-    return r;
-  }
-  ModInt inv() const { return (*this).pow(MD - 2); }
+  ModInt inv() const { return pow(*this, MD - 2); }
   friend ostream& operator<<(ostream& s, ModInt<MD> a) { s << a.x; return s; }
 };
 using mint = ModInt<MOD>;
