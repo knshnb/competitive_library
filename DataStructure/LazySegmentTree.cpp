@@ -92,9 +92,15 @@ public:
     assert(0 <= a && a < b && b <= sz);
     update(a, b, x, 0, 0, N);
   }
+  void update(int a, T1 x) {
+    update(a, a + 1, x);
+  }
   // [a, b)
   T0 query(int a, int b) {
     return query(a, b, 0, 0, N);
+  }
+  T0 query(int a) {
+    return query(a, a + 1);
   }
 };
 

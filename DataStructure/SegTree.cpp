@@ -71,6 +71,9 @@ public:
     assert(0 <= a && a < b && b <= orig_n);
     return query(a, b, 0, 0, N);
   }
+  T query(int a) {
+    return query(a, a + 1);
+  }
 };
 
 signed main() {
