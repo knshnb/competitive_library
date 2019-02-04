@@ -43,8 +43,9 @@ struct UnionFind {
     // yをxにマージ
     number[x] += number[y];
     number[y] = x;
-    data1[x] += data1[y]; // dataのマージ方法に合わせて変える
-    data2[x] += data2[y]; //
+    // // dataのマージ方法に合わせて変える
+    // data1[x] += data1[y];
+    // data2[x] += data2[y];
     cnt--;
   }
   bool is_same(int x, int y) { return root(x) == root(y); }
