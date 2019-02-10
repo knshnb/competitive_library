@@ -42,7 +42,7 @@ struct ModInt {
 
   ModInt& operator+=(ModInt that) { if ((x += that.x) >= MD) x -= MD; return *this; }
   ModInt& operator*=(ModInt that) { x = (unsigned long long)x * that.x % MD; return *this; }
-  ModInt& operator-=(ModInt that) { if ((x -= that.x) <= MD) x += MD; return *this; }
+  ModInt& operator-=(ModInt that) { if ((x -= that.x) < 0) x += MD; return *this; }
   ModInt& operator/=(ModInt that) { x = (unsigned long long)x * that.inv().x % MD; return *this; }
 
   ModInt operator-() const { return -x < 0 ? MD - x : -x; }
