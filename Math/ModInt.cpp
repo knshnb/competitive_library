@@ -50,6 +50,8 @@ struct ModInt {
   ModInt operator*(ModInt that) const { return ModInt(*this) *= that; }
   ModInt operator-(ModInt that) const { return ModInt(*this) -= that; }
   ModInt operator/(ModInt that) const { return ModInt(*this) /= that; }
+  bool operator==(ModInt that) const { return x == that.x; }
+  bool operator!=(ModInt that) const { return x != that.x; }
   ModInt inv() const { return pow(*this, MD - 2); }
   friend ostream& operator<<(ostream& s, ModInt<MD> a) { s << a.x; return s; }
   friend istream& operator>>(istream& s, ModInt<MD>& a) { s >> a.x; return s; }
