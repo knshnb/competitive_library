@@ -58,7 +58,7 @@ public:
     }
   }
   // k番目をaに
-  void update(int k, int a) {
+  void update(int k, T a) {
     k += N - 1;
     dat[k] = a;
     while (k > 0) {
