@@ -10,12 +10,12 @@ using VVI = vector<VI>;
 class DirectedGraph {
 public:
   int N;
-  VVI edge, redge;
-  VI cmp; // 強連結成分のインデックス(トポロジカル順序)
+  vector<vector<int>> edge, redge;
+  vector<int> cmp; // 強連結成分のインデックス(トポロジカル順序)
   DirectedGraph(int n) {
     N = n;
-    edge = VVI(N); redge = VVI(N);
-    cmp = VI(N);
+    edge = vector<vector<int>>(N); redge = vector<vector<int>>(N);
+    cmp = vector<int>(N);
   }
   void addEdge(int from, int to) {
     assert(0 <= from && from < N && 0 <= to && to < N);
@@ -24,7 +24,7 @@ public:
   }
   int scc() {
     vector<bool> used(N);
-    VI vs;
+    vector<int> vs;
     function<void(int)> dfs = [&](int v) {
       used[v] = true;
       for (int vv: edge[v]) {

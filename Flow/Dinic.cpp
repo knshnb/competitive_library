@@ -27,7 +27,7 @@ const int MOD = 1e9 + 7;
 // Dinic法 O(E * V^2)
 class Graph {
   int t; // ゴール
-  VI level, iter;
+  vector<int> level, iter;
   void bfs(int s) {
     for (int i = 0; i < level.size(); i++) level[i] = -1;
     queue<int> que;
