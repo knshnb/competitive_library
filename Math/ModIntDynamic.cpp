@@ -8,8 +8,10 @@ T pow(T x, int n, const T UNION = 1) {
   return ret;
 }
 
-template <int MD>
+// ModInt::set_mod(m)してから使う
 struct ModInt {
+  static int MD;
+  static void set_mod(int mod) { MD = mod; }
   int x;
   ModInt() : x(0) {}
   ModInt(int x_) { if ((x = x_ % MD + MD) >= MD) x -= MD; }
@@ -27,10 +29,11 @@ struct ModInt {
   bool operator==(ModInt that) const { return x == that.x; }
   bool operator!=(ModInt that) const { return x != that.x; }
   ModInt inv() const { return pow(*this, MD - 2); }
-  friend ostream& operator<<(ostream& s, ModInt<MD> a) { s << a.x; return s; }
-  friend istream& operator>>(istream& s, ModInt<MD>& a) { s >> a.x; return s; }
+  friend ostream& operator<<(ostream& s, ModInt a) { s << a.x; return s; }
+  friend istream& operator>>(istream& s, ModInt& a) { s >> a.x; return s; }
 };
-using mint = ModInt<MOD>;
+int ModInt::MD = 1000000007;
+using mint = ModInt;
 
 vector<mint> fact, fact_inv;
 void init_factorial(int n) {
