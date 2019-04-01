@@ -1,21 +1,9 @@
-#define _GLIBCXX_DEBUG
-#include <bits/stdc++.h>
-#define ll long long
-#define REP(i, n) for (ll (i) = 0; (i) < (n); (i)++)
-#define REPI(i, a, b) for (ll (i) = (a); (i) < (b); (i)++)
-#define int long long
-using namespace std;
-using P = pair<int, int>;
-using VI = vector<int>;
-using VVI = vector<VI>;
-using VVVI = vector<VVI>;
-
 struct UnionFind {
-  VI par, rank, diff_weight;
+  vector<int> par, rank, diff_weight;
   UnionFind(int n) {
-    par = VI(n); iota(par.begin(), par.end(), 0);
-    rank = VI(n, 0);
-    diff_weight = VI(n, 0);
+    par = vector<int>(n); iota(par.begin(), par.end(), 0);
+    rank = vector<int>(n, 0);
+    diff_weight = vector<int>(n, 0);
   }
   int root(int x) {
     if (par[x] == x) {
@@ -51,6 +39,3 @@ struct UnionFind {
     return weight(y) - weight(x);
   }
 };
-
-signed main() {
-}

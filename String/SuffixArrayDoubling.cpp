@@ -1,15 +1,3 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define REP(i, n) for (ll (i) = 0; (i) < (n); (i)++)
-#define REPI(i, a, b) for (ll (i) = (a); (i) < (b); (i)++)
-#define int long long
-using namespace std;
-using II = pair<int, int>;
-using VI = vector<int>;
-using VVI = vector<VI>;
-using VVVI = vector<VVI>;
-using VII = vector<II>;
-
 template <class T = int>
 class SegTree {
   using VT = vector<T>;
@@ -67,7 +55,7 @@ class SuffixArray {
   SegTree<> rmq;
   void set_lcp() {
     // S[i]を順番に見ていきS[i - 1] -　1文字以上が共通することを利用してしゃくとり
-    lcp_next_rank = VI(N);
+    lcp_next_rank = vector<int>(N);
     int h = 0;
     REP (i, N) {
       if (h > 0) h--;
@@ -84,13 +72,13 @@ class SuffixArray {
 public:
   int N;
   string S;
-  VI rank; // rank[i]: iから始まるsuffixの辞書順での順位
-  VI sorted; // sorted[i]: suffixが辞書順i番目となる開始位置のindex
-  VI lcp_next_rank; // lcp[i]: S[sorted[i]..]とS[sorted[i + 1]..]が先頭何文字一致しているか、lcp[N - 1] = 0
+  vector<int> rank; // rank[i]: iから始まるsuffixの辞書順での順位
+  vector<int> sorted; // sorted[i]: suffixが辞書順i番目となる開始位置のindex
+  vector<int> lcp_next_rank; // lcp[i]: S[sorted[i]..]とS[sorted[i + 1]..]が先頭何文字一致しているか、lcp[N - 1] = 0
   SuffixArray(string s) {
     S = s;
     N = S.size();
-    sorted = VI(N); rank = VI(N);
+    sorted = vector<int>(N); rank = vector<int>(N);
     REP (i, N) {
       sorted[i] = i;
       rank[i] = S[i];
@@ -106,7 +94,7 @@ public:
 
     for (k = 1; k < N; k *= 2) {
       sort(sorted.begin(), sorted.end(), compare_sa);
-      VI tmp(N, 0);
+      vector<int> tmp(N, 0);
       REPI (i, 1, N) {
         tmp[sorted[i]] = tmp[sorted[i - 1]] + compare_sa(sorted[i - 1], sorted[i]);
       }
@@ -116,7 +104,7 @@ public:
   }
 
   // sizeがTと等しく初めてT以上になるようなSの部分文字列(sortedのイテレータを返す)
-  VI::iterator lower_bound(string T) {
+  vector<int>::iterator lower_bound(string T) {
     int l = -1, r = N;
     while (r - l > 1) {
       int mid = (l + r) / 2;
@@ -130,7 +118,7 @@ public:
   }
 
   // sizeがTと等しく初めてTより大きくなるようなSの部分文字列(sortedのイテレータを返す)
-  VI::iterator upper_bound(string T) {
+  vector<int>::iterator upper_bound(string T) {
     int l = -1, r = N;
     while (r - l > 1) {
       int mid = (l + r) / 2;
@@ -157,6 +145,3 @@ public:
     return rmq.query(l, r);
   }
 };
-
-signed main() {
-}

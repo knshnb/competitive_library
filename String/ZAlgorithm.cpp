@@ -1,9 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define int long long
-#define REP(i, n) for (long long i = 0, max_i = (n); i < max_i; i++)
-#define REPI(i, a, b) for (long long i = (a), max_i = (b); i < max_i; i++)
-
 // SとS[i:]の共通prefixの長さの配列を返す、O(|S|)
 vector<int> Z_algorithm(const string& S) {
   vector<int> A(S.size()); A[0] = S.size();

@@ -1,21 +1,10 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define REP(i, n) for (ll (i) = 0; (i) < (n); (i)++)
-#define REPI(i, a, b) for (ll (i) = (a); (i) < (b); (i)++)
-#define int long long
-using namespace std;
-using II = pair<int, int>;
-using VI = vector<int>;
-using VVI = vector<VI>;
-using VVVI = vector<VVI>;
-using VII = vector<II>;
 // SA-ISによるSuffix Arrayの実装。構築O(N)
 class SuffixArray {
-  VI sa_is(const VI& str, const int k) {
+  vector<int> sa_is(const vector<int>& str, const int k) {
     const int n = str.size();
     vector<bool> is_S(n); is_S[n - 1] = true;
     vector<bool> is_LMS(n);
-    VI LMSs;
+    vector<int> LMSs;
     for (int i = n - 2; i >= 0; i--) {
       is_S[i] = str[i] < str[i + 1] || (str[i] == str[i + 1] && is_S[i + 1]);
     }
@@ -24,8 +13,8 @@ class SuffixArray {
         is_LMS[i] = true; LMSs.push_back(i);
       }
     }
-    VI pseudo_sa = induced_sort(str, LMSs, is_S, k);
-    VI orderedLMSs(LMSs.size());
+    vector<int> pseudo_sa = induced_sort(str, LMSs, is_S, k);
+    vector<int> orderedLMSs(LMSs.size());
     int index = 0;
     for (int x: pseudo_sa) {
       if (is_LMS[x]) { orderedLMSs[index++] = x; }
@@ -45,12 +34,12 @@ class SuffixArray {
       }
       pseudo_sa[orderedLMSs[i + 1]] = is_diff ? ++rank : rank;
     }
-    VI new_str(LMSs.size());
+    vector<int> new_str(LMSs.size());
     index = 0;
     REP (i, n) {
       if (is_LMS[i]) { new_str[index++] = pseudo_sa[i]; }
     }
-    VI LMS_sa;
+    vector<int> LMS_sa;
     if (rank + 1 == LMSs.size()) {
       LMS_sa = orderedLMSs;
     } else {
@@ -60,24 +49,24 @@ class SuffixArray {
     return induced_sort(str, LMS_sa, is_S, k);
   }
 
-  VI induced_sort(const VI& str, const VI& LMSs, const vector<bool>& is_S, const int k) {
+  vector<int> induced_sort(const vector<int>& str, const vector<int>& LMSs, const vector<bool>& is_S, const int k) {
     int n = str.size();
-    VI buckets(n);
-    VI chars(k + 1);
+    vector<int> buckets(n);
+    vector<int> chars(k + 1);
     for (int c: str) { chars[c + 1]++; }
     REP (i, k) { chars[i + 1] += chars[i]; }
-    VI count(k);
+    vector<int> count(k);
     for (int i = LMSs.size() - 1; i >= 0; i--) {
       int c = str[LMSs[i]];
       buckets[chars[c + 1] - 1 - count[c]++] = LMSs[i];
     }
-    count = VI(k);
+    count = vector<int>(k);
     REP (i, n) {
       if (buckets[i] == 0 || is_S[buckets[i] - 1]) { continue; }
       int c = str[buckets[i] - 1];
       buckets[chars[c] + count[c]++] = buckets[i] - 1;
     }
-    count = VI(k);
+    count = vector<int>(k);
     for (int i = n - 1; i >= 0; i--) {
       if (buckets[i] == 0 || !is_S[buckets[i] - 1]) { continue; }
       int c = str[buckets[i] - 1];
@@ -87,10 +76,10 @@ class SuffixArray {
   }
 public:
   string S; int N;
-  VI sa; // sa[i]: suffixが辞書順i番目となる開始位置のindex
+  vector<int> sa; // sa[i]: suffixが辞書順i番目となる開始位置のindex
   SuffixArray(string str_in) : S(str_in), N(str_in.size()) {
     str_in += "$";
-    VI str(N + 1);
+    vector<int> str(N + 1);
     REP (i, N + 1) { str[i] = str_in[i] - '$'; }
     sa = sa_is(str, 128);
     sa.erase(sa.begin());
@@ -100,7 +89,7 @@ public:
   }
 
   // sizeがTと等しく初めてT以上になるようなSの部分文字列(sa)
-  VI::iterator lower_bound(string T) {
+  vector<int>::iterator lower_bound(string T) {
     int l = -1, r = N;
     while (r - l > 1) {
       int mid = (l + r) / 2;
@@ -114,7 +103,7 @@ public:
   }
 
   // sizeがTと等しく初めてTより大きくなるようなSの部分文字列(sa)
-  VI::iterator upper_bound(string T) {
+  vector<int>::iterator upper_bound(string T) {
     int l = -1, r = N;
     while (r - l > 1) {
       int mid = (l + r) / 2;
@@ -132,6 +121,3 @@ public:
     return upper_bound(S2) - lower_bound(S2);
   }
 };
-
-signed main() {
-}

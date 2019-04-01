@@ -1,26 +1,3 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define REP(i, n) for (ll i = 0, max_i = (n); i < max_i; i++)
-#define REPI(i, a, b) for (ll i = (a), max_i = (b); i < max_i; i++)
-#define ALL(obj) (obj).begin(), (obj).end()
-#define RALL(obj) (obj).rbegin(), (obj).rend()
-#define fi first
-#define se second
-#define pb push_back
-#define debug(x) cerr << #x << ": " << (x) << endl
-#define int long long
-using namespace std;
-using II = pair<int, int>;
-using VI = vector<int>;
-using VVI = vector<VI>;
-using VVVI = vector<VVI>;
-template <class T = int> inline T in() { T x; cin >> x; return x; }
-template <class T = int> inline bool chmax(T &a, const T &b) { if (a < b) { a = b; return true; } return false; }
-template <class T = int> inline bool chmin(T &a, const T &b) { if (a > b) { a = b; return true; } return false; }
-template <class T> ostream& operator<<(ostream &s, const vector<T>& d) { int n = d.size(); REP (i, n) s << d[i] << " "; return s; }
-template <class T> ostream& operator<<(ostream &s, const vector<vector<T>>& dd) { for (vector<T> d: dd) s << d << endl; return s; }
-struct Fast { Fast() { cin.tie(0); ios::sync_with_stdio(false); } } fast;
-const int MOD = 1e9 + 7;
 // 0-indexed
 class BinaryIndexedTree {
   int max_pow; // N以下の最大の2べき
@@ -31,9 +8,9 @@ class BinaryIndexedTree {
     }
   }
 public:
-  VI bit; int N;
+  vector<int> bit; int N;
   BinaryIndexedTree(int n, int x = 0) : N(n), bit(n, x) { init(); }
-  BinaryIndexedTree(const VI& a) : N(a.size()), bit(a) { init(); }
+  BinaryIndexedTree(const vector<int>& a) : N(a.size()), bit(a) { init(); }
   // k番目にxを加算
   void add(int k, int x) {
     for (int i = k; i < N; i |= i + 1) { bit[i] += x; }
@@ -97,7 +74,3 @@ public:
     return max(begin, ub);
   }
 };
-
-signed main() {
-}
-
