@@ -41,6 +41,15 @@ struct Matrix {
   Matrix operator+(const Matrix &B) const { return (Matrix(*this) += B); } 
   Matrix operator-(const Matrix &B) const { return (Matrix(*this) -= B); }
   Matrix operator*(const Matrix &B) const { return (Matrix(*this) *= B); } 
+  vector<T> operator*(const vector<T>& x) const {
+    int n = height(), m = width();
+    assert(m == x.size());
+    vector<T> ret(n);
+    for (int i = 0; i < n; i++)
+      for (int j = 0; j < m; j++)
+        ret[i] += (*this)[i][j] * x[j];
+    return ret;
+  }
   friend ostream &operator<<(ostream &os, Matrix &p) {
     int n = p.height(), m = p.width();
     for(int i = 0; i < n; i++) {
