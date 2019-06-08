@@ -11,6 +11,7 @@ T pow(T x, int n, const T UNION = 1) {
 template <int MD>
 struct ModInt {
   int x;
+  static unordered_map<int, int> to_inv;
   ModInt() : x(0) {}
   ModInt(int x_) { if ((x = x_ % MD + MD) >= MD) x -= MD; }
 
@@ -26,10 +27,11 @@ struct ModInt {
   ModInt operator/(ModInt that) const { return ModInt(*this) /= that; }
   bool operator==(ModInt that) const { return x == that.x; }
   bool operator!=(ModInt that) const { return x != that.x; }
-  ModInt inv() const { return pow(*this, MD - 2); }
+  ModInt inv() const { return to_inv.count(this->x) ? to_inv[this->x] : (to_inv[this->x] = pow(*this, MD - 2).x); }
   friend ostream& operator<<(ostream& s, ModInt<MD> a) { s << a.x; return s; }
   friend istream& operator>>(istream& s, ModInt<MD>& a) { s >> a.x; return s; }
 };
+template <int MD> unordered_map<int, int> ModInt<MD>::to_inv;
 using mint = ModInt<MOD>;
 
 vector<mint> fact, fact_inv;
