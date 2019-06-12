@@ -35,7 +35,7 @@ class Graph {
   }
 public:
   int V;
-  struct edge {int to, cap, rev; };
+  struct edge { int to, cap, rev; };
   vector<vector<edge>> G;
   Graph(int V) : V(V), G(V), level(V), iter(V) {}
 
