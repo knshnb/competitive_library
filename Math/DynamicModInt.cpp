@@ -11,7 +11,8 @@ T pow(T x, int n, const T UNION = 1) {
 // ModInt::set_mod(m)してから使う
 struct ModInt {
   static int MD;
-  static void set_mod(int mod) { MD = mod; }
+  static map<pair<int, int>, int> tbl_pow;
+  static void set_mod(int mod) { MD = mod; tbl_pow.clear(); }
   int x;
   ModInt() : x(0) {}
   ModInt(int x_) { if ((x = x_ % MD + MD) >= MD) x -= MD; }
@@ -31,9 +32,30 @@ struct ModInt {
   ModInt inv() const { return pow(*this, MD - 2); }
   friend ostream& operator<<(ostream& s, ModInt a) { s << a.x; return s; }
   friend istream& operator>>(istream& s, ModInt& a) { s >> a.x; return s; }
+
+  // 計算結果をmapに保存するべき乗
+  ModInt save_pow(int n) const {
+    if (tbl_pow.count({x, n})) return tbl_pow[{x, n}];
+    if (n == 0) return 1;
+    if (n % 2) return tbl_pow[{x, n}] = (*this * save_pow(n - 1)).x;
+    return tbl_pow[{x, n}] = (save_pow(n / 2) * save_pow(n / 2)).x;
+  }
+  // 1 + r + r^2 + ... + r^(n-1)
+  static ModInt geometric_progression(ModInt r, int n) {
+    if (n == 0) return 0;
+    if (n % 2) return geometric_progression(r, n - 1) + r.save_pow(n - 1);
+    return geometric_progression(r, n / 2) * (r.save_pow(n / 2) + 1);
+  }
+  // a + r * (a - d) + r^2 * (a - 2d) + ... + r^(n-1) * (a - (n - 1)d)
+  static ModInt linear_sum(ModInt r, ModInt a, ModInt d, int n) {
+    if (n == 0) return 0;
+    if (n % 2) return linear_sum(r, a, d, n - 1) + r.save_pow(n - 1) * (a - d * (n - 1));
+    return linear_sum(r, a, d, n / 2) * (r.save_pow(n / 2) + 1) - d * (n / 2) * r.save_pow(n / 2) * geometric_progression(r, n / 2);
+  }
 };
 int ModInt::MD = 1000000007;
 using mint = ModInt;
+map<pair<int, int>, int> mint::tbl_pow;
 
 vector<mint> fact, fact_inv;
 void init_factorial(int n) {
