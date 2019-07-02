@@ -4,8 +4,8 @@ template <class T0, class T1>
 class SegmentTree {
   // k番目のノードにのlazyを伝搬
   void eval(int k, int len) {
-    // u1が正確に単位元ならいらない
-    // if (lazy[k] == u1) return;
+    // 定数倍高速化
+    if (lazy[k] == u1) return;
     // len個分のlazy[k]を評価
     node[k] = g(node[k], p(lazy[k], len));
     if (k < N - 1) {
