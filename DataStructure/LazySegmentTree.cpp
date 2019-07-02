@@ -59,7 +59,7 @@ public:
     for (N = 1; N < sz; N *= 2);
     node.resize(2 * N - 1);
     lazy.resize(2 * N - 1, u1);
-    REP (i, sz) node[N - 1 + i] = a[i];
+    for (int i = 0; i < sz; i++) node[N - 1 + i] = a[i];
     for (int i = N - 2; i >= 0; i--) node[i] = f0(node[2 * i + 1], node[2 * i + 2]);
   }
   // [a, b)にxを作用
@@ -116,4 +116,19 @@ signed main() {
   //   [](int x, int y) { return y == u1 ? x : y; },
   //   [](int y, int len) { return y == u1 ? u1 : y * len; }
   // );
+
+  // // Sum & Affine
+  // using T = mint;
+  // using Affine = pair<T, T>;
+  // SegmentTree<Affine, Affine> seg(
+  //   vector<Affine>(n),
+  //   [](Affine x, Affine y) { return Affine(x.first + y.first, x.second + y.second); }, Affine(0, 0),
+  //   [](Affine x, Affine y) { return Affine(x.first * y.first, x.second * y.first + y.second); }, Affine(1, 0),
+  //   [](Affine x, Affine y) { return Affine(x.first * y.first, x.second * y.first + y.second); },
+  //   [](Affine y, int len) { return y; }
+  // );
+  // // seg.query(i, j, {a, b}); // [i, j)にax + bを作用
+  // // seg.query(i, j, {0, a}); // update
+  // // seg.query(i, j, {1, a}); // 加算
+  // // seg.query(i, j, {a, 0}); // 倍
 }
