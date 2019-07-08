@@ -1,3 +1,4 @@
+// edgeを貼ったあとにbuild()を忘れない！
 struct TreeDoubling {
   struct Edge { int to, color, len; }; // 場合に応じて書き換える、toは必須
   vector<vector<Edge>> g;
