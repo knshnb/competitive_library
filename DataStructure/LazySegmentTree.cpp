@@ -127,8 +127,8 @@ signed main() {
   //   [](Affine x, Affine y) { return Affine(x.first * y.first, x.second * y.first + y.second); },
   //   [](Affine y, int len) { return y; }
   // );
-  // // seg.query(i, j, {a, b}); // [i, j)にax + bを作用
-  // // seg.query(i, j, {0, a}); // update
-  // // seg.query(i, j, {1, a}); // 加算
-  // // seg.query(i, j, {a, 0}); // 倍
+  // // seg.update(i, j, {a, b}); // [i, j)にax + bを作用
+  // // seg.update(i, j, {0, a}); // update
+  // // seg.update(i, j, {1, a}); // 加算
+  // // seg.update(i, j, {a, 0}); // 倍
 }
