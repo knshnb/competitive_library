@@ -125,7 +125,7 @@ signed main() {
   //   [](Affine x, Affine y) { return Affine(x.first + y.first, x.second + y.second); }, Affine(0, 0),
   //   [](Affine x, Affine y) { return Affine(x.first * y.first, x.second * y.first + y.second); }, Affine(1, 0),
   //   [](Affine x, Affine y) { return Affine(x.first * y.first, x.second * y.first + y.second); },
-  //   [](Affine y, int len) { return y; }
+  //   [](Affine y, int len) { return Affine(y.first, y.second * len); }
   // );
   // // seg.update(i, j, {a, b}); // [i, j)にax + bを作用
   // // seg.update(i, j, {0, a}); // update
