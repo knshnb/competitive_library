@@ -1,12 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define ll long long
-#define REP(i, n) for (ll (i) = 0; (i) < (n); (i)++)
-#define REPI(i, a, b) for (ll (i) = (a); (i) < (b); (i)++)
-#define int long long
-using VI = vector<int>;
-using VVI = vector<VI>;
-
 class DirectedGraph {
 public:
   int N;
