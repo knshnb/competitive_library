@@ -1,52 +1,57 @@
 class UnionFind {
 public:
-  VI par, rank;
-  UnionFind(int n) {
-    par = VI(n); iota(par.begin(), par.end(), 0);
-    rank = VI(n, 0);
-  }
-  int root(int x) {
-    if (par[x] == x) {
-      return x;
-    } else {
-      return par[x] = root(par[x]);
+    VI par, rank;
+    UnionFind(int n) {
+        par = VI(n);
+        iota(par.begin(), par.end(), 0);
+        rank = VI(n, 0);
     }
-  }
-  void unite(int x, int y) {
-    x = root(x);
-    y = root(y);
-    if (x == y) { return; }
-    if (rank[x] < rank[y]) {
-      par[x] = y;
-    } else {
-      par[y] = x;
-      if (rank[x] == rank[y]) { rank[x]++; }
+    int root(int x) {
+        if (par[x] == x) {
+            return x;
+        } else {
+            return par[x] = root(par[x]);
+        }
     }
-  }
-  bool same(int x, int y) {
-    return root(x) == root(y);
-  }
+    void unite(int x, int y) {
+        x = root(x);
+        y = root(y);
+        if (x == y) {
+            return;
+        }
+        if (rank[x] < rank[y]) {
+            par[x] = y;
+        } else {
+            par[y] = x;
+            if (rank[x] == rank[y]) {
+                rank[x]++;
+            }
+        }
+    }
+    bool same(int x, int y) { return root(x) == root(y); }
 };
 
-struct edge { int u, v, cost; };
+struct edge {
+    int u, v, cost;
+};
 bool comp(const edge& e1, const edge& e2) { return e1.cost < e2.cost; }
 int kruskal(int V, vector<edge>& es) {
-  sort(es.begin(), es.end(), comp);
-  UnionFind uf(V);
-  int ans = 0;
-  for (edge e: es) {
-    if (uf.same(e.u, e.v)) { continue; }
-    uf.unite(e.u, e.v);
-    ans += e.cost;
-  }
-  return ans;
+    sort(es.begin(), es.end(), comp);
+    UnionFind uf(V);
+    int ans = 0;
+    for (edge e : es) {
+        if (uf.same(e.u, e.v)) {
+            continue;
+        }
+        uf.unite(e.u, e.v);
+        ans += e.cost;
+    }
+    return ans;
 }
 signed main() {
-  int V, E;
-  cin >> V >> E;
-  vector<edge> es(E);
-  REP (i, E) {
-    cin >> es[i].u >> es[i].v >> es[i].cost;
-  }
-  cout << kruskal(V, es) << endl;
+    int V, E;
+    cin >> V >> E;
+    vector<edge> es(E);
+    REP(i, E) { cin >> es[i].u >> es[i].v >> es[i].cost; }
+    cout << kruskal(V, es) << endl;
 }

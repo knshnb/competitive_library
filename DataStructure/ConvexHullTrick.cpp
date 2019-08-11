@@ -21,7 +21,7 @@ private:
     node *root;
 
 public:
-    convex_hull_trick(const vector<T>& pos_) : n(pos_.size()), pos(pos_), root(nullptr) {}
+    convex_hull_trick(const vector<T> &pos_) : n(pos_.size()), pos(pos_), root(nullptr) {}
     ~convex_hull_trick() {
         if (root) delete root;
     }
@@ -40,7 +40,7 @@ public:
     T rev_get(T x) const { return -get(x); }
 
 private:
-    node* modify(node *p, int lb, int ub, line& l) {
+    node *modify(node *p, int lb, int ub, line &l) {
         if (!p) return new node(l);
         if (p->l.get(pos[lb]) >= l.get(pos[lb]) && p->l.get(pos[ub]) >= l.get(pos[ub])) return p;
         if (p->l.get(pos[lb]) <= l.get(pos[lb]) && p->l.get(pos[ub]) <= l.get(pos[ub])) {
