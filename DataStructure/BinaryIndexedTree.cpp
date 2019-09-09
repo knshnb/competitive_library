@@ -1,17 +1,18 @@
 // 0-indexed
 class BinaryIndexedTree {
     int max_pow;  // N以下の最大の2べき
-    void init() {
+public:
+    vector<int> bit;
+    int N;
+    BinaryIndexedTree(int n, int x = 0) : N(n), bit(n, x) {
+        for (max_pow = 1; max_pow <= N / 2; max_pow *= 2)
+            ;
+    }
+    BinaryIndexedTree(const vector<int>& a) : N(a.size()), bit(a) {
         for (max_pow = 1; max_pow <= N / 2; max_pow *= 2)
             ;
         REP(i, N - 1) if ((i | (i + 1)) < N) { bit[i | (i + 1)] += bit[i]; }
     }
-
-public:
-    vector<int> bit;
-    int N;
-    BinaryIndexedTree(int n, int x = 0) : N(n), bit(n, x) { init(); }
-    BinaryIndexedTree(const vector<int>& a) : N(a.size()), bit(a) { init(); }
     // k番目にxを加算
     void add(int k, int x) {
         for (int i = k; i < N; i |= i + 1) {
