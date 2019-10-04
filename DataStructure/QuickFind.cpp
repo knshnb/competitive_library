@@ -18,7 +18,7 @@ public:
         if (g2i[gi].size() < g2i[j].size()) swap(gi, gj);
         // jをiにmerge
         for (int v : g2i[gj]) i2g[v] = gi;
-        g2i[gi].insert(g2i[gi].end(), ALL(g2i[gj]));
+        g2i[gi].insert(g2i[gi].end(), g2i[gj].begin(), g2i[gj].end());
         g2i[gj].clear();
     }
     bool same(int i, int j) { return i2g[i] == i2g[j]; }
