@@ -128,7 +128,7 @@ struct SumUpdateQuery : public BaseSegmentTree<T0, T1> {
 
 template <class T0>
 struct SumAffineQuery : public BaseSegmentTree<T0, pair<T0, T0>> {
-    using T1 = pair<T0, T0>; // first * x + second
+    using T1 = pair<T0, T0>;  // first * x + second
     using BaseSegmentTree<T0, T1>::BaseSegmentTree;
     static constexpr T1 _u1 = {1, 0};
     SumAffineQuery() : SumAffineQuery(0, {1, 0}) {}  // TODO: _u1を使うとコンパイル通らない原因不明
@@ -144,12 +144,10 @@ struct SumAffineQuery : public BaseSegmentTree<T0, pair<T0, T0>> {
 
 template <class T>
 struct MinmaxAffineQuery : public BaseSegmentTree<pair<T, T>, pair<T, T>> {
-    using T0 = pair<T, T>; // {min, max}
-    using T1 = pair<T, T>; // first * x + second
+    using T0 = pair<T, T>;  // {min, max}
+    using T1 = pair<T, T>;  // first * x + second
     using BaseSegmentTree<T0, T1>::BaseSegmentTree;
-    static constexpr T0 get_u0() {
-        return {numeric_limits<T>::max(), -numeric_limits<T>::max()};
-    }
+    static constexpr T0 get_u0() { return {numeric_limits<T>::max(), -numeric_limits<T>::max()}; }
     static constexpr T1 _u1 = {1, 0};
     MinmaxAffineQuery() : MinmaxAffineQuery(get_u0(), {1, 0}) {}  // TODO: _u1を使うとコンパイル通らない原因不明
     T0 f0(T0 x, T0 y) override { return {min(x.first, y.first), max(x.second, y.second)}; }

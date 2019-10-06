@@ -15,7 +15,7 @@ void gauss_jordan(vector<vector<T>>& A) {
         used[pivot] = true;
         for (int row = 0; row < n; row++) {
             if (row == pivot) continue;
-            T d = A[row][col] / A[pivot][col]; // 倍率
+            T d = A[row][col] / A[pivot][col];  // 倍率
             for (int col2 = 0; col2 < m; col2++) {
                 A[row][col2] -= A[pivot][col2] * d;
             }
