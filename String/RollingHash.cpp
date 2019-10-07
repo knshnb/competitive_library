@@ -1,15 +1,18 @@
 using ull = unsigned long long;
+template <class T>
 struct RollingHash {
     vector<ull> hash, pows;
     ull base, mod;
-    RollingHash(const string &S, ull base, ull mod = 1000000009)
-        : hash(S.size() + 1), pows(S.size() + 1, 1), mod(mod), base(base) {
-        for (int i = 0; i < S.size(); i++) {
+    RollingHash(const T &a, ull base, ull mod = 1000000009)
+        : hash(a.size() + 1), pows(a.size() + 1, 1), mod(mod), base(base) {
+        for (int i = 0; i < a.size(); i++) {
             pows[i + 1] = pows[i] * base % mod;
-            hash[i + 1] = hash[i] * base % mod + S[i];
+            hash[i + 1] = hash[i] * base % mod + a[i];
             if (hash[i + 1] >= mod) hash[i + 1] -= mod;
         }
     }
+    // 現在の文字列のサイズ
+    int size() { return hash.size() - 1; }
     // [l, r)
     ull get(int l, int r) {
         assert(l <= r);
@@ -17,15 +20,19 @@ struct RollingHash {
         if (ret >= mod) ret -= mod;
         return ret;
     }
-    void concat(const string &T) {
-        int n = hash.size() - 1, m = T.size();
+    void concat(const T &b) {
+        int n = hash.size() - 1, m = b.size();
         pows.resize(n + m + 1);
         hash.resize(n + m + 1);
         for (int i = 0; i < m; i++) {
             pows[n + i + 1] = pows[n + i] * base % mod;
-            hash[n + i + 1] = hash[n + i] * base % mod + T[i];
+            hash[n + i + 1] = hash[n + i] * base % mod + b[i];
             if (hash[n + i + 1] >= mod) hash[n + i + 1] -= mod;
         }
+    }
+    void pop_back() {
+        hash.pop_back();
+        pows.pop_back();
     }
 };
 
@@ -40,11 +47,12 @@ struct bases_t {
 } bases;
 
 using multihash_t = array<int, HASH_NUM>;
+template <class T = vector<int>>
 struct MultiRollingHash {
-    vector<RollingHash> rhs;
-    MultiRollingHash(const string &S) {
+    vector<RollingHash<T>> rhs;
+    MultiRollingHash(const T &a) {
         for (int i = 0; i < HASH_NUM; i++) {
-            rhs.push_back(RollingHash(S, bases[i]));
+            rhs.push_back(RollingHash<T>(a, bases[i]));
         }
     }
     multihash_t get(int l, int r) {
@@ -52,7 +60,11 @@ struct MultiRollingHash {
         for (int i = 0; i < HASH_NUM; i++) ret[i] = rhs[i].get(l, r);
         return ret;
     }
-    void concat(const string &T) {
-        for (int i = 0; i < HASH_NUM; i++) rhs[i].concat(T);
+    int size() { return rhs[0].size(); }
+    void concat(const T &b) {
+        for (auto &rh : rhs) rh.concat(b);
+    }
+    void pop_back() {
+        for (auto &rh : rhs) rh.pop_back();
     }
 };
