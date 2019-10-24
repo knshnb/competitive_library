@@ -14,7 +14,7 @@ struct ModInt {
     int x;
     static unordered_map<int, int> to_inv;
     ModInt() : x(0) {}
-    ModInt(int x_) {
+    ModInt(long long x_) {
         if ((x = x_ % MD + MD) >= MD) x -= MD;
     }
 
