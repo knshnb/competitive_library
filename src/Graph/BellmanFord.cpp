@@ -15,21 +15,17 @@ vector<T> bellman_ford(vector<Edge<T>>& edges, int n, int s) {
             dist[e.to] = min(dist[e.to], dist[e.from] + e.cost);
         }
     }
-    vector<int> can_diverge(n); // s->負のサイクル->vの順で到達可能かどうか
     for (Edge<T>& e : edges) {
         // sから到達できる負のサイクル検出
         if (dist[e.to] < INF && dist[e.from] + e.cost < dist[e.to]) {
-            can_diverge[e.from] = true;
-            can_diverge[e.to] = true;
+            dist[e.from] = -INF;
+            dist[e.to] = -INF;
         }
     }
     for (int i = 0; i < n - 1; i++) {
         for (Edge<T>& e : edges) {
-            can_diverge[e.to] |= can_diverge[e.from];
+            if (dist[e.from] == -INF) dist[e.to] = -INF;
         }
-    }
-    for (int i = 0; i < n; i++) {
-        if (can_diverge[i]) dist[i] = -INF;
     }
     return dist;
 }
