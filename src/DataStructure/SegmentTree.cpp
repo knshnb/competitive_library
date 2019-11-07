@@ -17,7 +17,9 @@ struct SegmentTree {
         for (int i = 0; i < n; i++) t[i + n] = a[i];
         build();
     }
-    void build() { for (int i = n - 1; i; --i) t[i] = op(t[2 * i], t[2 * i + 1]); }
+    void build() {
+        for (int i = n - 1; i; --i) t[i] = op(t[2 * i], t[2 * i + 1]);
+    }
     T& operator[](int i) { return t[i + n]; }
     // [l, r)
     T query(int l, int r) const {
@@ -36,3 +38,10 @@ struct SegmentTree {
         while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
     }
 };
+template <class T, class F>
+auto make_segment_tree(F op, T e) {
+    return SegmentTree<T, F>(op, e);
+}
+// example
+//    auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
+//    auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);
