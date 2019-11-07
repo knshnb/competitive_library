@@ -6,7 +6,7 @@ struct Edge {
 // O(EV)、負のサイクルを通った後に到達できる点についてはdist[v]=INFを返す
 template <class T>
 vector<T> bellman_ford(vector<Edge<T>>& edges, int n, int s) {
-    constexpr T INF = 1e18; // Tの型に応じて書き換える必要あり
+    constexpr T INF = 1e18;  // Tの型に応じて書き換える必要あり
     vector<T> dist(n, INF);
     dist[s] = 0;
     for (int i = 0; i < n - 1; i++) {
