@@ -43,5 +43,5 @@ auto make_segment_tree(F op, T e) {
     return SegmentTree<T, F>(op, e);
 }
 // example
-//    auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
-//    auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);
+//     auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
+//     auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);
