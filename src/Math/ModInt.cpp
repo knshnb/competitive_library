@@ -1,5 +1,4 @@
-template <class T>
-T pow(T x, int n, const T UNION = 1) {
+template <class T> T pow(T x, int n, const T UNION = 1) {
     T ret = UNION;
     while (n) {
         if (n & 1) ret *= x;
@@ -9,8 +8,7 @@ T pow(T x, int n, const T UNION = 1) {
     return ret;
 }
 
-template <int MD>
-struct ModInt {
+template <int MD> struct ModInt {
     int x;
     static unordered_map<int, int> to_inv;
     ModInt() : x(0) {}
@@ -52,9 +50,8 @@ struct ModInt {
         return s;
     }
 };
-template <int MD>
-unordered_map<int, int> ModInt<MD>::to_inv;
-using mint = ModInt<MOD>;
+template <int MD> unordered_map<int, int> ModInt<MD>::to_inv;
+using mint = ModInt<1000000007>;
 
 vector<mint> fact, fact_inv;
 void init_factorial(int n) {

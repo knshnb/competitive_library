@@ -1,5 +1,4 @@
-template <class T>
-void warshall_floyd(vector<vector<T>> &d) {
+template <class T> void warshall_floyd(vector<vector<T>> &d) {
     int n = d.size();
     for (int i = 0; i < n; i++) assert(d[i][i] == 0);
     for (int k = 0; k < n; k++) {

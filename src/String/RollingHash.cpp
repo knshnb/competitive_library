@@ -1,6 +1,5 @@
 using ull = unsigned long long;
-template <class T>
-struct RollingHash {
+template <class T> struct RollingHash {
     vector<ull> hash, pows;
     ull base, mod;
     RollingHash(const T &a, ull base, ull mod = 1000000009)
@@ -47,8 +46,7 @@ struct bases_t {
 } bases;
 
 using multihash_t = array<int, HASH_NUM>;
-template <class T = vector<int>>
-struct MultiRollingHash {
+template <class T = vector<int>> struct MultiRollingHash {
     vector<RollingHash<T>> rhs;
     MultiRollingHash(const T &a) {
         for (int i = 0; i < HASH_NUM; i++) {

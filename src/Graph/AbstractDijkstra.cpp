@@ -1,5 +1,4 @@
-template <class T>
-struct Graph {
+template <class T> struct Graph {
     struct Edge {
         int to;
         T cost;

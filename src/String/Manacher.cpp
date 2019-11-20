@@ -1,5 +1,4 @@
-template <class T>
-vector<int> manacher(const vector<T>& s) {
+template <class T> vector<int> manacher(const vector<T>& s) {
     vector<int> R(s.size());
     int i = 0, j = 0;
     while (i < s.size()) {
@@ -15,8 +14,7 @@ vector<int> manacher(const vector<T>& s) {
 
 struct Manacher {
     vector<int> a;
-    template <class T>
-    Manacher(const vector<T>& s, T DUMMY = -1) {
+    template <class T> Manacher(const vector<T>& s, T DUMMY = -1) {
         int m = s.size() * 2 - 1;
         vector<T> t(m, DUMMY);
         for (int i = 0; i < s.size(); i++) {

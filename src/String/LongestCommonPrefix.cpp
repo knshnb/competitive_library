@@ -1,5 +1,4 @@
-template <class T = int>
-class SegTree {
+template <class T = int> class SegTree {
     using VT = vector<T>;
     int orig_n;
     // k番目のノードの[l, r)について[a, b)を求める

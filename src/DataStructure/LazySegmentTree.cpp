@@ -1,7 +1,6 @@
 // T0: 元の配列のモノイド
 // T1: T0に対する作用素モノイド
-template <class T0, class T1>
-class BaseSegmentTree {
+template <class T0, class T1> class BaseSegmentTree {
     // k番目のノードにのlazyを伝搬
     void eval(int k, int len) {
         // 定数倍高速化
@@ -82,8 +81,7 @@ public:
     T0 query(int a) { return query(a, a + 1); }
 };
 
-template <class T0, class T1>
-struct MinUpdateQuery : public BaseSegmentTree<T0, T1> {
+template <class T0, class T1> struct MinUpdateQuery : public BaseSegmentTree<T0, T1> {
     using BaseSegmentTree<T0, T1>::BaseSegmentTree;
     static constexpr T0 _u0 = numeric_limits<T0>::max();
     static constexpr T1 _u1 = numeric_limits<T1>::min();
@@ -94,8 +92,7 @@ struct MinUpdateQuery : public BaseSegmentTree<T0, T1> {
     T1 p(T1 x, int len) override { return x; }
 };
 
-template <class T0, class T1>
-struct SumAddQuery : public BaseSegmentTree<T0, T1> {
+template <class T0, class T1> struct SumAddQuery : public BaseSegmentTree<T0, T1> {
     using BaseSegmentTree<T0, T1>::BaseSegmentTree;
     SumAddQuery() : SumAddQuery(0, 0) {}
     T0 f0(T0 x, T0 y) override { return x + y; }
@@ -104,8 +101,7 @@ struct SumAddQuery : public BaseSegmentTree<T0, T1> {
     T1 p(T1 x, int len) override { return x * len; }
 };
 
-template <class T0, class T1>
-struct MinAddQuery : public BaseSegmentTree<T0, T1> {
+template <class T0, class T1> struct MinAddQuery : public BaseSegmentTree<T0, T1> {
     using BaseSegmentTree<T0, T1>::BaseSegmentTree;
     static constexpr int _u0 = numeric_limits<T0>::max();
     MinAddQuery() : MinAddQuery(_u0, 0) {}
@@ -115,8 +111,7 @@ struct MinAddQuery : public BaseSegmentTree<T0, T1> {
     T1 p(T1 x, int len) override { return x; }
 };
 
-template <class T0, class T1>
-struct SumUpdateQuery : public BaseSegmentTree<T0, T1> {
+template <class T0, class T1> struct SumUpdateQuery : public BaseSegmentTree<T0, T1> {
     using BaseSegmentTree<T0, T1>::BaseSegmentTree;
     static constexpr int _u1 = numeric_limits<T1>::min();
     SumUpdateQuery() : SumUpdateQuery(0, _u1) {}
@@ -126,8 +121,7 @@ struct SumUpdateQuery : public BaseSegmentTree<T0, T1> {
     T1 p(T1 x, int len) override { return x == _u1 ? _u1 : x * len; }
 };
 
-template <class T0>
-struct SumAffineQuery : public BaseSegmentTree<T0, pair<T0, T0>> {
+template <class T0> struct SumAffineQuery : public BaseSegmentTree<T0, pair<T0, T0>> {
     using T1 = pair<T0, T0>;  // first * x + second
     using BaseSegmentTree<T0, T1>::BaseSegmentTree;
     static constexpr T1 _u1 = {1, 0};
@@ -142,8 +136,7 @@ struct SumAffineQuery : public BaseSegmentTree<T0, pair<T0, T0>> {
     // update(i, j, {a, 0}); // 倍
 };
 
-template <class T>
-struct MinmaxAffineQuery : public BaseSegmentTree<pair<T, T>, pair<T, T>> {
+template <class T> struct MinmaxAffineQuery : public BaseSegmentTree<pair<T, T>, pair<T, T>> {
     using T0 = pair<T, T>;  // {min, max}
     using T1 = pair<T, T>;  // first * x + second
     using BaseSegmentTree<T0, T1>::BaseSegmentTree;

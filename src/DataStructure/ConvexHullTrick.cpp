@@ -1,5 +1,4 @@
-template <typename T, const T id = (int)-1e18>
-class convex_hull_trick {
+template <typename T, const T id = (int)-1e18> class convex_hull_trick {
     struct line {
         T a, b;
         line(T a_ = 0, T b_ = 0) : a(a_), b(b_) {}

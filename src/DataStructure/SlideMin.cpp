@@ -1,7 +1,6 @@
 // 自分を含んだK個前までの中での最小値のindexの配列を返す
 // 最小(最大)値のindexを返すことに注意!
-template <class T = int>
-vector<int> slide_min(const vector<T>& a, int w, function<bool(T, T)> cmp = less<T>()) {
+template <class T = int> vector<int> slide_min(const vector<T>& a, int w, function<bool(T, T)> cmp = less<T>()) {
     int n = a.size();
     vector<int> ret(n);
     deque<int> dq;

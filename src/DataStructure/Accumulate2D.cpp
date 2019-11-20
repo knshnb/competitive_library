@@ -1,5 +1,4 @@
-template <class T>
-struct Accumulate2D {
+template <class T> struct Accumulate2D {
     vector<vector<T>> t;  // 0-indexed!!
     Accumulate2D(int n, int m) : t(n + 1, vector<T>(m + 1)) {}
     T get(int i, int j) { return (i < 0 || j < 0) ? 0 : t[i][j]; }

@@ -1,6 +1,5 @@
 // A[n-1]にはAx = bのbの値
-template <class T>
-void gauss_jordan(vector<vector<T>>& A) {
+template <class T> void gauss_jordan(vector<vector<T>>& A) {
     int n = A.size(), m = A[0].size();
     vector<bool> used(n);
     for (int col = 0; col < m - 1; col++) {

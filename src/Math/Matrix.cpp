@@ -1,5 +1,4 @@
-template <class T>
-struct Matrix {
+template <class T> struct Matrix {
     vector<vector<T>> A;
     Matrix() {}
     Matrix(int n) : A(n, vector<T>(n, 0)) {}

@@ -1,5 +1,4 @@
-template <class T, class F>
-struct SegmentTree {
+template <class T, class F> struct SegmentTree {
     const F op;
     const T e;
     SegmentTree(F op_, T e_) : op(op_), e(e_) {}
@@ -38,10 +37,7 @@ struct SegmentTree {
         while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
     }
 };
-template <class T, class F>
-auto make_segment_tree(F op, T e) {
-    return SegmentTree<T, F>(op, e);
-}
+template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T, F>(op, e); }
 // example
 //     auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
 //     auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);

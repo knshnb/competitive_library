@@ -1,5 +1,4 @@
-template <char margin = 'A', int char_size = 26>
-struct Trie {
+template <char margin = 'A', int char_size = 26> struct Trie {
     struct TrieNode {
         array<int, char_size> node;
         TrieNode() { node.fill(-1); };

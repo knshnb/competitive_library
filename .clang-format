@@ -6,4 +6,5 @@ AllowShortCaseLabelsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: true
 ColumnLimit: 120
+AlwaysBreakTemplateDeclarations: false
 ---

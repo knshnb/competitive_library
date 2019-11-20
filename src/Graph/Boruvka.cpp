@@ -1,7 +1,6 @@
 // F(現在の木の個数, vector<頂点->集合のindex>) -> vector<集合のindex->(cost, to)>
 // 使い方: https://codeforces.com/contest/1242/submission/64467604
-template <class T, class F>
-T boruvka(int n, const F& f) {
+template <class T, class F> T boruvka(int n, const F& f) {
     struct UnionFind {
         vector<int> number;  // 0以上のとき親のindex, 負のときは集合サイズ
         UnionFind(int n) : number(n, -1) {}
