@@ -32,7 +32,6 @@ template <int MD> struct ModInt {
         x = (unsigned long long)x * that.inv().x % MD;
         return *this;
     }
-
     ModInt operator-() const { return -x < 0 ? MD - x : -x; }
     ModInt operator+(ModInt that) const { return ModInt(*this) += that; }
     ModInt operator*(ModInt that) const { return ModInt(*this) *= that; }
@@ -41,14 +40,18 @@ template <int MD> struct ModInt {
     bool operator==(ModInt that) const { return x == that.x; }
     bool operator!=(ModInt that) const { return x != that.x; }
     ModInt inv() const { return to_inv.count(this->x) ? to_inv[this->x] : (to_inv[this->x] = pow(*this, MD - 2).x); }
+
     friend ostream& operator<<(ostream& s, ModInt<MD> a) {
         s << a.x;
         return s;
     }
     friend istream& operator>>(istream& s, ModInt<MD>& a) {
-        s >> a.x;
+        long long tmp;
+        s >> tmp;
+        a = ModInt<MD>(tmp);
         return s;
     }
+    friend string to_string(ModInt<MD> a) { return to_string(a.x); }
 };
 template <int MD> unordered_map<int, int> ModInt<MD>::to_inv;
 using mint = ModInt<1000000007>;
