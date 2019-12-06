@@ -42,3 +42,8 @@ template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTr
 // example
 //     auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
 //     auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);
+//     auto seg_affine = make_segment_tree<pair<Int, Int>>(
+//         [](pair<Int, Int> a, pair<Int, Int> b) -> pair<Int, Int> {
+//             return {a.first * b.first, b.first * a.second + b.second};
+//         },
+//         {1, 0});
