@@ -1,7 +1,7 @@
-auto dfs = [&](auto dfs, Int v, Int prv) -> void {
+auto dfs = [&](auto f, Int v, Int prv) -> void {
     for (Int s : g[v]) {
         if (s == prv) continue;
-        dfs(dfs, s, v);
+        f(f, s, v);
     }
 };
 dfs(dfs, 0, -1);
