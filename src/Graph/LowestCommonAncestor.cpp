@@ -50,4 +50,5 @@ struct TreeDoubling {
         assert(parent[0][u] == parent[0][v]);
         return parent[0][u];
     }
+    int dist(int u, int v) { return depth[u] + depth[v] - depth[lca(u, v)] * 2; }
 };
