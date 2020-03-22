@@ -1,5 +1,5 @@
-auto dfs = [&](auto f, Int v, Int prv) -> void {
-    for (Int s : g[v]) {
+auto dfs = [&](auto f, int v, int prv) -> void {
+    for (int s : g[v]) {
         if (s == prv) continue;
         f(f, s, v);
     }
