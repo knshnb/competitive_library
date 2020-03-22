@@ -44,7 +44,7 @@ layout: default
 * :warning: <a href="library/src/DataStructure/DynamicUnionFind.cpp.html">src/DataStructure/DynamicUnionFind.cpp</a>
 * :warning: <a href="library/src/DataStructure/FenwickTree.cpp.html">src/DataStructure/FenwickTree.cpp</a>
 * :warning: <a href="library/src/DataStructure/Imos2D.cpp.html">src/DataStructure/Imos2D.cpp</a>
-* :warning: <a href="library/src/DataStructure/LazySegmentTree.cpp.html">src/DataStructure/LazySegmentTree.cpp</a>
+* :heavy_check_mark: <a href="library/src/DataStructure/LazySegmentTree.cpp.html">src/DataStructure/LazySegmentTree.cpp</a>
 * :warning: <a href="library/src/DataStructure/QuickFind.cpp.html">src/DataStructure/QuickFind.cpp</a>
 * :warning: <a href="library/src/DataStructure/ReversedBinaryIndexedTree.cpp.html">src/DataStructure/ReversedBinaryIndexedTree.cpp</a>
 * :warning: <a href="library/src/DataStructure/SegmentTree.cpp.html">src/DataStructure/SegmentTree.cpp</a>
@@ -138,10 +138,8 @@ layout: default
 * :warning: <a href="library/src/String/ZAlgorithm.cpp.html">src/String/ZAlgorithm.cpp</a>
 
 
-<div id="f3169353e2f9b2307db4d03c988efb93"></div>
+## Verify Files
 
-### test/DataStructure
-
-* :warning: <a href="library/test/DataStructure/LazySegmentTree.cpp.html">test/DataStructure/LazySegmentTree.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj.DSL_2_H.test.cpp.html">test/aoj.DSL_2_H.test.cpp</a>
 
 
