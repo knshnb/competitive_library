@@ -15,7 +15,7 @@ struct SetupIO { SetupIO() { cin.tie(nullptr), ios::sync_with_stdio(false), cout
  *    created: Sat Mar 21 19:52:09 JST 2020
  **/
 
-#include "../../src/DataStructure/LazySegmentTree.cpp"
+#include "../src/DataStructure/LazySegmentTree.cpp"
 
 const Int INF = 1e9;
 signed main() {
