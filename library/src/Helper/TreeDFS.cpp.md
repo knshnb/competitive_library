@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/TreeDFS.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-21 16:55:17+09:00
+    - Last commit date: 2020-03-22 19:19:14+09:00
 
 
 
@@ -41,8 +41,8 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-auto dfs = [&](auto f, Int v, Int prv) -> void {
-    for (Int s : g[v]) {
+auto dfs = [&](auto f, int v, int prv) -> void {
+    for (int s : g[v]) {
         if (s == prv) continue;
         f(f, s, v);
     }
@@ -56,8 +56,8 @@ dfs(dfs, 0, -1);
 {% raw %}
 ```cpp
 #line 1 "src/Helper/TreeDFS.cpp"
-auto dfs = [&](auto f, Int v, Int prv) -> void {
-    for (Int s : g[v]) {
+auto dfs = [&](auto f, int v, int prv) -> void {
+    for (int s : g[v]) {
         if (s == prv) continue;
         f(f, s, v);
     }
