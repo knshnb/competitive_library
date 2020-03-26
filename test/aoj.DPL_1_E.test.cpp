@@ -1,0 +1,35 @@
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E"
+
+#include <bits/stdc++.h>  // clang-format off
+using namespace std;
+using Int = long long;
+#define REP_(i, a_, b_, a, b, ...) for (int i = (a), lim_i = (b); i < lim_i; i++)
+#define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
+struct SetupIO { SetupIO() { cin.tie(nullptr), ios::sync_with_stdio(false), cout << fixed << setprecision(13); } } setup_io;
+#ifndef _MY_DEBUG
+#define dump(...)
+#endif  // clang-format on
+
+/**
+ *    author:  knshnb
+ *    created: Thu Mar 26 18:48:49 JST 2020
+ **/
+
+#include "../src/Helper/ChminChmax.cpp"
+#include "../src/Helper/MakeVec.cpp"
+
+signed main() {
+    string s, t;
+    cin >> s >> t;
+    Int n = s.size(), m = t.size();
+    auto dp = make_vec<Int>(n + 1, m + 1, 1e9);
+    dp[0][0] = 0;
+    REP(i, n + 1) {
+        REP(j, m + 1) {
+            if (i - 1 >= 0) chmin(dp[i][j], dp[i - 1][j] + 1);
+            if (j - 1 >= 0) chmin(dp[i][j], dp[i][j - 1] + 1);
+            if (i - 1 >= 0 && j - 1 >= 0) chmin(dp[i][j], dp[i - 1][j - 1] + (s[i - 1] != t[j - 1]));
+        }
+    }
+    cout << dp[n][m] << endl;
+}
