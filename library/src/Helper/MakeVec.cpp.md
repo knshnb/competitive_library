@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Helper/MakeVec.cpp
+# :heavy_check_mark: src/Helper/MakeVec.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/MakeVec.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-15 10:21:51-08:00
+    - Last commit date: 2020-03-26 19:44:35+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj.DPL_1_E.test.cpp.html">test/aoj.DPL_1_E.test.cpp</a>
 
 
 ## Code
@@ -41,7 +46,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T, class S> vector<T> make_vec(size_t n, S x) { return vector<T>(n, x); }
+template <class T, class S> T make_vec(S x) { return x; }
 template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
     return vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));
 }
@@ -53,7 +58,7 @@ template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
 {% raw %}
 ```cpp
 #line 1 "src/Helper/MakeVec.cpp"
-template <class T, class S> vector<T> make_vec(size_t n, S x) { return vector<T>(n, x); }
+template <class T, class S> T make_vec(S x) { return x; }
 template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
     return vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));
 }

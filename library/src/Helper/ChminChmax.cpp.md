@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Helper/ChminChmax.cpp
+# :heavy_check_mark: src/Helper/ChminChmax.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -34,6 +34,11 @@ layout: default
     - Last commit date: 2020-01-07 01:53:54+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj.DPL_1_E.test.cpp.html">test/aoj.DPL_1_E.test.cpp</a>
 
 
 ## Code

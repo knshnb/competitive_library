@@ -95,11 +95,11 @@ layout: default
 * :warning: <a href="library/src/Helper/ArithmeticParser.cpp.html">src/Helper/ArithmeticParser.cpp</a>
 * :warning: <a href="library/src/Helper/BinarySearch.cpp.html">src/Helper/BinarySearch.cpp</a>
 * :warning: <a href="library/src/Helper/BitOperation.cpp.html">src/Helper/BitOperation.cpp</a>
-* :warning: <a href="library/src/Helper/ChminChmax.cpp.html">src/Helper/ChminChmax.cpp</a>
+* :heavy_check_mark: <a href="library/src/Helper/ChminChmax.cpp.html">src/Helper/ChminChmax.cpp</a>
 * :warning: <a href="library/src/Helper/Directions.cpp.html">src/Helper/Directions.cpp</a>
 * :warning: <a href="library/src/Helper/EnumerateFixedSizeSet.cpp.html">src/Helper/EnumerateFixedSizeSet.cpp</a>
 * :warning: <a href="library/src/Helper/GccTree.cpp.html">src/Helper/GccTree.cpp</a>
-* :warning: <a href="library/src/Helper/MakeVec.cpp.html">src/Helper/MakeVec.cpp</a>
+* :heavy_check_mark: <a href="library/src/Helper/MakeVec.cpp.html">src/Helper/MakeVec.cpp</a>
 * :warning: <a href="library/src/Helper/MsbLsb.cpp.html">src/Helper/MsbLsb.cpp</a>
 * :warning: <a href="library/src/Helper/Random.cpp.html">src/Helper/Random.cpp</a>
 * :warning: <a href="library/src/Helper/Rotate2D.cpp.html">src/Helper/Rotate2D.cpp</a>
@@ -140,6 +140,7 @@ layout: default
 
 ## Verify Files
 
+* :heavy_check_mark: <a href="verify/test/aoj.DPL_1_E.test.cpp.html">test/aoj.DPL_1_E.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj.DSL_2_H.test.cpp.html">test/aoj.DSL_2_H.test.cpp</a>
 
 
