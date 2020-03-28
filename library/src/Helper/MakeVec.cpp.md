@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/MakeVec.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-26 19:44:35+09:00
+    - Last commit date: 2020-03-28 22:03:22+09:00
 
 
 
@@ -48,7 +48,7 @@ layout: default
 ```cpp
 template <class T, class S> T make_vec(S x) { return x; }
 template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
-    return vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));
+    return std::vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));
 }
 
 ```
@@ -60,7 +60,7 @@ template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
 #line 1 "src/Helper/MakeVec.cpp"
 template <class T, class S> T make_vec(S x) { return x; }
 template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
-    return vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));
+    return std::vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));
 }
 
 ```

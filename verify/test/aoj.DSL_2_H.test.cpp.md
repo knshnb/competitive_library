@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj.DSL_2_H.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-22 15:36:43+09:00
+    - Last commit date: 2020-03-28 22:03:22+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H</a>
@@ -50,11 +50,10 @@ layout: default
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H"
 
 #include <bits/stdc++.h>  // clang-format off
-using namespace std;
 using Int = long long;
 #define REP_(i, a_, b_, a, b, ...) for (int i = (a), lim_i = (b); i < lim_i; i++)
 #define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
-struct SetupIO { SetupIO() { cin.tie(nullptr), ios::sync_with_stdio(false), cout << fixed << setprecision(13); } } setup_io;
+struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
 #ifndef _MY_DEBUG
 #define dump(...)
 #endif  // clang-format on
@@ -69,21 +68,21 @@ struct SetupIO { SetupIO() { cin.tie(nullptr), ios::sync_with_stdio(false), cout
 const Int INF = 1e9;
 signed main() {
     int n, Q;
-    cin >> n >> Q;
+    std::cin >> n >> Q;
     auto seg = make_lazy_segment_tree<Int, Int>(
-        [](Int x, Int y) { return min(x, y); }, INF, [](Int x, Int y) { return x + y; }, 0,
+        [](Int x, Int y) { return std::min(x, y); }, INF, [](Int x, Int y) { return x + y; }, 0,
         [](Int x, Int y) { return x == INF ? x : x + y; }, [](Int x, int len) { return x; });
-    seg.set_by_vector(vector<Int>(n));
+    seg.set_by_vector(std::vector<Int>(n));
     REP(q, Q) {
         int c, s, t;
-        cin >> c >> s >> t;
+        std::cin >> c >> s >> t;
         t++;
         if (c == 0) {
             Int x;
-            cin >> x;
+            std::cin >> x;
             seg.update(s, t, x);
         } else {
-            cout << seg.query(s, t) << endl;
+            std::cout << seg.query(s, t) << std::endl;
         }
     }
 }
@@ -98,11 +97,10 @@ signed main() {
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H"
 
 #include <bits/stdc++.h>  // clang-format off
-using namespace std;
 using Int = long long;
 #define REP_(i, a_, b_, a, b, ...) for (int i = (a), lim_i = (b); i < lim_i; i++)
 #define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
-struct SetupIO { SetupIO() { cin.tie(nullptr), ios::sync_with_stdio(false), cout << fixed << setprecision(13); } } setup_io;
+struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
 #ifndef _MY_DEBUG
 #define dump(...)
 #endif  // clang-format on
@@ -155,8 +153,8 @@ template <class T0, class T1, class F0, class F1, class G, class P> class LazySe
 public:
     int sz;  // 元の配列のサイズ
     int N;
-    vector<T0> node;
-    vector<T1> lazy;
+    std::vector<T0> node;
+    std::vector<T1> lazy;
     // T0上の演算、単位元
     const F0 f0;
     const T0 u0;
@@ -169,7 +167,7 @@ public:
     const P p;
 
     LazySegmentTree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) : f0(f0), u0(u0), f1(f1), u1(u1), g(g), p(p) {}
-    void set_by_vector(const vector<T0>& a) {
+    void set_by_vector(const std::vector<T0>& a) {
         sz = a.size();
         for (N = 1; N < sz; N *= 2)
             ;
@@ -194,9 +192,9 @@ public:
     // [a, b)
     T0 query(int a, int b) { return query(a, b, 0, 0, N); }
     T0 query(int a) { return query(a, a + 1); }
-    friend string to_string(LazySegmentTree<T0, T1, F0, F1, G, P>& seg) {
+    friend std::string to_string(LazySegmentTree<T0, T1, F0, F1, G, P>& seg) {
         for (int i = 0; i < seg.sz; i++) seg.query(i);
-        return to_string(vector<T0>(seg.node.begin() + (seg.N - 1), seg.node.begin() + (seg.N - 1 + seg.sz)));
+        return to_string(std::vector<T0>(seg.node.begin() + (seg.N - 1), seg.node.begin() + (seg.N - 1 + seg.sz)));
     }
 };
 template <class T0, class T1, class F0, class F1, class G, class P>
@@ -208,26 +206,26 @@ auto make_lazy_segment_tree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) {
 // auto seg = make_lazy_segment_tree<Int, Int>(
 //     [](Int x, Int y) { return max(x, y); }, -INF, [](Int x, Int y) { return x + y; }, 0,
 //     [](Int x, Int y) { return x == -INF ? x : x + y; }, [](Int x, int len) { return x; });
-#line 19 "test/aoj.DSL_2_H.test.cpp"
+#line 18 "test/aoj.DSL_2_H.test.cpp"
 
 const Int INF = 1e9;
 signed main() {
     int n, Q;
-    cin >> n >> Q;
+    std::cin >> n >> Q;
     auto seg = make_lazy_segment_tree<Int, Int>(
-        [](Int x, Int y) { return min(x, y); }, INF, [](Int x, Int y) { return x + y; }, 0,
+        [](Int x, Int y) { return std::min(x, y); }, INF, [](Int x, Int y) { return x + y; }, 0,
         [](Int x, Int y) { return x == INF ? x : x + y; }, [](Int x, int len) { return x; });
-    seg.set_by_vector(vector<Int>(n));
+    seg.set_by_vector(std::vector<Int>(n));
     REP(q, Q) {
         int c, s, t;
-        cin >> c >> s >> t;
+        std::cin >> c >> s >> t;
         t++;
         if (c == 0) {
             Int x;
-            cin >> x;
+            std::cin >> x;
             seg.update(s, t, x);
         } else {
-            cout << seg.query(s, t) << endl;
+            std::cout << seg.query(s, t) << std::endl;
         }
     }
 }

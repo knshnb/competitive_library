@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj.DPL_1_E.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-26 19:49:11+09:00
+    - Last commit date: 2020-03-28 22:03:22+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E</a>
@@ -51,11 +51,10 @@ layout: default
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E"
 
 #include <bits/stdc++.h>  // clang-format off
-using namespace std;
 using Int = long long;
 #define REP_(i, a_, b_, a, b, ...) for (int i = (a), lim_i = (b); i < lim_i; i++)
 #define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
-struct SetupIO { SetupIO() { cin.tie(nullptr), ios::sync_with_stdio(false), cout << fixed << setprecision(13); } } setup_io;
+struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
 #ifndef _MY_DEBUG
 #define dump(...)
 #endif  // clang-format on
@@ -69,8 +68,8 @@ struct SetupIO { SetupIO() { cin.tie(nullptr), ios::sync_with_stdio(false), cout
 #include "../src/Helper/MakeVec.cpp"
 
 signed main() {
-    string s, t;
-    cin >> s >> t;
+    std::string s, t;
+    std::cin >> s >> t;
     Int n = s.size(), m = t.size();
     auto dp = make_vec<Int>(n + 1, m + 1, 1e9);
     dp[0][0] = 0;
@@ -81,7 +80,7 @@ signed main() {
             if (i - 1 >= 0 && j - 1 >= 0) chmin(dp[i][j], dp[i - 1][j - 1] + (s[i - 1] != t[j - 1]));
         }
     }
-    cout << dp[n][m] << endl;
+    std::cout << dp[n][m] << std::endl;
 }
 
 ```
@@ -94,11 +93,10 @@ signed main() {
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E"
 
 #include <bits/stdc++.h>  // clang-format off
-using namespace std;
 using Int = long long;
 #define REP_(i, a_, b_, a, b, ...) for (int i = (a), lim_i = (b); i < lim_i; i++)
 #define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
-struct SetupIO { SetupIO() { cin.tie(nullptr), ios::sync_with_stdio(false), cout << fixed << setprecision(13); } } setup_io;
+struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
 #ifndef _MY_DEBUG
 #define dump(...)
 #endif  // clang-format on
@@ -122,13 +120,13 @@ template <class T> inline bool chmax(T& a, const T& b) {
 #line 1 "src/Helper/MakeVec.cpp"
 template <class T, class S> T make_vec(S x) { return x; }
 template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
-    return vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));
+    return std::vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));
 }
-#line 20 "test/aoj.DPL_1_E.test.cpp"
+#line 19 "test/aoj.DPL_1_E.test.cpp"
 
 signed main() {
-    string s, t;
-    cin >> s >> t;
+    std::string s, t;
+    std::cin >> s >> t;
     Int n = s.size(), m = t.size();
     auto dp = make_vec<Int>(n + 1, m + 1, 1e9);
     dp[0][0] = 0;
@@ -139,7 +137,7 @@ signed main() {
             if (i - 1 >= 0 && j - 1 >= 0) chmin(dp[i][j], dp[i - 1][j - 1] + (s[i - 1] != t[j - 1]));
         }
     }
-    cout << dp[n][m] << endl;
+    std::cout << dp[n][m] << std::endl;
 }
 
 ```
