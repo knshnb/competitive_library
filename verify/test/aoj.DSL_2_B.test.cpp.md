@@ -25,16 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj.DSL_2_A.test.cpp.cpp
+# :heavy_check_mark: test/aoj.DSL_2_B.test.cpp
 
 <a href="../../index.html">Back to top page</a>
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj.DSL_2_A.test.cpp.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-28 23:48:05+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj.DSL_2_B.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-29 00:17:59+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A</a>
+* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B</a>
 
 
 ## Depends on
@@ -47,7 +47,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -69,15 +69,16 @@ const Int INF = 1e18;
 signed main() {
     Int n, Q;
     std::cin >> n >> Q;
-    auto seg = make_segment_tree<Int>([](Int a, Int b) { return std::min(a, b); }, INF);
-    seg.set_by_vector(std::vector<Int>(n, (1LL << 31) - 1));
+    auto seg = make_segment_tree<Int>(std::plus<Int>(), 0);
+    seg.set_by_identity(n);
     REP(q, Q) {
         Int c, x, y;
         std::cin >> c >> x >> y;
+        x--;
         if (c == 0) {
-            seg.update(x, y);
+            seg.operate(x, y);
         } else {
-            std::cout << seg.query(x, y + 1) << "\n";
+            std::cout << seg.query(x, y) << "\n";
         }
     }
 }
@@ -88,8 +89,8 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj.DSL_2_A.test.cpp.cpp"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A"
+#line 1 "test/aoj.DSL_2_B.test.cpp"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -136,10 +137,17 @@ template <class T, class F> struct SegmentTree {
         }
         return op(resl, resr);
     }
-    // iをaに変更
+    // iをxに変更
     void update(int i, const T& x) {
         assert(0 <= i && i < n);
         t[i += n] = x;
+        while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
+    }
+    // iにxを作用 (a[i] = op(a[i], x))
+    void operate(int i, const T& x) {
+        assert(0 <= i && i < n);
+        i += n;
+        t[i] = op(t[i], x);
         while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
     }
     friend std::string to_string(const SegmentTree<T, F>& seg) {
@@ -155,21 +163,22 @@ template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTr
 //             return {a.first * b.first, b.first * a.second + b.second};
 //         },
 //         {1, 0});
-#line 18 "test/aoj.DSL_2_A.test.cpp.cpp"
+#line 18 "test/aoj.DSL_2_B.test.cpp"
 
 const Int INF = 1e18;
 signed main() {
     Int n, Q;
     std::cin >> n >> Q;
-    auto seg = make_segment_tree<Int>([](Int a, Int b) { return std::min(a, b); }, INF);
-    seg.set_by_vector(std::vector<Int>(n, (1LL << 31) - 1));
+    auto seg = make_segment_tree<Int>(std::plus<Int>(), 0);
+    seg.set_by_identity(n);
     REP(q, Q) {
         Int c, x, y;
         std::cin >> c >> x >> y;
+        x--;
         if (c == 0) {
-            seg.update(x, y);
+            seg.operate(x, y);
         } else {
-            std::cout << seg.query(x, y + 1) << "\n";
+            std::cout << seg.query(x, y) << "\n";
         }
     }
 }
