@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/DataStructure/SegmentTree.cpp
+# :heavy_check_mark: src/DataStructure/SegmentTree.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/SegmentTree.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-06 23:03:01+09:00
+    - Last commit date: 2020-03-28 23:48:05+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj.DSL_2_A.test.cpp.cpp.html">test/aoj.DSL_2_A.test.cpp.cpp</a>
 
 
 ## Code
@@ -46,12 +51,12 @@ template <class T, class F> struct SegmentTree {
     const T e;
     SegmentTree(F op_, T e_) : op(op_), e(e_) {}
     int n;
-    vector<T> t;
+    std::vector<T> t;
     void set_by_identity(int n_) {
         n = n_;
         t.clear(), t.resize(2 * n, e);
     }
-    void set_by_vector(const vector<T>& a) {
+    void set_by_vector(const std::vector<T>& a) {
         n = a.size();
         t.clear(), t.resize(2 * n, e);
         for (int i = 0; i < n; i++) t[i + n] = a[i];
@@ -77,8 +82,8 @@ template <class T, class F> struct SegmentTree {
         t[i += n] = x;
         while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
     }
-    friend string to_string(const SegmentTree<T, F>& seg) {
-        return to_string(vector<T>(seg.t.begin() + seg.n, seg.t.end()));
+    friend std::string to_string(const SegmentTree<T, F>& seg) {
+        return to_string(std::vector<T>(seg.t.begin() + seg.n, seg.t.end()));
     }
 };
 template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T, F>(op, e); }
@@ -103,12 +108,12 @@ template <class T, class F> struct SegmentTree {
     const T e;
     SegmentTree(F op_, T e_) : op(op_), e(e_) {}
     int n;
-    vector<T> t;
+    std::vector<T> t;
     void set_by_identity(int n_) {
         n = n_;
         t.clear(), t.resize(2 * n, e);
     }
-    void set_by_vector(const vector<T>& a) {
+    void set_by_vector(const std::vector<T>& a) {
         n = a.size();
         t.clear(), t.resize(2 * n, e);
         for (int i = 0; i < n; i++) t[i + n] = a[i];
@@ -134,8 +139,8 @@ template <class T, class F> struct SegmentTree {
         t[i += n] = x;
         while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
     }
-    friend string to_string(const SegmentTree<T, F>& seg) {
-        return to_string(vector<T>(seg.t.begin() + seg.n, seg.t.end()));
+    friend std::string to_string(const SegmentTree<T, F>& seg) {
+        return to_string(std::vector<T>(seg.t.begin() + seg.n, seg.t.end()));
     }
 };
 template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T, F>(op, e); }

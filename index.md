@@ -47,7 +47,7 @@ layout: default
 * :heavy_check_mark: <a href="library/src/DataStructure/LazySegmentTree.cpp.html">src/DataStructure/LazySegmentTree.cpp</a>
 * :warning: <a href="library/src/DataStructure/QuickFind.cpp.html">src/DataStructure/QuickFind.cpp</a>
 * :warning: <a href="library/src/DataStructure/ReversedBinaryIndexedTree.cpp.html">src/DataStructure/ReversedBinaryIndexedTree.cpp</a>
-* :warning: <a href="library/src/DataStructure/SegmentTree.cpp.html">src/DataStructure/SegmentTree.cpp</a>
+* :heavy_check_mark: <a href="library/src/DataStructure/SegmentTree.cpp.html">src/DataStructure/SegmentTree.cpp</a>
 * :warning: <a href="library/src/DataStructure/SlideMin.cpp.html">src/DataStructure/SlideMin.cpp</a>
 * :warning: <a href="library/src/DataStructure/UnionFind.cpp.html">src/DataStructure/UnionFind.cpp</a>
 * :warning: <a href="library/src/DataStructure/UnionFindRange.cpp.html">src/DataStructure/UnionFindRange.cpp</a>
@@ -141,6 +141,7 @@ layout: default
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/test/aoj.DPL_1_E.test.cpp.html">test/aoj.DPL_1_E.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj.DSL_2_A.test.cpp.cpp.html">test/aoj.DSL_2_A.test.cpp.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj.DSL_2_H.test.cpp.html">test/aoj.DSL_2_H.test.cpp</a>
 
 
