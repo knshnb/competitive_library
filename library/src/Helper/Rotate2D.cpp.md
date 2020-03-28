@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/Rotate2D.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-15 10:23:27-08:00
+    - Last commit date: 2020-03-29 00:05:09+09:00
 
 
 
@@ -41,9 +41,9 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> vector<vector<T>> rotate_2D(const vector<vector<T>>& t, bool counterclockwise = true) {
+template <class T> std::vector<std::vector<T>> rotate_2D(const std::vector<std::vector<T>>& t, bool counterclockwise = true) {
     int H = t.size(), W = t[0].size();
-    vector<vector<T>> ret(W, vector<T>(H));
+    std::vector<std::vector<T>> ret(W, std::vector<T>(H));
     for (int i = 0; i < H; i++) {
         for (int j = 0; j < W; j++) {
             ret[j][i] = counterclockwise ? t[i][W - 1 - j] : t[H - 1 - i][j];
@@ -59,9 +59,9 @@ template <class T> vector<vector<T>> rotate_2D(const vector<vector<T>>& t, bool 
 {% raw %}
 ```cpp
 #line 1 "src/Helper/Rotate2D.cpp"
-template <class T> vector<vector<T>> rotate_2D(const vector<vector<T>>& t, bool counterclockwise = true) {
+template <class T> std::vector<std::vector<T>> rotate_2D(const std::vector<std::vector<T>>& t, bool counterclockwise = true) {
     int H = t.size(), W = t[0].size();
-    vector<vector<T>> ret(W, vector<T>(H));
+    std::vector<std::vector<T>> ret(W, std::vector<T>(H));
     for (int i = 0; i < H; i++) {
         for (int j = 0; j < W; j++) {
             ret[j][i] = counterclockwise ? t[i][W - 1 - j] : t[H - 1 - i][j];

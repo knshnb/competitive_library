@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/BinarySearch.cpp">View this file on GitHub</a>
-    - Last commit date: 2019-12-15 10:21:51-08:00
+    - Last commit date: 2020-03-29 00:05:09+09:00
 
 
 
@@ -43,7 +43,7 @@ layout: default
 ```cpp
 auto check = [&](Int mid) -> bool {};
 Int ok = 0, ng = 1e18;
-while (abs(ok - ng) > 1) {
+while (std::abs(ok - ng) > 1) {
     Int mid = (ok + ng) / 2;
     (check(mid) ? ok : ng) = mid;
 }
@@ -57,7 +57,7 @@ while (abs(ok - ng) > 1) {
 #line 1 "src/Helper/BinarySearch.cpp"
 auto check = [&](Int mid) -> bool {};
 Int ok = 0, ng = 1e18;
-while (abs(ok - ng) > 1) {
+while (std::abs(ok - ng) > 1) {
     Int mid = (ok + ng) / 2;
     (check(mid) ? ok : ng) = mid;
 }

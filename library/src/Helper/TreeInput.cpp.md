@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/TreeInput.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-22 19:19:14+09:00
+    - Last commit date: 2020-03-29 00:05:09+09:00
 
 
 
@@ -42,11 +42,11 @@ layout: default
 {% raw %}
 ```cpp
 int n;
-cin >> n;
-vector<vector<int>> g(n);
+std::cin >> n;
+std::vector<std::vector<int>> g(n);
 for (int i = 0; i < n - 1; i++) {
     int u, v;
-    cin >> u >> v;
+    std::cin >> u >> v;
     u--, v--;
     g[u].push_back(v);
     g[v].push_back(u);
@@ -60,11 +60,11 @@ for (int i = 0; i < n - 1; i++) {
 ```cpp
 #line 1 "src/Helper/TreeInput.cpp"
 int n;
-cin >> n;
-vector<vector<int>> g(n);
+std::cin >> n;
+std::vector<std::vector<int>> g(n);
 for (int i = 0; i < n - 1; i++) {
     int u, v;
-    cin >> u >> v;
+    std::cin >> u >> v;
     u--, v--;
     g[u].push_back(v);
     g[v].push_back(u);
