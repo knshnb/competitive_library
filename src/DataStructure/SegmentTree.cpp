@@ -3,12 +3,12 @@ template <class T, class F> struct SegmentTree {
     const T e;
     SegmentTree(F op_, T e_) : op(op_), e(e_) {}
     int n;
-    vector<T> t;
+    std::vector<T> t;
     void set_by_identity(int n_) {
         n = n_;
         t.clear(), t.resize(2 * n, e);
     }
-    void set_by_vector(const vector<T>& a) {
+    void set_by_vector(const std::vector<T>& a) {
         n = a.size();
         t.clear(), t.resize(2 * n, e);
         for (int i = 0; i < n; i++) t[i + n] = a[i];
@@ -34,8 +34,8 @@ template <class T, class F> struct SegmentTree {
         t[i += n] = x;
         while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
     }
-    friend string to_string(const SegmentTree<T, F>& seg) {
-        return to_string(vector<T>(seg.t.begin() + seg.n, seg.t.end()));
+    friend std::string to_string(const SegmentTree<T, F>& seg) {
+        return to_string(std::vector<T>(seg.t.begin() + seg.n, seg.t.end()));
     }
 };
 template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T, F>(op, e); }
