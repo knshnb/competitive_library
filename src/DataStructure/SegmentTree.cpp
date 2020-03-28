@@ -1,3 +1,4 @@
+/// @docs src/DataStructure/SegmentTree.md
 template <class T, class F> struct SegmentTree {
     const F op;
     const T e;
