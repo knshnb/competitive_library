@@ -10,7 +10,7 @@ template <class T> T pow(T x, int n, const T UNION = 1) {
 
 template <int MD> struct ModInt {
     int x;
-    static unordered_map<int, int> to_inv;
+    static std::unordered_map<int, int> to_inv;
     ModInt() : x(0) {}
     ModInt(long long x_) {
         if ((x = x_ % MD + MD) >= MD) x -= MD;
@@ -41,25 +41,25 @@ template <int MD> struct ModInt {
     bool operator!=(ModInt that) const { return x != that.x; }
     ModInt inv() const { return to_inv.count(this->x) ? to_inv[this->x] : (to_inv[this->x] = pow(*this, MD - 2).x); }
 
-    friend ostream& operator<<(ostream& s, ModInt<MD> a) {
+    friend std::ostream& operator<<(std::ostream& s, ModInt<MD> a) {
         s << a.x;
         return s;
     }
-    friend istream& operator>>(istream& s, ModInt<MD>& a) {
+    friend std::istream& operator>>(std::istream& s, ModInt<MD>& a) {
         long long tmp;
         s >> tmp;
         a = ModInt<MD>(tmp);
         return s;
     }
-    friend string to_string(ModInt<MD> a) { return to_string(a.x); }
+    friend std::string to_string(ModInt<MD> a) { return std::to_string(a.x); }
 };
-template <int MD> unordered_map<int, int> ModInt<MD>::to_inv;
+template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
 using mint = ModInt<1000000007>;
 
-vector<mint> fact, fact_inv;
+std::vector<mint> fact, fact_inv;
 void init_factorial(int n) {
-    fact = vector<mint>(n + 1, 1);
-    fact_inv = vector<mint>(n + 1);
+    fact.assign(n + 1, 1);
+    fact_inv.resize(n + 1);
     for (int i = 0; i < n; i++) fact[i + 1] = fact[i] * (i + 1);
     fact_inv[n] = mint(1) / fact[n];
     for (int i = n - 1; i >= 0; i--) fact_inv[i] = fact_inv[i + 1] * (i + 1);

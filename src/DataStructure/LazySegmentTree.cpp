@@ -40,8 +40,8 @@ template <class T0, class T1, class F0, class F1, class G, class P> class LazySe
 public:
     int sz;  // 元の配列のサイズ
     int N;
-    vector<T0> node;
-    vector<T1> lazy;
+    std::vector<T0> node;
+    std::vector<T1> lazy;
     // T0上の演算、単位元
     const F0 f0;
     const T0 u0;
@@ -54,7 +54,7 @@ public:
     const P p;
 
     LazySegmentTree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) : f0(f0), u0(u0), f1(f1), u1(u1), g(g), p(p) {}
-    void set_by_vector(const vector<T0>& a) {
+    void set_by_vector(const std::vector<T0>& a) {
         sz = a.size();
         for (N = 1; N < sz; N *= 2)
             ;
@@ -79,9 +79,9 @@ public:
     // [a, b)
     T0 query(int a, int b) { return query(a, b, 0, 0, N); }
     T0 query(int a) { return query(a, a + 1); }
-    friend string to_string(LazySegmentTree<T0, T1, F0, F1, G, P>& seg) {
+    friend std::string to_string(LazySegmentTree<T0, T1, F0, F1, G, P>& seg) {
         for (int i = 0; i < seg.sz; i++) seg.query(i);
-        return to_string(vector<T0>(seg.node.begin() + (seg.N - 1), seg.node.begin() + (seg.N - 1 + seg.sz)));
+        return to_string(std::vector<T0>(seg.node.begin() + (seg.N - 1), seg.node.begin() + (seg.N - 1 + seg.sz)));
     }
 };
 template <class T0, class T1, class F0, class F1, class G, class P>
