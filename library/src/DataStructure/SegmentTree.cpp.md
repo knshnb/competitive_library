@@ -31,9 +31,20 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/SegmentTree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 00:17:59+09:00
+    - Last commit date: 2020-03-29 00:31:28+09:00
 
 
+
+
+## 概要
+配列の長さが$2n$($n$は扱いたい範囲の要素数)でよいセグメント木。
+実装方針の参考: https://codeforces.com/blog/entry/18051
+
+## 使い方
+- `SegmentTree::op(T a, T b) -> T`: T上のモノイド
+- `T SegmentTree::e`: モノイドの単位元
+- `query(int l, int r) -> T`: [l, r)の範囲のモノイドの合成を返す
+- `update(int i, T x)`: $i$番目の要素を$x$に変更
 
 
 ## Verified with
@@ -47,6 +58,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+/// @docs src/DataStructure/SegmentTree.md
 template <class T, class F> struct SegmentTree {
     const F op;
     const T e;
@@ -111,6 +123,7 @@ template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTr
 {% raw %}
 ```cpp
 #line 1 "src/DataStructure/SegmentTree.cpp"
+/// @docs src/DataStructure/SegmentTree.md
 template <class T, class F> struct SegmentTree {
     const F op;
     const T e;
