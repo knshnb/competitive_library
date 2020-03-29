@@ -14,7 +14,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 16:41:21 JST 2020
  **/
 
-#include "../src/DataStructure/SegmentTree.hpp"
+#include "../../src/DataStructure/SegmentTree.hpp"
 
 signed main() {
     Int n, Q;

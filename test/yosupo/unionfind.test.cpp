@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
+#define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -11,21 +11,22 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 /**
  *    author:  knshnb
- *    created: Sun Mar 29 16:21:33 JST 2020
+ *    created: Sun Mar 29 05:04:23 JST 2020
  **/
 
-#include "../src/DataStructure/SegmentTree.hpp"
+#include "../../src/DataStructure/UnionFind.hpp"
 
 signed main() {
     Int n, Q;
     std::cin >> n >> Q;
-    std::vector<Int> a(n);
-    REP(i, n) std::cin >> a[i];
-    auto seg = make_segment_tree<Int>([](Int x, Int y) { return std::min(x, y); }, 1e18);
-    seg.set_by_vector(a);
+    UnionFind uf(n);
     REP(q, Q) {
-        Int l, r;
-        std::cin >> l >> r;
-        std::cout << seg.query(l, r) << "\n";
+        Int t, u, v;
+        std::cin >> t >> u >> v;
+        if (t == 0) {
+            uf.unite(u, v);
+        } else {
+            std::cout << uf.is_same(u, v) << "\n";
+        }
     }
 }

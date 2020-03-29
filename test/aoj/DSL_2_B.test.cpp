@@ -1,4 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -14,21 +14,22 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 28 22:38:45 JST 2020
  **/
 
-#include "../src/DataStructure/SegmentTree.hpp"
+#include "../../src/DataStructure/SegmentTree.hpp"
 
 const Int INF = 1e18;
 signed main() {
     Int n, Q;
     std::cin >> n >> Q;
-    auto seg = make_segment_tree<Int>([](Int a, Int b) { return std::min(a, b); }, INF);
-    seg.set_by_vector(std::vector<Int>(n, (1LL << 31) - 1));
+    auto seg = make_segment_tree<Int>(std::plus<Int>(), 0);
+    seg.set_by_identity(n);
     REP(q, Q) {
         Int c, x, y;
         std::cin >> c >> x >> y;
+        x--;
         if (c == 0) {
-            seg.update(x, y);
+            seg.operate(x, y);
         } else {
-            std::cout << seg.query(x, y + 1) << "\n";
+            std::cout << seg.query(x, y) << "\n";
         }
     }
 }
