@@ -54,15 +54,3 @@ template <int MD> struct ModInt {
     friend std::string to_string(ModInt<MD> a) { return std::to_string(a.x); }
 };
 template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
-using mint = ModInt<1000000007>;
-
-std::vector<mint> fact, fact_inv;
-void init_factorial(int n) {
-    fact.assign(n + 1, 1);
-    fact_inv.resize(n + 1);
-    for (int i = 0; i < n; i++) fact[i + 1] = fact[i] * (i + 1);
-    fact_inv[n] = mint(1) / fact[n];
-    for (int i = n - 1; i >= 0; i--) fact_inv[i] = fact_inv[i + 1] * (i + 1);
-    // for (int i = 0; i < n + 1; i++) assert(fact[i] * fact_inv[i] == 1);
-}
-mint comb(int n, int r) { return fact[n] * fact_inv[r] * fact_inv[n - r]; }
