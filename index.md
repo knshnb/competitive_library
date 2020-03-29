@@ -49,7 +49,7 @@ layout: default
 * :warning: <a href="library/src/DataStructure/ReversedBinaryIndexedTree.hpp.html">src/DataStructure/ReversedBinaryIndexedTree.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SegmentTree.hpp.html">src/DataStructure/SegmentTree.hpp</a>
 * :warning: <a href="library/src/DataStructure/SlideMin.hpp.html">src/DataStructure/SlideMin.hpp</a>
-* :warning: <a href="library/src/DataStructure/UnionFind.hpp.html">src/DataStructure/UnionFind.hpp</a>
+* :heavy_check_mark: <a href="library/src/DataStructure/UnionFind.hpp.html">src/DataStructure/UnionFind.hpp</a>
 * :warning: <a href="library/src/DataStructure/UnionFindRange.hpp.html">src/DataStructure/UnionFindRange.hpp</a>
 * :warning: <a href="library/src/DataStructure/UnionFindWithData.hpp.html">src/DataStructure/UnionFindWithData.hpp</a>
 * :warning: <a href="library/src/DataStructure/UnionFindWithWeight.hpp.html">src/DataStructure/UnionFindWithWeight.hpp</a>
@@ -138,18 +138,14 @@ layout: default
 * :warning: <a href="library/src/String/ZAlgorithm.hpp.html">src/String/ZAlgorithm.hpp</a>
 
 
-<div id="098f6bcd4621d373cade4e832627b4f6"></div>
-
-### test
-
-* :warning: <a href="library/test/yosupo.unionfind.cpp.html">test/yosupo.unionfind.cpp</a>
-
-
 ## Verify Files
 
-* :heavy_check_mark: <a href="verify/test/aoj.DPL_1_E.test.cpp.html">test/aoj.DPL_1_E.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj.DSL_2_A.test.cpp.html">test/aoj.DSL_2_A.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj.DSL_2_B.test.cpp.html">test/aoj.DSL_2_B.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj.DSL_2_H.test.cpp.html">test/aoj.DSL_2_H.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DPL_1_E.test.cpp.html">test/aoj/DPL_1_E.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A.test.cpp.html">test/aoj/DSL_2_A.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H.test.cpp.html">test/aoj/DSL_2_H.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/point_add_range_sum.test.cpp.html">test/yosupo/point_add_range_sum.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/staticrmq.test.cpp.html">test/yosupo/staticrmq.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/unionfind.test.cpp.html">test/yosupo/unionfind.test.cpp</a>
 
 

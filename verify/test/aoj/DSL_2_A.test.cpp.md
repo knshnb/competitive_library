@@ -21,25 +21,25 @@ layout: default
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="../../assets/css/copy-button.css" />
+<script type="text/javascript" src="../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj.DSL_2_B.test.cpp
+# :heavy_check_mark: test/aoj/DSL_2_A.test.cpp
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj.DSL_2_B.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_A.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-29 16:50:34+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B</a>
+* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/src/DataStructure/SegmentTree.hpp.html">src/DataStructure/SegmentTree.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/DataStructure/SegmentTree.hpp.html">src/DataStructure/SegmentTree.hpp</a>
 
 
 ## Code
@@ -47,7 +47,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -63,22 +63,21 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 28 22:38:45 JST 2020
  **/
 
-#include "../src/DataStructure/SegmentTree.hpp"
+#include "../../src/DataStructure/SegmentTree.hpp"
 
 const Int INF = 1e18;
 signed main() {
     Int n, Q;
     std::cin >> n >> Q;
-    auto seg = make_segment_tree<Int>(std::plus<Int>(), 0);
-    seg.set_by_identity(n);
+    auto seg = make_segment_tree<Int>([](Int a, Int b) { return std::min(a, b); }, INF);
+    seg.set_by_vector(std::vector<Int>(n, (1LL << 31) - 1));
     REP(q, Q) {
         Int c, x, y;
         std::cin >> c >> x >> y;
-        x--;
         if (c == 0) {
-            seg.operate(x, y);
+            seg.update(x, y);
         } else {
-            std::cout << seg.query(x, y) << "\n";
+            std::cout << seg.query(x, y + 1) << "\n";
         }
     }
 }
@@ -89,8 +88,8 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj.DSL_2_B.test.cpp"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B"
+#line 1 "test/aoj/DSL_2_A.test.cpp"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -164,22 +163,21 @@ template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTr
 //             return {a.first * b.first, b.first * a.second + b.second};
 //         },
 //         {1, 0});
-#line 18 "test/aoj.DSL_2_B.test.cpp"
+#line 18 "test/aoj/DSL_2_A.test.cpp"
 
 const Int INF = 1e18;
 signed main() {
     Int n, Q;
     std::cin >> n >> Q;
-    auto seg = make_segment_tree<Int>(std::plus<Int>(), 0);
-    seg.set_by_identity(n);
+    auto seg = make_segment_tree<Int>([](Int a, Int b) { return std::min(a, b); }, INF);
+    seg.set_by_vector(std::vector<Int>(n, (1LL << 31) - 1));
     REP(q, Q) {
         Int c, x, y;
         std::cin >> c >> x >> y;
-        x--;
         if (c == 0) {
-            seg.operate(x, y);
+            seg.update(x, y);
         } else {
-            std::cout << seg.query(x, y) << "\n";
+            std::cout << seg.query(x, y + 1) << "\n";
         }
     }
 }
@@ -187,5 +185,5 @@ signed main() {
 ```
 {% endraw %}
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 

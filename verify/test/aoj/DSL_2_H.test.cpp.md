@@ -21,17 +21,17 @@ layout: default
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="../../assets/css/copy-button.css" />
+<script type="text/javascript" src="../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj.DSL_2_H.test.cpp
+# :heavy_check_mark: test/aoj/DSL_2_H.test.cpp
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj.DSL_2_H.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-29 16:50:34+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/src/DataStructure/LazySegmentTree.hpp.html">src/DataStructure/LazySegmentTree.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/DataStructure/LazySegmentTree.hpp.html">src/DataStructure/LazySegmentTree.hpp</a>
 
 
 ## Code
@@ -63,7 +63,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 21 19:52:09 JST 2020
  **/
 
-#include "../src/DataStructure/LazySegmentTree.hpp"
+#include "../../src/DataStructure/LazySegmentTree.hpp"
 
 const Int INF = 1e9;
 signed main() {
@@ -93,7 +93,7 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj.DSL_2_H.test.cpp"
+#line 1 "test/aoj/DSL_2_H.test.cpp"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H"
 
 #include <bits/stdc++.h>  // clang-format off
@@ -206,7 +206,7 @@ auto make_lazy_segment_tree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) {
 // auto seg = make_lazy_segment_tree<Int, Int>(
 //     [](Int x, Int y) { return max(x, y); }, -INF, [](Int x, Int y) { return x + y; }, 0,
 //     [](Int x, Int y) { return x == -INF ? x : x + y; }, [](Int x, int len) { return x; });
-#line 18 "test/aoj.DSL_2_H.test.cpp"
+#line 18 "test/aoj/DSL_2_H.test.cpp"
 
 const Int INF = 1e9;
 signed main() {
@@ -233,5 +233,5 @@ signed main() {
 ```
 {% endraw %}
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 

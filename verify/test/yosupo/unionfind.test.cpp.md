@@ -21,17 +21,17 @@ layout: default
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="../../assets/css/copy-button.css" />
+<script type="text/javascript" src="../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: test/yosupo.unionfind.cpp
+# :heavy_check_mark: test/yosupo/unionfind.test.cpp
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/yosupo.unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/unionfind.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-29 16:50:34+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="../src/DataStructure/UnionFind.hpp.html">src/DataStructure/UnionFind.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/DataStructure/UnionFind.hpp.html">src/DataStructure/UnionFind.hpp</a>
 
 
 ## Code
@@ -63,7 +63,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 05:04:23 JST 2020
  **/
 
-#include "../src/DataStructure/UnionFind.hpp"
+#include "../../src/DataStructure/UnionFind.hpp"
 
 signed main() {
     Int n, Q;
@@ -86,7 +86,7 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/yosupo.unionfind.cpp"
+#line 1 "test/yosupo/unionfind.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 
 #include <bits/stdc++.h>  // clang-format off
@@ -121,7 +121,7 @@ struct UnionFind {
     bool is_same(int x, int y) { return root(x) == root(y); }
     int size(int x) { return -number[root(x)]; }
 };
-#line 18 "test/yosupo.unionfind.cpp"
+#line 18 "test/yosupo/unionfind.test.cpp"
 
 signed main() {
     Int n, Q;
@@ -141,5 +141,5 @@ signed main() {
 ```
 {% endraw %}
 
-<a href="../../index.html">Back to top page</a>
+<a href="../../../index.html">Back to top page</a>
 

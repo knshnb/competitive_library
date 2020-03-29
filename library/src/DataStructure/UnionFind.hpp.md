@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/DataStructure/UnionFind.hpp
+# :heavy_check_mark: src/DataStructure/UnionFind.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -36,9 +36,9 @@ layout: default
 
 
 
-## Required by
+## Verified with
 
-* :warning: <a href="../../test/yosupo.unionfind.cpp.html">test/yosupo.unionfind.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo/unionfind.test.cpp.html">test/yosupo/unionfind.test.cpp</a>
 
 
 ## Code
