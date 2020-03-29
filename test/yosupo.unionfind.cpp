@@ -14,7 +14,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 05:04:23 JST 2020
  **/
 
-#include "../src/DataStructure/UnionFind.cpp"
+#include "../src/DataStructure/UnionFind.hpp"
 
 signed main() {
     Int n, Q;

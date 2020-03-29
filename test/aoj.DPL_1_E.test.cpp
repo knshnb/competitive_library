@@ -14,8 +14,8 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Thu Mar 26 18:48:49 JST 2020
  **/
 
-#include "../src/Helper/ChminChmax.cpp"
-#include "../src/Helper/MakeVec.cpp"
+#include "../src/Helper/ChminChmax.hpp"
+#include "../src/Helper/MakeVec.hpp"
 
 signed main() {
     std::string s, t;
