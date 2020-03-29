@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj.DPL_1_E.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-28 22:03:22+09:00
+    - Last commit date: 2020-03-29 16:30:46+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/src/Helper/ChminChmax.cpp.html">src/Helper/ChminChmax.cpp</a>
-* :heavy_check_mark: <a href="../../library/src/Helper/MakeVec.cpp.html">src/Helper/MakeVec.cpp</a>
+* :heavy_check_mark: <a href="../../library/src/Helper/ChminChmax.hpp.html">src/Helper/ChminChmax.hpp</a>
+* :heavy_check_mark: <a href="../../library/src/Helper/MakeVec.hpp.html">src/Helper/MakeVec.hpp</a>
 
 
 ## Code
@@ -64,8 +64,8 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Thu Mar 26 18:48:49 JST 2020
  **/
 
-#include "../src/Helper/ChminChmax.cpp"
-#include "../src/Helper/MakeVec.cpp"
+#include "../src/Helper/ChminChmax.hpp"
+#include "../src/Helper/MakeVec.hpp"
 
 signed main() {
     std::string s, t;
@@ -106,7 +106,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Thu Mar 26 18:48:49 JST 2020
  **/
 
-#line 1 "src/Helper/ChminChmax.cpp"
+#line 1 "src/Helper/ChminChmax.hpp"
 template <class T> inline bool chmin(T& a, const T& b) {
     if (a <= b) return false;
     a = b;
@@ -117,7 +117,7 @@ template <class T> inline bool chmax(T& a, const T& b) {
     a = b;
     return true;
 }
-#line 1 "src/Helper/MakeVec.cpp"
+#line 1 "src/Helper/MakeVec.hpp"
 template <class T, class S> T make_vec(S x) { return x; }
 template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
     return std::vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));

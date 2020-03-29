@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo.unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 05:12:45+09:00
+    - Last commit date: 2020-03-29 16:30:46+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="../src/DataStructure/UnionFind.cpp.html">src/DataStructure/UnionFind.cpp</a>
+* :warning: <a href="../src/DataStructure/UnionFind.hpp.html">src/DataStructure/UnionFind.hpp</a>
 
 
 ## Code
@@ -63,7 +63,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 05:04:23 JST 2020
  **/
 
-#include "../src/DataStructure/UnionFind.cpp"
+#include "../src/DataStructure/UnionFind.hpp"
 
 signed main() {
     Int n, Q;
@@ -103,7 +103,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 05:04:23 JST 2020
  **/
 
-#line 1 "src/DataStructure/UnionFind.cpp"
+#line 1 "src/DataStructure/UnionFind.hpp"
 struct UnionFind {
     int cnt;                  // 集合の数
     std::vector<int> number;  // 0以上のとき親のindex, 負のときは集合サイズ

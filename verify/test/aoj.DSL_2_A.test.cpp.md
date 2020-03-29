@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#098f6bcd4621d373cade4e832627b4f6">test</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj.DSL_2_A.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 00:31:28+09:00
+    - Last commit date: 2020-03-29 16:30:46+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../library/src/DataStructure/SegmentTree.cpp.html">src/DataStructure/SegmentTree.cpp</a>
+* :heavy_check_mark: <a href="../../library/src/DataStructure/SegmentTree.hpp.html">src/DataStructure/SegmentTree.hpp</a>
 
 
 ## Code
@@ -63,7 +63,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 28 22:38:45 JST 2020
  **/
 
-#include "../src/DataStructure/SegmentTree.cpp"
+#include "../src/DataStructure/SegmentTree.hpp"
 
 const Int INF = 1e18;
 signed main() {
@@ -105,7 +105,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 28 22:38:45 JST 2020
  **/
 
-#line 1 "src/DataStructure/SegmentTree.cpp"
+#line 1 "src/DataStructure/SegmentTree.hpp"
 /// @docs src/DataStructure/SegmentTree.md
 template <class T, class F> struct SegmentTree {
     const F op;
