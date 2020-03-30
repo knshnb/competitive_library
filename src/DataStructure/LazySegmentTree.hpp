@@ -53,7 +53,7 @@ public:
     // 多数のt1(T1)に対するf1の合成
     const P p;
 
-    LazySegmentTree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) : f0(f0), u0(u0), f1(f1), u1(u1), g(g), p(p) {}
+    LazySegmentTree(F0 f0_, T0 u0_, F1 f1_, T1 u1_, G g_, P p_) : f0(f0_), u0(u0_), f1(f1_), u1(u1_), g(g_), p(p_) {}
     void set_by_vector(const std::vector<T0>& a) {
         sz = a.size();
         for (N = 1; N < sz; N *= 2)
@@ -93,3 +93,14 @@ auto make_lazy_segment_tree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) {
 // auto seg = make_lazy_segment_tree<Int, Int>(
 //     [](Int x, Int y) { return max(x, y); }, -INF, [](Int x, Int y) { return x + y; }, 0,
 //     [](Int x, Int y) { return x == -INF ? x : x + y; }, [](Int x, int len) { return x; });
+
+// Sum && Affine
+// auto seg = make_lazy_segment_tree<mint, pmm>(
+//     std::plus<mint>(), 0,
+//     [](pmm x, pmm y) -> pmm {
+//         return {x.first * y.first, x.second * y.first + y.second};
+//     },
+//     {1, 0}, [](mint x, pmm y) { return y.first * x + y.second; },
+//     [](pmm x, int len) -> pmm {
+//         return {x.first, x.second * len};
+//     });
