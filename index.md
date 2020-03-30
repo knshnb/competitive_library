@@ -120,7 +120,7 @@ layout: default
 * :warning: <a href="library/src/Math/GaussJordan.hpp.html">src/Math/GaussJordan.hpp</a>
 * :warning: <a href="library/src/Math/Matrix.hpp.html">src/Math/Matrix.hpp</a>
 * :warning: <a href="library/src/Math/MillerRabin.hpp.html">src/Math/MillerRabin.hpp</a>
-* :warning: <a href="library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
+* :heavy_check_mark: <a href="library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
 
 
 <div id="ac276d2326c527c8c7dbcbb63d85c6c7"></div>
@@ -145,6 +145,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H.test.cpp.html">test/aoj/DSL_2_H.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/point_add_range_sum.test.cpp.html">test/yosupo/point_add_range_sum.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/point_set_range_composite.test.cpp.html">test/yosupo/point_set_range_composite.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/staticrmq.test.cpp.html">test/yosupo/staticrmq.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind.test.cpp.html">test/yosupo/unionfind.test.cpp</a>
 
