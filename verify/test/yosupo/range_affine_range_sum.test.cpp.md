@@ -25,21 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_H.test.cpp
+# :heavy_check_mark: test/yosupo/range_affine_range_sum.test.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H.test.cpp">View this file on GitHub</a>
+* category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/range_affine_range_sum.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-03-31 00:49:57+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H</a>
+* see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../library/src/DataStructure/LazySegmentTree.hpp.html">src/DataStructure/LazySegmentTree.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
 
 
 ## Code
@@ -47,11 +48,11 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H"
+#define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
-#define REP_(i, a_, b_, a, b, ...) for (int i = (a), lim_i = (b); i < lim_i; i++)
+#define REP_(i, a_, b_, a, b, ...) for (Int i = (a), lim##i = (b); i < lim##i; i++)
 #define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
 struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
 #ifndef _MY_DEBUG
@@ -60,29 +61,38 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 /**
  *    author:  knshnb
- *    created: Sat Mar 21 19:52:09 JST 2020
+ *    created: Mon Mar 30 21:14:19 JST 2020
  **/
 
+#include "../../src/Math/ModInt.hpp"
+using mint = ModInt<998244353>;
 #include "../../src/DataStructure/LazySegmentTree.hpp"
 
-const Int INF = 1e9;
+using pmm = std::pair<mint, mint>;
 signed main() {
-    int n, Q;
+    Int n, Q;
     std::cin >> n >> Q;
-    auto seg = make_lazy_segment_tree<Int, Int>(
-        [](Int x, Int y) { return std::min(x, y); }, INF, [](Int x, Int y) { return x + y; }, 0,
-        [](Int x, Int y) { return x == INF ? x : x + y; }, [](Int x, int len) { return x; });
-    seg.set_by_vector(std::vector<Int>(n));
+    std::vector<mint> a(n);
+    REP(i, n) std::cin >> a[i];
+    auto seg = make_lazy_segment_tree<mint, pmm>(
+        std::plus<mint>(), 0,
+        [](pmm x, pmm y) -> pmm {
+            return {x.first * y.first, x.second * y.first + y.second};
+        },
+        {1, 0}, [](mint x, pmm y) { return y.first * x + y.second; },
+        [](pmm x, int len) -> pmm {
+            return {x.first, x.second * len};
+        });
+    seg.set_by_vector(a);
     REP(q, Q) {
-        int c, s, t;
-        std::cin >> c >> s >> t;
-        t++;
-        if (c == 0) {
-            Int x;
-            std::cin >> x;
-            seg.update(s, t, x);
+        Int t, l, r;
+        std::cin >> t >> l >> r;
+        if (t == 0) {
+            Int b, c;
+            std::cin >> b >> c;
+            seg.update(l, r, {b, c});
         } else {
-            std::cout << seg.query(s, t) << std::endl;
+            std::cout << seg.query(l, r) << "\n";
         }
     }
 }
@@ -93,12 +103,12 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DSL_2_H.test.cpp"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H"
+#line 1 "test/yosupo/range_affine_range_sum.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
-#define REP_(i, a_, b_, a, b, ...) for (int i = (a), lim_i = (b); i < lim_i; i++)
+#define REP_(i, a_, b_, a, b, ...) for (Int i = (a), lim##i = (b); i < lim##i; i++)
 #define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
 struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
 #ifndef _MY_DEBUG
@@ -107,9 +117,68 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 /**
  *    author:  knshnb
- *    created: Sat Mar 21 19:52:09 JST 2020
+ *    created: Mon Mar 30 21:14:19 JST 2020
  **/
 
+#line 1 "src/Math/ModInt.hpp"
+template <class T> T pow(T x, int n, const T UNION = 1) {
+    T ret = UNION;
+    while (n) {
+        if (n & 1) ret *= x;
+        x *= x;
+        n >>= 1;
+    }
+    return ret;
+}
+
+template <int MD> struct ModInt {
+    int x;
+    static std::unordered_map<int, int> to_inv;
+    ModInt() : x(0) {}
+    ModInt(long long x_) {
+        if ((x = x_ % MD + MD) >= MD) x -= MD;
+    }
+
+    ModInt& operator+=(ModInt that) {
+        if ((x += that.x) >= MD) x -= MD;
+        return *this;
+    }
+    ModInt& operator*=(ModInt that) {
+        x = (unsigned long long)x * that.x % MD;
+        return *this;
+    }
+    ModInt& operator-=(ModInt that) {
+        if ((x -= that.x) < 0) x += MD;
+        return *this;
+    }
+    ModInt& operator/=(ModInt that) {
+        x = (unsigned long long)x * that.inv().x % MD;
+        return *this;
+    }
+    ModInt operator-() const { return -x < 0 ? MD - x : -x; }
+    ModInt operator+(ModInt that) const { return ModInt(*this) += that; }
+    ModInt operator*(ModInt that) const { return ModInt(*this) *= that; }
+    ModInt operator-(ModInt that) const { return ModInt(*this) -= that; }
+    ModInt operator/(ModInt that) const { return ModInt(*this) /= that; }
+    bool operator==(ModInt that) const { return x == that.x; }
+    bool operator!=(ModInt that) const { return x != that.x; }
+    ModInt inv() const { return to_inv.count(this->x) ? to_inv[this->x] : (to_inv[this->x] = pow(*this, MD - 2).x); }
+
+    friend std::ostream& operator<<(std::ostream& s, ModInt<MD> a) {
+        s << a.x;
+        return s;
+    }
+    friend std::istream& operator>>(std::istream& s, ModInt<MD>& a) {
+        long long tmp;
+        s >> tmp;
+        a = ModInt<MD>(tmp);
+        return s;
+    }
+    friend std::string to_string(ModInt<MD> a) { return std::to_string(a.x); }
+};
+template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
+#line 18 "test/yosupo/range_affine_range_sum.test.cpp"
+using mint = ModInt<998244353>;
 #line 1 "src/DataStructure/LazySegmentTree.hpp"
 // T0: 元の配列のモノイド
 // T1: T0に対する作用素モノイド
@@ -217,26 +286,33 @@ auto make_lazy_segment_tree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) {
 //     [](pmm x, int len) -> pmm {
 //         return {x.first, x.second * len};
 //     });
-#line 18 "test/aoj/DSL_2_H.test.cpp"
+#line 20 "test/yosupo/range_affine_range_sum.test.cpp"
 
-const Int INF = 1e9;
+using pmm = std::pair<mint, mint>;
 signed main() {
-    int n, Q;
+    Int n, Q;
     std::cin >> n >> Q;
-    auto seg = make_lazy_segment_tree<Int, Int>(
-        [](Int x, Int y) { return std::min(x, y); }, INF, [](Int x, Int y) { return x + y; }, 0,
-        [](Int x, Int y) { return x == INF ? x : x + y; }, [](Int x, int len) { return x; });
-    seg.set_by_vector(std::vector<Int>(n));
+    std::vector<mint> a(n);
+    REP(i, n) std::cin >> a[i];
+    auto seg = make_lazy_segment_tree<mint, pmm>(
+        std::plus<mint>(), 0,
+        [](pmm x, pmm y) -> pmm {
+            return {x.first * y.first, x.second * y.first + y.second};
+        },
+        {1, 0}, [](mint x, pmm y) { return y.first * x + y.second; },
+        [](pmm x, int len) -> pmm {
+            return {x.first, x.second * len};
+        });
+    seg.set_by_vector(a);
     REP(q, Q) {
-        int c, s, t;
-        std::cin >> c >> s >> t;
-        t++;
-        if (c == 0) {
-            Int x;
-            std::cin >> x;
-            seg.update(s, t, x);
+        Int t, l, r;
+        std::cin >> t >> l >> r;
+        if (t == 0) {
+            Int b, c;
+            std::cin >> b >> c;
+            seg.update(l, r, {b, c});
         } else {
-            std::cout << seg.query(s, t) << std::endl;
+            std::cout << seg.query(l, r) << "\n";
         }
     }
 }
