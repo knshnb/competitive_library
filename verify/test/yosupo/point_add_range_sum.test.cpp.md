@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/point_add_range_sum.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:50:34+09:00
+    - Last commit date: 2020-03-31 17:02:31+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_add_range_sum">https://judge.yosupo.jp/problem/point_add_range_sum</a>
@@ -138,13 +138,13 @@ template <class T, class F> struct SegmentTree {
         }
         return op(resl, resr);
     }
-    // iをxに変更
+    // i番目をxに変更
     void update(int i, const T& x) {
         assert(0 <= i && i < n);
         t[i += n] = x;
         while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
     }
-    // iにxを作用 (a[i] = op(a[i], x))
+    // i番目にxを作用 (a[i] = op(a[i], x))
     void operate(int i, const T& x) {
         assert(0 <= i && i < n);
         i += n;
@@ -156,14 +156,6 @@ template <class T, class F> struct SegmentTree {
     }
 };
 template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T, F>(op, e); }
-// example
-//     auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
-//     auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);
-//     auto seg_affine = make_segment_tree<pair<Int, Int>>(
-//         [](pair<Int, Int> a, pair<Int, Int> b) -> pair<Int, Int> {
-//             return {a.first * b.first, b.first * a.second + b.second};
-//         },
-//         {1, 0});
 #line 18 "test/yosupo/point_add_range_sum.test.cpp"
 
 signed main() {

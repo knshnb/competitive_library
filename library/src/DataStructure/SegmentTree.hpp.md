@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/SegmentTree.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-03-31 17:02:31+09:00
 
 
 
@@ -41,11 +41,38 @@ layout: default
 実装方針の参考: https://codeforces.com/blog/entry/18051
 
 ## 使い方
-- `SegmentTree::op(T a, T b) -> T`: T上のモノイド
-- `T SegmentTree::e`: モノイドの単位元
+### 変数
+- `op(T a, T b) -> T`: T上のモノイド
+- `e`: モノイドの単位元
+### メソッド
 - `query(int l, int r) -> T`: [l, r)の範囲のモノイドの合成を返す
 - `update(int i, T x)`: $i$番目の要素を$x$に変更
+- `operate(int i, T x)`: $i$番目の要素に$x$を作用
 
+## 初期化例
+- `Int`に対するmin
+```cpp
+auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
+```
+
+- `Int`に対するmax
+```cpp
+auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);
+```
+
+- `Int`に対するmax
+```cpp
+auto seg_ma = make_segment_tree<Int>(std::plus<Int>(), -1e18);
+```
+
+- `Int`に対するAffine
+```cpp
+auto seg_affine = make_segment_tree<pair<Int, Int>>(
+    [](pair<Int, Int> a, pair<Int, Int> b) -> pair<Int, Int> {
+        return {a.first * b.first, b.first * a.second + b.second};
+    },
+    {1, 0});
+```
 
 ## Verified with
 
@@ -92,13 +119,13 @@ template <class T, class F> struct SegmentTree {
         }
         return op(resl, resr);
     }
-    // iをxに変更
+    // i番目をxに変更
     void update(int i, const T& x) {
         assert(0 <= i && i < n);
         t[i += n] = x;
         while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
     }
-    // iにxを作用 (a[i] = op(a[i], x))
+    // i番目にxを作用 (a[i] = op(a[i], x))
     void operate(int i, const T& x) {
         assert(0 <= i && i < n);
         i += n;
@@ -110,14 +137,6 @@ template <class T, class F> struct SegmentTree {
     }
 };
 template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T, F>(op, e); }
-// example
-//     auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
-//     auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);
-//     auto seg_affine = make_segment_tree<pair<Int, Int>>(
-//         [](pair<Int, Int> a, pair<Int, Int> b) -> pair<Int, Int> {
-//             return {a.first * b.first, b.first * a.second + b.second};
-//         },
-//         {1, 0});
 
 ```
 {% endraw %}
@@ -157,13 +176,13 @@ template <class T, class F> struct SegmentTree {
         }
         return op(resl, resr);
     }
-    // iをxに変更
+    // i番目をxに変更
     void update(int i, const T& x) {
         assert(0 <= i && i < n);
         t[i += n] = x;
         while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);
     }
-    // iにxを作用 (a[i] = op(a[i], x))
+    // i番目にxを作用 (a[i] = op(a[i], x))
     void operate(int i, const T& x) {
         assert(0 <= i && i < n);
         i += n;
@@ -175,14 +194,6 @@ template <class T, class F> struct SegmentTree {
     }
 };
 template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T, F>(op, e); }
-// example
-//     auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
-//     auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);
-//     auto seg_affine = make_segment_tree<pair<Int, Int>>(
-//         [](pair<Int, Int> a, pair<Int, Int> b) -> pair<Int, Int> {
-//             return {a.first * b.first, b.first * a.second + b.second};
-//         },
-//         {1, 0});
 
 ```
 {% endraw %}

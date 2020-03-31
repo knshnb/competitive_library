@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/range_affine_range_sum.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 00:49:57+09:00
+    - Last commit date: 2020-03-31 17:02:31+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -270,22 +270,6 @@ template <class T0, class T1, class F0, class F1, class G, class P>
 auto make_lazy_segment_tree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) {
     return LazySegmentTree<T0, T1, F0, F1, G, P>(f0, u0, f1, u1, g, p);
 }
-// Max && Add
-// constexpr Int INF = 1e18;
-// auto seg = make_lazy_segment_tree<Int, Int>(
-//     [](Int x, Int y) { return max(x, y); }, -INF, [](Int x, Int y) { return x + y; }, 0,
-//     [](Int x, Int y) { return x == -INF ? x : x + y; }, [](Int x, int len) { return x; });
-
-// Sum && Affine
-// auto seg = make_lazy_segment_tree<mint, pmm>(
-//     std::plus<mint>(), 0,
-//     [](pmm x, pmm y) -> pmm {
-//         return {x.first * y.first, x.second * y.first + y.second};
-//     },
-//     {1, 0}, [](mint x, pmm y) { return y.first * x + y.second; },
-//     [](pmm x, int len) -> pmm {
-//         return {x.first, x.second * len};
-//     });
 #line 20 "test/yosupo/range_affine_range_sum.test.cpp"
 
 using pmm = std::pair<mint, mint>;
