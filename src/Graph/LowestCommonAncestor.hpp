@@ -1,27 +1,28 @@
 // edgeを貼ったあとにbuild()を忘れない！
 struct TreeDoubling {
     struct Edge {
-        int to, color, len;
+        int to, len;
     };  // 場合に応じて書き換える、toは必須
-    vector<vector<Edge>> g;
+    std::vector<std::vector<Edge>> g;
     int n, size;  // MSB + 1
     int root;
-    vector<int> depth;
-    vector<vector<int>> parent;  // ダミー頂点n(親もn)
-    TreeDoubling(int n) : g(n), n(n), depth(n), size(64 - __builtin_clzll(n)) {
-        parent.resize(size, vector<int>(n + 1, n));
-    }
-    void dfs(int v, int prev, int d) {
-        depth[v] = d;
-        parent[0][v] = prev;
-        for (auto& s : g[v])
-            if (s.to != prev) {
-                dfs(s.to, v, d + 1);
-            }
+    std::vector<int> depth;
+    std::vector<std::vector<int>> parent;  // ダミー頂点n(親もn)
+    TreeDoubling(int n_) : g(n_), n(n_), size(64 - __builtin_clzll(n_) + 1), depth(n_) {
+        parent.resize(size, std::vector<int>(n + 1, n));
     }
     void build(int root_ = 0) {
+        auto dfs = [&](auto f, int v, int prv) -> void {
+            for (Edge& e : g[v]) {
+                if (e.to == prv) continue;
+                depth[e.to] = depth[v] + e.len;
+                parent[0][e.to] = v;
+                f(f, e.to, v);
+            }
+        };
         root = root_;
-        dfs(root, n, 0);
+        depth[root] = 0;
+        dfs(dfs, root, -1);
         for (int k = 0; k < size - 1; k++) {
             for (int i = 0; i < n; i++) {
                 parent[k + 1][i] = parent[k][parent[k][i]];
@@ -38,7 +39,7 @@ struct TreeDoubling {
         return ret;
     }
     int lca(int u, int v) {
-        if (depth[u] > depth[v]) swap(u, v);
+        if (depth[u] > depth[v]) std::swap(u, v);
         v = query(v, depth[v] - depth[u]);
         if (u == v) return u;
 
