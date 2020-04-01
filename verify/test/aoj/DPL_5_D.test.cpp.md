@@ -25,22 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: src/Math/ModInt.hpp
+# :heavy_check_mark: test/aoj/DPL_5_D.test.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Math/ModInt.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 18:40:05+09:00
+* category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_D.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-01 18:54:36+09:00
 
 
+* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D</a>
 
 
-## Verified with
+## Depends on
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_D.test.cpp.html">test/aoj/DPL_5_D.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo/point_set_range_composite.test.cpp.html">test/yosupo/point_set_range_composite.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo/range_affine_range_sum.test.cpp.html">test/yosupo/range_affine_range_sum.test.cpp</a>
+* :heavy_check_mark: <a href="../../../library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
 
 
 ## Code
@@ -48,66 +48,34 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> T pow(T x, int n, const T UNION = 1) {
-    T ret = UNION;
-    while (n) {
-        if (n & 1) ret *= x;
-        x *= x;
-        n >>= 1;
-    }
-    return ret;
-}
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D"
 
-template <int MD> struct ModInt {
-    int x;
-    static std::unordered_map<int, int> to_inv;
-    ModInt() : x(0) {}
-    ModInt(long long x_) {
-        if ((x = x_ % MD + MD) >= MD) x -= MD;
-    }
+#include <bits/stdc++.h>  // clang-format off
+using Int = long long;
+#define REP_(i, a_, b_, a, b, ...) for (Int i = (a), lim##i = (b); i < lim##i; i++)
+#define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
+struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
+#ifndef _MY_DEBUG
+#define dump(...)
+#endif  // clang-format on
 
-    ModInt& operator+=(ModInt that) {
-        if ((x += that.x) >= MD) x -= MD;
-        return *this;
-    }
-    ModInt& operator*=(ModInt that) {
-        x = (unsigned long long)x * that.x % MD;
-        return *this;
-    }
-    ModInt& operator-=(ModInt that) {
-        if ((x -= that.x) < 0) x += MD;
-        return *this;
-    }
-    ModInt& operator/=(ModInt that) {
-        x = (unsigned long long)x * that.inv().x % MD;
-        return *this;
-    }
-    ModInt operator-() const { return -x < 0 ? MD - x : -x; }
-    ModInt operator+(ModInt that) const { return ModInt(*this) += that; }
-    ModInt operator*(ModInt that) const { return ModInt(*this) *= that; }
-    ModInt operator-(ModInt that) const { return ModInt(*this) -= that; }
-    ModInt operator/(ModInt that) const { return ModInt(*this) /= that; }
-    bool operator==(ModInt that) const { return x == that.x; }
-    bool operator!=(ModInt that) const { return x != that.x; }
-    ModInt inv() const { return to_inv.count(this->x) ? to_inv[this->x] : (to_inv[this->x] = pow(*this, MD - 2).x); }
+/**
+ *    author:  knshnb
+ *    created: Wed Apr  1 18:41:55 JST 2020
+ **/
 
-    friend std::ostream& operator<<(std::ostream& s, ModInt<MD> a) {
-        s << a.x;
-        return s;
-    }
-    friend std::istream& operator>>(std::istream& s, ModInt<MD>& a) {
-        long long tmp;
-        s >> tmp;
-        a = ModInt<MD>(tmp);
-        return s;
-    }
-    friend std::string to_string(ModInt<MD> a) { return std::to_string(a.x); }
-};
-template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
+#define CALL_FROM_TEST
+#include "../../src/Math/ModInt.hpp"
+#include "../../src/Math/Combination.hpp"
+#undef CALL_FROM_TEST
 
-#ifndef CALL_FROM_TEST
 using mint = ModInt<1000000007>;
-#endif
+signed main() {
+    Int n, k;
+    std::cin >> n >> k;
+    Combination<mint> comb(n + k - 1);
+    std::cout << comb(n + k - 1, n) << std::endl;
+}
 
 ```
 {% endraw %}
@@ -115,6 +83,24 @@ using mint = ModInt<1000000007>;
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/aoj/DPL_5_D.test.cpp"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D"
+
+#include <bits/stdc++.h>  // clang-format off
+using Int = long long;
+#define REP_(i, a_, b_, a, b, ...) for (Int i = (a), lim##i = (b); i < lim##i; i++)
+#define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
+struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
+#ifndef _MY_DEBUG
+#define dump(...)
+#endif  // clang-format on
+
+/**
+ *    author:  knshnb
+ *    created: Wed Apr  1 18:41:55 JST 2020
+ **/
+
+#define CALL_FROM_TEST
 #line 1 "src/Math/ModInt.hpp"
 template <class T> T pow(T x, int n, const T UNION = 1) {
     T ret = UNION;
@@ -176,6 +162,27 @@ template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
 #ifndef CALL_FROM_TEST
 using mint = ModInt<1000000007>;
 #endif
+#line 1 "src/Math/Combination.hpp"
+template <class T> struct Combination {
+    std::vector<T> fact, fact_inv;
+    Combination(int n = 1000003) : fact(n + 1, 1), fact_inv(n + 1) {
+        for (int i = 0; i < n; i++) fact[i + 1] = fact[i] * (i + 1);
+        fact_inv[n] = (T)1 / fact[n];
+        for (int i = n - 1; i >= 0; i--) fact_inv[i] = fact_inv[i + 1] * (i + 1);
+        // for (int i = 0; i < n + 1; i++) assert(fact[i] * fact_inv[i] == 1);
+    }
+    T operator()(int n, int r) { return fact[n] * fact_inv[r] * fact_inv[n - r]; }
+};
+#line 20 "test/aoj/DPL_5_D.test.cpp"
+#undef CALL_FROM_TEST
+
+using mint = ModInt<1000000007>;
+signed main() {
+    Int n, k;
+    std::cin >> n >> k;
+    Combination<mint> comb(n + k - 1);
+    std::cout << comb(n + k - 1, n) << std::endl;
+}
 
 ```
 {% endraw %}

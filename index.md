@@ -112,6 +112,7 @@ layout: default
 ### src/Math
 
 * :warning: <a href="library/src/Math/ChineseRemainderTheorem.hpp.html">src/Math/ChineseRemainderTheorem.hpp</a>
+* :heavy_check_mark: <a href="library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
 * :warning: <a href="library/src/Math/Divisor.hpp.html">src/Math/Divisor.hpp</a>
 * :warning: <a href="library/src/Math/DynamicModInt.hpp.html">src/Math/DynamicModInt.hpp</a>
 * :warning: <a href="library/src/Math/Eratosthenes.hpp.html">src/Math/Eratosthenes.hpp</a>
@@ -141,6 +142,7 @@ layout: default
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_1_E.test.cpp.html">test/aoj/DPL_1_E.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DPL_5_D.test.cpp.html">test/aoj/DPL_5_D.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A.test.cpp.html">test/aoj/DSL_2_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H.test.cpp.html">test/aoj/DSL_2_H.test.cpp</a>
