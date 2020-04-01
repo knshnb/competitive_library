@@ -82,7 +82,7 @@ layout: default
 * :warning: <a href="library/src/Graph/ErdosGallai.hpp.html">src/Graph/ErdosGallai.hpp</a>
 * :warning: <a href="library/src/Graph/GridGraph.hpp.html">src/Graph/GridGraph.hpp</a>
 * :warning: <a href="library/src/Graph/Kruskal.hpp.html">src/Graph/Kruskal.hpp</a>
-* :warning: <a href="library/src/Graph/LowestCommonAncestor.hpp.html">src/Graph/LowestCommonAncestor.hpp</a>
+* :heavy_check_mark: <a href="library/src/Graph/LowestCommonAncestor.hpp.html">src/Graph/LowestCommonAncestor.hpp</a>
 * :warning: <a href="library/src/Graph/StronglyConnectedComponent.hpp.html">src/Graph/StronglyConnectedComponent.hpp</a>
 * :warning: <a href="library/src/Graph/TreeDiameter.hpp.html">src/Graph/TreeDiameter.hpp</a>
 * :warning: <a href="library/src/Graph/WarshallFloyd.hpp.html">src/Graph/WarshallFloyd.hpp</a>
@@ -144,6 +144,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A.test.cpp.html">test/aoj/DSL_2_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H.test.cpp.html">test/aoj/DSL_2_H.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/lca.test.cpp.html">test/yosupo/lca.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/point_add_range_sum.test.cpp.html">test/yosupo/point_add_range_sum.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/point_set_range_composite.test.cpp.html">test/yosupo/point_set_range_composite.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/range_affine_range_sum.test.cpp.html">test/yosupo/range_affine_range_sum.test.cpp</a>
