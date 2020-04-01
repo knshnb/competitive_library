@@ -14,7 +14,9 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 21 19:52:09 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #include "../../src/DataStructure/LazySegmentTree.hpp"
+#undef CALL_FROM_TEST
 
 const Int INF = 1e9;
 signed main() {

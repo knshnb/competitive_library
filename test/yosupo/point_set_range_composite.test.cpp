@@ -14,10 +14,12 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 16:52:02 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #include "../../src/Math/ModInt.hpp"
-using mint = ModInt<998244353>;
 #include "../../src/DataStructure/SegmentTree.hpp"
+#undef CALL_FROM_TEST
 
+using mint = ModInt<998244353>;
 using pmm = std::pair<mint, mint>;
 signed main() {
     Int n, Q;

@@ -54,3 +54,7 @@ template <int MD> struct ModInt {
     friend std::string to_string(ModInt<MD> a) { return std::to_string(a.x); }
 };
 template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
+
+#ifndef CALL_FROM_TEST
+using mint = ModInt<1000000007>;
+#endif
