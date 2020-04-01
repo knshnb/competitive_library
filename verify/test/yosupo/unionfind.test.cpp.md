@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/unionfind.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:50:34+09:00
+    - Last commit date: 2020-04-01 18:40:05+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -63,7 +63,9 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 05:04:23 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #include "../../src/DataStructure/UnionFind.hpp"
+#undef CALL_FROM_TEST
 
 signed main() {
     Int n, Q;
@@ -103,6 +105,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 05:04:23 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #line 1 "src/DataStructure/UnionFind.hpp"
 struct UnionFind {
     int cnt;                  // 集合の数
@@ -121,7 +124,8 @@ struct UnionFind {
     bool is_same(int x, int y) { return root(x) == root(y); }
     int size(int x) { return -number[root(x)]; }
 };
-#line 18 "test/yosupo/unionfind.test.cpp"
+#line 19 "test/yosupo/unionfind.test.cpp"
+#undef CALL_FROM_TEST
 
 signed main() {
     Int n, Q;

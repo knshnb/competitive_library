@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/point_add_range_sum.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 17:02:31+09:00
+    - Last commit date: 2020-04-01 18:40:05+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_add_range_sum">https://judge.yosupo.jp/problem/point_add_range_sum</a>
@@ -63,7 +63,9 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 16:41:21 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #include "../../src/DataStructure/SegmentTree.hpp"
+#undef CALL_FROM_TEST
 
 signed main() {
     Int n, Q;
@@ -106,6 +108,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sun Mar 29 16:41:21 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #line 1 "src/DataStructure/SegmentTree.hpp"
 /// @docs src/DataStructure/SegmentTree.md
 template <class T, class F> struct SegmentTree {
@@ -156,7 +159,8 @@ template <class T, class F> struct SegmentTree {
     }
 };
 template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T, F>(op, e); }
-#line 18 "test/yosupo/point_add_range_sum.test.cpp"
+#line 19 "test/yosupo/point_add_range_sum.test.cpp"
+#undef CALL_FROM_TEST
 
 signed main() {
     Int n, Q;

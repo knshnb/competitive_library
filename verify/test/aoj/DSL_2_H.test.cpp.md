@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 17:02:31+09:00
+    - Last commit date: 2020-04-01 18:40:05+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H</a>
@@ -63,7 +63,9 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 21 19:52:09 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #include "../../src/DataStructure/LazySegmentTree.hpp"
+#undef CALL_FROM_TEST
 
 const Int INF = 1e9;
 signed main() {
@@ -110,6 +112,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 21 19:52:09 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #line 1 "src/DataStructure/LazySegmentTree.hpp"
 // T0: 元の配列のモノイド
 // T1: T0に対する作用素モノイド
@@ -201,7 +204,8 @@ template <class T0, class T1, class F0, class F1, class G, class P>
 auto make_lazy_segment_tree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) {
     return LazySegmentTree<T0, T1, F0, F1, G, P>(f0, u0, f1, u1, g, p);
 }
-#line 18 "test/aoj/DSL_2_H.test.cpp"
+#line 19 "test/aoj/DSL_2_H.test.cpp"
+#undef CALL_FROM_TEST
 
 const Int INF = 1e9;
 signed main() {

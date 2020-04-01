@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_A.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 17:02:31+09:00
+    - Last commit date: 2020-04-01 18:40:05+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A</a>
@@ -63,7 +63,9 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 28 22:38:45 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #include "../../src/DataStructure/SegmentTree.hpp"
+#undef CALL_FROM_TEST
 
 const Int INF = 1e18;
 signed main() {
@@ -105,6 +107,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Sat Mar 28 22:38:45 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #line 1 "src/DataStructure/SegmentTree.hpp"
 /// @docs src/DataStructure/SegmentTree.md
 template <class T, class F> struct SegmentTree {
@@ -155,7 +158,8 @@ template <class T, class F> struct SegmentTree {
     }
 };
 template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T, F>(op, e); }
-#line 18 "test/aoj/DSL_2_A.test.cpp"
+#line 19 "test/aoj/DSL_2_A.test.cpp"
+#undef CALL_FROM_TEST
 
 const Int INF = 1e18;
 signed main() {

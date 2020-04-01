@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/lca.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 13:39:27+09:00
+    - Last commit date: 2020-04-01 18:40:05+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/lca">https://judge.yosupo.jp/problem/lca</a>
@@ -63,7 +63,9 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Tue Mar 31 17:04:00 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #include "../../src/Graph/LowestCommonAncestor.hpp"
+#undef CALL_FROM_TEST
 
 signed main() {
     Int n, Q;
@@ -106,6 +108,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Tue Mar 31 17:04:00 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #line 1 "src/Graph/LowestCommonAncestor.hpp"
 // edgeを貼ったあとにbuild()を忘れない！
 struct TreeDoubling {
@@ -162,7 +165,8 @@ struct TreeDoubling {
     }
     int dist(int u, int v) { return depth[u] + depth[v] - depth[lca(u, v)] * 2; }
 };
-#line 18 "test/yosupo/lca.test.cpp"
+#line 19 "test/yosupo/lca.test.cpp"
+#undef CALL_FROM_TEST
 
 signed main() {
     Int n, Q;

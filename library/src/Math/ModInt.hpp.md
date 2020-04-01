@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Math/ModInt.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 17:29:15+09:00
+    - Last commit date: 2020-04-01 18:40:05+09:00
 
 
 
@@ -104,6 +104,10 @@ template <int MD> struct ModInt {
 };
 template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
 
+#ifndef CALL_FROM_TEST
+using mint = ModInt<1000000007>;
+#endif
+
 ```
 {% endraw %}
 
@@ -167,6 +171,10 @@ template <int MD> struct ModInt {
     friend std::string to_string(ModInt<MD> a) { return std::to_string(a.x); }
 };
 template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
+
+#ifndef CALL_FROM_TEST
+using mint = ModInt<1000000007>;
+#endif
 
 ```
 {% endraw %}

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_E.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:50:34+09:00
+    - Last commit date: 2020-04-01 18:40:05+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E</a>
@@ -64,8 +64,10 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Thu Mar 26 18:48:49 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #include "../../src/Helper/ChminChmax.hpp"
 #include "../../src/Helper/MakeVec.hpp"
+#undef CALL_FROM_TEST
 
 signed main() {
     std::string s, t;
@@ -106,6 +108,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  *    created: Thu Mar 26 18:48:49 JST 2020
  **/
 
+#define CALL_FROM_TEST
 #line 1 "src/Helper/ChminChmax.hpp"
 template <class T> inline bool chmin(T& a, const T& b) {
     if (a <= b) return false;
@@ -122,7 +125,8 @@ template <class T, class S> T make_vec(S x) { return x; }
 template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
     return std::vector<decltype(make_vec<T>(ts...))>(n, make_vec<T>(ts...));
 }
-#line 19 "test/aoj/DPL_1_E.test.cpp"
+#line 20 "test/aoj/DPL_1_E.test.cpp"
+#undef CALL_FROM_TEST
 
 signed main() {
     std::string s, t;
