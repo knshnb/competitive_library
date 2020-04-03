@@ -11,6 +11,7 @@
 - `f1(T1, T1) -> T1`: 作用素同士のモノイド
 - `g(T0, T1) -> T0`: $\mathrm{T0}$に対する$\mathrm{T1}$の作用(更新クエリ)
 - `p(T1 x, int len) -> T1`: 長さ$\mathrm{len}$の区間に$x$を作用させたとき、$\mathrm{f0}$による区間合成がどう変わるか
+
 ### メソッド
 - `query(int l, int r) -> T`: $\[l, r)$の範囲のモノイドの合成を返す
 - `update(int l, int t, T1 x)`: $\[l, r)$の範囲に$x$を作用

@@ -1,5 +1,4 @@
-// T0: 元の配列のモノイド
-// T1: T0に対する作用素モノイド
+/// @docs src/DataStructure/LazySegmentTree.md
 template <class T0, class T1, class F0, class F1, class G, class P> class LazySegmentTree {
     // k番目のノードにのlazyを伝搬
     void eval(int k, int len) {
