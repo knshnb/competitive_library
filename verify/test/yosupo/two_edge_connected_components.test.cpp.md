@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/two_edge_connected_components.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 03:56:08+09:00
+    - Last commit date: 2020-04-03 18:09:49+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/two_edge_connected_components">https://judge.yosupo.jp/problem/two_edge_connected_components</a>
@@ -114,7 +114,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 #define CALL_FROM_TEST
 #line 1 "src/Graph/TwoEdgeConnectedComponents.hpp"
-// 木上のimos法による二重辺連結成分分解、O(E + V)
+/// @docs src/Graph/TwoEdgeConnectedComponents.md
 struct TwoEdgeConnectedComponents {
     int n;
     std::vector<std::vector<int>> g;

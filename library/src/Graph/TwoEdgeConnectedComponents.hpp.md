@@ -31,10 +31,18 @@ layout: default
 
 * category: <a href="../../../index.html#6e5c608398952d411d1862b1f8dc05f5">src/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Graph/TwoEdgeConnectedComponents.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 03:56:08+09:00
+    - Last commit date: 2020-04-03 18:09:49+09:00
 
 
 
+
+## 概要
+木上のimos法による二重辺連結成分分解、O(E + V)。
+
+dfs木に含まれる辺の内、後退辺によって挟まれていないものが橋となる。
+imos[i] == 0と(i, par)が橋であることが同値になるようにimos法を行い、その辺で区切ることで二重辺連結成分分解している。
+
+参考: https://www.slideshare.net/chokudai/arc039
 
 ## Verified with
 
@@ -46,7 +54,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-// 木上のimos法による二重辺連結成分分解、O(E + V)
+/// @docs src/Graph/TwoEdgeConnectedComponents.md
 struct TwoEdgeConnectedComponents {
     int n;
     std::vector<std::vector<int>> g;
@@ -110,7 +118,7 @@ struct TwoEdgeConnectedComponents {
 {% raw %}
 ```cpp
 #line 1 "src/Graph/TwoEdgeConnectedComponents.hpp"
-// 木上のimos法による二重辺連結成分分解、O(E + V)
+/// @docs src/Graph/TwoEdgeConnectedComponents.md
 struct TwoEdgeConnectedComponents {
     int n;
     std::vector<std::vector<int>> g;
