@@ -31,9 +31,50 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/LazySegmentTree.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 17:02:31+09:00
+    - Last commit date: 2020-04-03 22:30:09+09:00
 
 
+
+
+## 概要
+区間更新区間取得セグメント木。
+
+参考
+- http://tsutaj.hatenablog.com/entry/2017/03/30/224339
+- https://beet-aizu.hatenablog.com/entry/2017/12/01/225955
+
+## 使い方
+### 変数
+- `f0(T0, T0) -> T0`: 取得クエリのモノイド
+- `f1(T1, T1) -> T1`: 作用素同士のモノイド
+- `g(T0, T1) -> T0`: $\mathrm{T0}$に対する$\mathrm{T1}$の作用(更新クエリ)
+- `p(T1 x, int len) -> T1`: 長さ$\mathrm{len}$の区間に$x$を作用させたとき、$\mathrm{f0}$による区間合成がどう変わるか
+
+### メソッド
+- `query(int l, int r) -> T`: $\[l, r)$の範囲のモノイドの合成を返す
+- `update(int l, int t, T1 x)`: $\[l, r)$の範囲に$x$を作用
+
+## 初期化例
+- `Int`に対するAdd & Max
+```cpp
+constexpr Int INF = 1e18;
+auto seg = make_lazy_segment_tree<Int, Int>(
+    [](Int x, Int y) { return max(x, y); }, -INF, [](Int x, Int y) { return x + y; }, 0,
+    [](Int x, Int y) { return x == -INF ? x : x + y; }, [](Int x, int len) { return x; });
+```
+
+- `mint`に対するAffine & Sum
+```cpp
+auto seg = make_lazy_segment_tree<mint, pmm>(
+    std::plus<mint>(), 0,
+    [](pmm x, pmm y) -> pmm {
+        return {x.first * y.first, x.second * y.first + y.second};
+    },
+    {1, 0}, [](mint x, pmm y) { return y.first * x + y.second; },
+    [](pmm x, int len) -> pmm {
+        return {x.first, x.second * len};
+    });
+```
 
 
 ## Verified with
@@ -47,8 +88,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-// T0: 元の配列のモノイド
-// T1: T0に対する作用素モノイド
+/// @docs src/DataStructure/LazySegmentTree.md
 template <class T0, class T1, class F0, class F1, class G, class P> class LazySegmentTree {
     // k番目のノードにのlazyを伝搬
     void eval(int k, int len) {
@@ -145,8 +185,7 @@ auto make_lazy_segment_tree(F0 f0, T0 u0, F1 f1, T1 u1, G g, P p) {
 {% raw %}
 ```cpp
 #line 1 "src/DataStructure/LazySegmentTree.hpp"
-// T0: 元の配列のモノイド
-// T1: T0に対する作用素モノイド
+/// @docs src/DataStructure/LazySegmentTree.md
 template <class T0, class T1, class F0, class F1, class G, class P> class LazySegmentTree {
     // k番目のノードにのlazyを伝搬
     void eval(int k, int len) {

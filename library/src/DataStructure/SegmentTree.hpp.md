@@ -44,6 +44,7 @@ layout: default
 ### 変数
 - `op(T a, T b) -> T`: T上のモノイド
 - `e`: モノイドの単位元
+
 ### メソッド
 - `query(int l, int r) -> T`: [l, r)の範囲のモノイドの合成を返す
 - `update(int i, T x)`: $i$番目の要素を$x$に変更

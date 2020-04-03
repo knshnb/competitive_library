@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/range_affine_range_sum.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 18:40:05+09:00
+    - Last commit date: 2020-04-03 22:30:09+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -185,8 +185,7 @@ template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
 using mint = ModInt<1000000007>;
 #endif
 #line 1 "src/DataStructure/LazySegmentTree.hpp"
-// T0: 元の配列のモノイド
-// T1: T0に対する作用素モノイド
+/// @docs src/DataStructure/LazySegmentTree.md
 template <class T0, class T1, class F0, class F1, class G, class P> class LazySegmentTree {
     // k番目のノードにのlazyを伝搬
     void eval(int k, int len) {

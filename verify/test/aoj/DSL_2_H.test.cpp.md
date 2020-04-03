@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 18:40:05+09:00
+    - Last commit date: 2020-04-03 22:30:09+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H">https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H</a>
@@ -114,8 +114,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 #define CALL_FROM_TEST
 #line 1 "src/DataStructure/LazySegmentTree.hpp"
-// T0: 元の配列のモノイド
-// T1: T0に対する作用素モノイド
+/// @docs src/DataStructure/LazySegmentTree.md
 template <class T0, class T1, class F0, class F1, class G, class P> class LazySegmentTree {
     // k番目のノードにのlazyを伝搬
     void eval(int k, int len) {
