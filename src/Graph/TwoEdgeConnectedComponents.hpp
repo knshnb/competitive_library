@@ -1,4 +1,4 @@
-// 木上のimos法による二重辺連結成分分解、O(E + V)
+/// @docs src/Graph/TwoEdgeConnectedComponents.md
 struct TwoEdgeConnectedComponents {
     int n;
     std::vector<std::vector<int>> g;
