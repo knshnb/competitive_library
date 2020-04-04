@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo/scc.test.cpp
+# :heavy_check_mark: test/yosupo/scc.test.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/scc.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 18:03:13+09:00
+    - Last commit date: 2020-04-04 18:54:49+09:00
 
 
+* see: <a href="https://judge.yosupo.jp/problem/scc">https://judge.yosupo.jp/problem/scc</a>
 
 
 ## Depends on
 
-* :x: <a href="../../../library/src/Graph/StronglyConnectedComponents.hpp.html">src/Graph/StronglyConnectedComponents.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/Graph/StronglyConnectedComponents.hpp.html">src/Graph/StronglyConnectedComponents.hpp</a>
 
 
 ## Code
@@ -47,8 +48,6 @@ layout: default
 {% raw %}
 ```cpp
 #define PROBLEM "https://judge.yosupo.jp/problem/scc"
-// 出力の順番が一意でないのでverify通らず(submitは通る)
-#define IGNORE
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -80,6 +79,7 @@ signed main() {
     scc.build();
     std::vector<std::vector<int>> groups(scc.size);
     REP(i, n) { groups[scc.belong_to[i]].push_back(i); }
+    std::cout << scc.size << std::endl;
     for (auto& group : groups) {
         std::cout << group.size() << " ";
         for (int v : group) {
@@ -97,8 +97,6 @@ signed main() {
 ```cpp
 #line 1 "test/yosupo/scc.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/scc"
-// 出力の順番が一意でないのでverify通らず(submitは通る)
-#define IGNORE
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -165,7 +163,7 @@ struct StronglyConnectedComponents {
         return size < n;
     }
 };
-#line 21 "test/yosupo/scc.test.cpp"
+#line 19 "test/yosupo/scc.test.cpp"
 #undef CALL_FROM_TEST
 
 signed main() {
@@ -180,6 +178,7 @@ signed main() {
     scc.build();
     std::vector<std::vector<int>> groups(scc.size);
     REP(i, n) { groups[scc.belong_to[i]].push_back(i); }
+    std::cout << scc.size << std::endl;
     for (auto& group : groups) {
         std::cout << group.size() << " ";
         for (int v : group) {

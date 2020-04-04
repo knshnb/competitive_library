@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: src/Graph/StronglyConnectedComponents.hpp
+# :heavy_check_mark: src/Graph/StronglyConnectedComponents.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -46,7 +46,7 @@ Kosaraju' algorithm(https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)によ�
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/yosupo/scc.test.cpp.html">test/yosupo/scc.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo/scc.test.cpp.html">test/yosupo/scc.test.cpp</a>
 
 
 ## Code
