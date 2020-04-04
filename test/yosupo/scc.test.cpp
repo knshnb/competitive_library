@@ -1,6 +1,4 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/scc"
-// 出力の順番が一意でないのでverify通らず(submitは通る)
-#define IGNORE
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -32,6 +30,7 @@ signed main() {
     scc.build();
     std::vector<std::vector<int>> groups(scc.size);
     REP(i, n) { groups[scc.belong_to[i]].push_back(i); }
+    std::cout << scc.size << std::endl;
     for (auto& group : groups) {
         std::cout << group.size() << " ";
         for (int v : group) {
