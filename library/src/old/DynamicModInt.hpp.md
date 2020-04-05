@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Math/DynamicModInt.hpp
+# :warning: src/old/DynamicModInt.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Math/DynamicModInt.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/DynamicModInt.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-05 18:01:19+09:00
 
 
 
@@ -141,7 +141,7 @@ mint comb(int n, int r) { return fact[n] * fact_inv[r] * fact_inv[n - r]; }
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Math/DynamicModInt.hpp"
+#line 1 "src/old/DynamicModInt.hpp"
 template <class T> T pow(T x, int n, const T UNION = 1) {
     T ret = UNION;
     while (n) {
