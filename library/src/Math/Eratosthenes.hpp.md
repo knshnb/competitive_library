@@ -25,15 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Math/Eratosthenes.hpp
+# :heavy_check_mark: src/Math/Eratosthenes.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Math/Eratosthenes.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-04-05 19:54:10+09:00
 
 
+
+
+## 概要
+エラトステネスの篩による素数列挙。
+計算量は、n以下の素数の逆数和がO(loglog n)であることから、O(n loglog n)である(参考: https://mathtrain.jp/eratosthenes)。
+
+定数倍高速化を頑張るともっとかなり早くなる(参考: https://qiita.com/peria/items/a4ff4ddb3336f7b81d50)
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/yosupo/enumerate_primes.test.cpp.html">test/yosupo/enumerate_primes.test.cpp</a>
 
 
 ## Code
@@ -41,12 +53,13 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+/// @docs src/Math/Eratosthenes.md
 struct Eratosthenes {
-    vector<bool> is_prime;
-    vector<int> primes;
+    std::vector<bool> is_prime;
+    std::vector<int> primes;
     Eratosthenes(int n) {
-        is_prime = vector<bool>(n, true);
-        is_prime[1] = false;
+        is_prime.assign(n, true);
+        is_prime[0] = is_prime[1] = false;
         for (int i = 2; i < n; i++) {
             if (!is_prime[i]) continue;
             for (int j = i * 2; j < n; j += i) {
@@ -66,12 +79,13 @@ struct Eratosthenes {
 {% raw %}
 ```cpp
 #line 1 "src/Math/Eratosthenes.hpp"
+/// @docs src/Math/Eratosthenes.md
 struct Eratosthenes {
-    vector<bool> is_prime;
-    vector<int> primes;
+    std::vector<bool> is_prime;
+    std::vector<int> primes;
     Eratosthenes(int n) {
-        is_prime = vector<bool>(n, true);
-        is_prime[1] = false;
+        is_prime.assign(n, true);
+        is_prime[0] = is_prime[1] = false;
         for (int i = 2; i < n; i++) {
             if (!is_prime[i]) continue;
             for (int j = i * 2; j < n; j += i) {

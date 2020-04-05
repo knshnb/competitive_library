@@ -115,7 +115,7 @@ layout: default
 * :warning: <a href="library/src/Math/ChineseRemainderTheorem.hpp.html">src/Math/ChineseRemainderTheorem.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
 * :warning: <a href="library/src/Math/Divisor.hpp.html">src/Math/Divisor.hpp</a>
-* :warning: <a href="library/src/Math/Eratosthenes.hpp.html">src/Math/Eratosthenes.hpp</a>
+* :heavy_check_mark: <a href="library/src/Math/Eratosthenes.hpp.html">src/Math/Eratosthenes.hpp</a>
 * :warning: <a href="library/src/Math/EulerTotient.hpp.html">src/Math/EulerTotient.hpp</a>
 * :warning: <a href="library/src/Math/FFT.hpp.html">src/Math/FFT.hpp</a>
 * :warning: <a href="library/src/Math/GaussJordan.hpp.html">src/Math/GaussJordan.hpp</a>
@@ -154,6 +154,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A.test.cpp.html">test/aoj/DSL_2_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H.test.cpp.html">test/aoj/DSL_2_H.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/enumerate_primes.test.cpp.html">test/yosupo/enumerate_primes.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/lca.test.cpp.html">test/yosupo/lca.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/point_add_range_sum.test.cpp.html">test/yosupo/point_add_range_sum.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/point_set_range_composite.test.cpp.html">test/yosupo/point_set_range_composite.test.cpp</a>
