@@ -35,20 +35,19 @@ template <class T> struct RollingHash {
     }
 };
 
-template <int HashNum> struct Bases {
-    std::array<int, HashNum> contents;
-    Bases() {
-        std::mt19937 rnd(std::chrono::steady_clock::now().time_since_epoch().count());
-        for (int i = 0; i < HashNum; i++) contents[i] = rnd() % 1000000;
-    }
-};
+template <int HashNum> std::array<int, HashNum> make_rand_array() {
+    std::array<int, HashNum> res;
+    std::mt19937 rnd(std::chrono::steady_clock::now().time_since_epoch().count());
+    for (int i = 0; i < HashNum; i++) res[i] = rnd() % 1000000;
+    return res;
+}
 template <class T, int HashNum = 4> struct MultiRollingHash {
     using multihash_t = std::array<int, HashNum>;
-    static Bases<HashNum> bases;
+    static std::array<int, HashNum> bases;
     std::vector<RollingHash<T>> rhs;
     MultiRollingHash(const T &a) {
         for (int i = 0; i < HashNum; i++) {
-            rhs.push_back(RollingHash<T>(a, bases.contents[i]));
+            rhs.push_back(RollingHash<T>(a, bases[i]));
         }
     }
     multihash_t get(int l, int r) {
@@ -64,4 +63,5 @@ template <class T, int HashNum = 4> struct MultiRollingHash {
         for (auto &rh : rhs) rh.pop_back();
     }
 };
-template <class T, int HashNum> Bases<HashNum> MultiRollingHash<T, HashNum>::bases;
+template <class T, int HashNum>
+std::array<int, HashNum> MultiRollingHash<T, HashNum>::bases = make_rand_array<HashNum>();
