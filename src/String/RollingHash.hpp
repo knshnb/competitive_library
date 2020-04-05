@@ -1,21 +1,21 @@
-using ull = unsigned long long;
+/// @docs src/String/RollingHash.md
 template <class T> struct RollingHash {
-    vector<ull> hash, pows;
-    ull base, mod;
-    RollingHash(const T &a, ull base, ull mod = 1000000009)
-        : hash(a.size() + 1), pows(a.size() + 1, 1), mod(mod), base(base) {
+    std::vector<int> hash, pows;
+    int base, mod;
+    RollingHash(const T &a, int base_, int mod_ = 1000000009)
+        : hash(a.size() + 1), pows(a.size() + 1, 1), base(base_), mod(mod_) {
         for (int i = 0; i < a.size(); i++) {
-            pows[i + 1] = pows[i] * base % mod;
-            hash[i + 1] = hash[i] * base % mod + a[i];
-            if (hash[i + 1] >= mod) hash[i + 1] -= mod;
+            pows[i + 1] = (long long)pows[i] * base % mod;
+            hash[i + 1] = ((long long)hash[i] * base % mod + a[i]) % mod;
+            if (hash[i + 1] < 0) hash[i + 1] += mod;
         }
     }
     // 現在の文字列のサイズ
     int size() { return hash.size() - 1; }
     // [l, r)
-    ull get(int l, int r) {
+    int get(int l, int r) {
         assert(l <= r);
-        ull ret = hash[r] + mod - hash[l] * pows[r - l] % mod;
+        int ret = hash[r] + mod - (long long)hash[l] * pows[r - l] % mod;
         if (ret >= mod) ret -= mod;
         return ret;
     }
@@ -24,8 +24,8 @@ template <class T> struct RollingHash {
         pows.resize(n + m + 1);
         hash.resize(n + m + 1);
         for (int i = 0; i < m; i++) {
-            pows[n + i + 1] = pows[n + i] * base % mod;
-            hash[n + i + 1] = hash[n + i] * base % mod + b[i];
+            pows[n + i + 1] = (long long)pows[n + i] * base % mod;
+            hash[n + i + 1] = (long long)hash[n + i] * base % mod + b[i];
             if (hash[n + i + 1] >= mod) hash[n + i + 1] -= mod;
         }
     }
@@ -35,27 +35,25 @@ template <class T> struct RollingHash {
     }
 };
 
-constexpr int HASH_NUM = 4;
-struct bases_t {
-    int use[HASH_NUM];
-    int &operator[](int i) { return use[i]; }
-    bases_t() {
-        mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
-        for (int i = 0; i < HASH_NUM; i++) use[i] = rnd() % 10000;
+template <int HashNum> struct Bases {
+    std::array<int, HashNum> contents;
+    Bases() {
+        std::mt19937 rnd(std::chrono::steady_clock::now().time_since_epoch().count());
+        for (int i = 0; i < HashNum; i++) contents[i] = rnd() % 1000000;
     }
-} bases;
-
-using multihash_t = array<int, HASH_NUM>;
-template <class T = vector<int>> struct MultiRollingHash {
-    vector<RollingHash<T>> rhs;
+};
+template <class T, int HashNum = 4> struct MultiRollingHash {
+    using multihash_t = std::array<int, HashNum>;
+    static Bases<HashNum> bases;
+    std::vector<RollingHash<T>> rhs;
     MultiRollingHash(const T &a) {
-        for (int i = 0; i < HASH_NUM; i++) {
-            rhs.push_back(RollingHash<T>(a, bases[i]));
+        for (int i = 0; i < HashNum; i++) {
+            rhs.push_back(RollingHash<T>(a, bases.contents[i]));
         }
     }
     multihash_t get(int l, int r) {
         multihash_t ret;
-        for (int i = 0; i < HASH_NUM; i++) ret[i] = rhs[i].get(l, r);
+        for (int i = 0; i < HashNum; i++) ret[i] = rhs[i].get(l, r);
         return ret;
     }
     int size() { return rhs[0].size(); }
@@ -66,3 +64,4 @@ template <class T = vector<int>> struct MultiRollingHash {
         for (auto &rh : rhs) rh.pop_back();
     }
 };
+template <class T, int HashNum> Bases<HashNum> MultiRollingHash<T, HashNum>::bases;
