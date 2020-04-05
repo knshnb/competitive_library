@@ -31,14 +31,23 @@ layout: default
 
 * category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Math/ModInt.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 18:40:05+09:00
+    - Last commit date: 2020-04-05 17:42:46+09:00
 
 
+
+
+## 概要
+modにおける四則演算クラス。
+テンプレート引数`Mod`が負のとき、modは実行時に指定したものになる。
+
+加算O(1)、減算O(1)、乗算O(1)、除算O(log mod)。
+除算はフェルマーの小定理を用いているので、modが素数でないときは使えないことに注意(そもそも逆元が存在しない)。
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_D.test.cpp.html">test/aoj/DPL_5_D.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_D_runtime.test.cpp.html">test/aoj/DPL_5_D_runtime.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo/point_set_range_composite.test.cpp.html">test/yosupo/point_set_range_composite.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo/range_affine_range_sum.test.cpp.html">test/yosupo/range_affine_range_sum.test.cpp</a>
 
@@ -58,52 +67,62 @@ template <class T> T pow(T x, int n, const T UNION = 1) {
     return ret;
 }
 
-template <int MD> struct ModInt {
+/// @docs src/Math/ModInt.md
+template <int Mod> struct ModInt {
     int x;
+    static int runtime_mod;
     static std::unordered_map<int, int> to_inv;
+    // テンプレート引数が負のときは実行時ModInt
+    static int mod() { return Mod < 0 ? runtime_mod : Mod; }
+    static void set_runtime_mod(int mod) {
+        static_assert(Mod < 0);
+        runtime_mod = mod;
+        to_inv.clear();
+    }
     ModInt() : x(0) {}
     ModInt(long long x_) {
-        if ((x = x_ % MD + MD) >= MD) x -= MD;
+        if ((x = x_ % mod() + mod()) >= mod()) x -= mod();
     }
 
-    ModInt& operator+=(ModInt that) {
-        if ((x += that.x) >= MD) x -= MD;
+    ModInt& operator+=(ModInt rhs) {
+        if ((x += rhs.x) >= mod()) x -= mod();
         return *this;
     }
-    ModInt& operator*=(ModInt that) {
-        x = (unsigned long long)x * that.x % MD;
+    ModInt& operator*=(ModInt rhs) {
+        x = (unsigned long long)x * rhs.x % mod();
         return *this;
     }
-    ModInt& operator-=(ModInt that) {
-        if ((x -= that.x) < 0) x += MD;
+    ModInt& operator-=(ModInt rhs) {
+        if ((x -= rhs.x) < 0) x += mod();
         return *this;
     }
-    ModInt& operator/=(ModInt that) {
-        x = (unsigned long long)x * that.inv().x % MD;
+    ModInt& operator/=(ModInt rhs) {
+        x = (unsigned long long)x * rhs.inv().x % mod();
         return *this;
     }
-    ModInt operator-() const { return -x < 0 ? MD - x : -x; }
-    ModInt operator+(ModInt that) const { return ModInt(*this) += that; }
-    ModInt operator*(ModInt that) const { return ModInt(*this) *= that; }
-    ModInt operator-(ModInt that) const { return ModInt(*this) -= that; }
-    ModInt operator/(ModInt that) const { return ModInt(*this) /= that; }
-    bool operator==(ModInt that) const { return x == that.x; }
-    bool operator!=(ModInt that) const { return x != that.x; }
-    ModInt inv() const { return to_inv.count(this->x) ? to_inv[this->x] : (to_inv[this->x] = pow(*this, MD - 2).x); }
+    ModInt operator-() const { return -x < 0 ? mod() - x : -x; }
+    ModInt operator+(ModInt rhs) const { return ModInt(*this) += rhs; }
+    ModInt operator*(ModInt rhs) const { return ModInt(*this) *= rhs; }
+    ModInt operator-(ModInt rhs) const { return ModInt(*this) -= rhs; }
+    ModInt operator/(ModInt rhs) const { return ModInt(*this) /= rhs; }
+    bool operator==(ModInt rhs) const { return x == rhs.x; }
+    bool operator!=(ModInt rhs) const { return x != rhs.x; }
+    ModInt inv() const { return to_inv.count(this->x) ? to_inv[this->x] : (to_inv[this->x] = pow(*this, mod() - 2).x); }
 
-    friend std::ostream& operator<<(std::ostream& s, ModInt<MD> a) {
+    friend std::ostream& operator<<(std::ostream& s, ModInt<Mod> a) {
         s << a.x;
         return s;
     }
-    friend std::istream& operator>>(std::istream& s, ModInt<MD>& a) {
+    friend std::istream& operator>>(std::istream& s, ModInt<Mod>& a) {
         long long tmp;
         s >> tmp;
-        a = ModInt<MD>(tmp);
+        a = ModInt<Mod>(tmp);
         return s;
     }
-    friend std::string to_string(ModInt<MD> a) { return std::to_string(a.x); }
+    friend std::string to_string(ModInt<Mod> a) { return std::to_string(a.x); }
 };
-template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
+template <int Mod> std::unordered_map<int, int> ModInt<Mod>::to_inv;
+template <int Mod> int ModInt<Mod>::runtime_mod;
 
 #ifndef CALL_FROM_TEST
 using mint = ModInt<1000000007>;
@@ -126,52 +145,62 @@ template <class T> T pow(T x, int n, const T UNION = 1) {
     return ret;
 }
 
-template <int MD> struct ModInt {
+/// @docs src/Math/ModInt.md
+template <int Mod> struct ModInt {
     int x;
+    static int runtime_mod;
     static std::unordered_map<int, int> to_inv;
+    // テンプレート引数が負のときは実行時ModInt
+    static int mod() { return Mod < 0 ? runtime_mod : Mod; }
+    static void set_runtime_mod(int mod) {
+        static_assert(Mod < 0);
+        runtime_mod = mod;
+        to_inv.clear();
+    }
     ModInt() : x(0) {}
     ModInt(long long x_) {
-        if ((x = x_ % MD + MD) >= MD) x -= MD;
+        if ((x = x_ % mod() + mod()) >= mod()) x -= mod();
     }
 
-    ModInt& operator+=(ModInt that) {
-        if ((x += that.x) >= MD) x -= MD;
+    ModInt& operator+=(ModInt rhs) {
+        if ((x += rhs.x) >= mod()) x -= mod();
         return *this;
     }
-    ModInt& operator*=(ModInt that) {
-        x = (unsigned long long)x * that.x % MD;
+    ModInt& operator*=(ModInt rhs) {
+        x = (unsigned long long)x * rhs.x % mod();
         return *this;
     }
-    ModInt& operator-=(ModInt that) {
-        if ((x -= that.x) < 0) x += MD;
+    ModInt& operator-=(ModInt rhs) {
+        if ((x -= rhs.x) < 0) x += mod();
         return *this;
     }
-    ModInt& operator/=(ModInt that) {
-        x = (unsigned long long)x * that.inv().x % MD;
+    ModInt& operator/=(ModInt rhs) {
+        x = (unsigned long long)x * rhs.inv().x % mod();
         return *this;
     }
-    ModInt operator-() const { return -x < 0 ? MD - x : -x; }
-    ModInt operator+(ModInt that) const { return ModInt(*this) += that; }
-    ModInt operator*(ModInt that) const { return ModInt(*this) *= that; }
-    ModInt operator-(ModInt that) const { return ModInt(*this) -= that; }
-    ModInt operator/(ModInt that) const { return ModInt(*this) /= that; }
-    bool operator==(ModInt that) const { return x == that.x; }
-    bool operator!=(ModInt that) const { return x != that.x; }
-    ModInt inv() const { return to_inv.count(this->x) ? to_inv[this->x] : (to_inv[this->x] = pow(*this, MD - 2).x); }
+    ModInt operator-() const { return -x < 0 ? mod() - x : -x; }
+    ModInt operator+(ModInt rhs) const { return ModInt(*this) += rhs; }
+    ModInt operator*(ModInt rhs) const { return ModInt(*this) *= rhs; }
+    ModInt operator-(ModInt rhs) const { return ModInt(*this) -= rhs; }
+    ModInt operator/(ModInt rhs) const { return ModInt(*this) /= rhs; }
+    bool operator==(ModInt rhs) const { return x == rhs.x; }
+    bool operator!=(ModInt rhs) const { return x != rhs.x; }
+    ModInt inv() const { return to_inv.count(this->x) ? to_inv[this->x] : (to_inv[this->x] = pow(*this, mod() - 2).x); }
 
-    friend std::ostream& operator<<(std::ostream& s, ModInt<MD> a) {
+    friend std::ostream& operator<<(std::ostream& s, ModInt<Mod> a) {
         s << a.x;
         return s;
     }
-    friend std::istream& operator>>(std::istream& s, ModInt<MD>& a) {
+    friend std::istream& operator>>(std::istream& s, ModInt<Mod>& a) {
         long long tmp;
         s >> tmp;
-        a = ModInt<MD>(tmp);
+        a = ModInt<Mod>(tmp);
         return s;
     }
-    friend std::string to_string(ModInt<MD> a) { return std::to_string(a.x); }
+    friend std::string to_string(ModInt<Mod> a) { return std::to_string(a.x); }
 };
-template <int MD> std::unordered_map<int, int> ModInt<MD>::to_inv;
+template <int Mod> std::unordered_map<int, int> ModInt<Mod>::to_inv;
+template <int Mod> int ModInt<Mod>::runtime_mod;
 
 #ifndef CALL_FROM_TEST
 using mint = ModInt<1000000007>;

@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_5_D.test.cpp
+# :heavy_check_mark: test/aoj/DPL_5_D_runtime.test.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_D.test.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_D_runtime.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-04-05 17:42:46+09:00
 
 
@@ -69,8 +69,9 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 #include "../../src/Math/Combination.hpp"
 #undef CALL_FROM_TEST
 
-using mint = ModInt<1000000007>;
+using mint = ModInt<-1>;
 signed main() {
+    mint::set_runtime_mod(1000000007);
     Int n, k;
     std::cin >> n >> k;
     Combination<mint> comb(n + k - 1);
@@ -83,7 +84,7 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DPL_5_D.test.cpp"
+#line 1 "test/aoj/DPL_5_D_runtime.test.cpp"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D"
 
 #include <bits/stdc++.h>  // clang-format off
@@ -183,11 +184,12 @@ template <class T> struct Combination {
     }
     T operator()(int n, int r) { return fact[n] * fact_inv[r] * fact_inv[n - r]; }
 };
-#line 20 "test/aoj/DPL_5_D.test.cpp"
+#line 20 "test/aoj/DPL_5_D_runtime.test.cpp"
 #undef CALL_FROM_TEST
 
-using mint = ModInt<1000000007>;
+using mint = ModInt<-1>;
 signed main() {
+    mint::set_runtime_mod(1000000007);
     Int n, k;
     std::cin >> n >> k;
     Combination<mint> comb(n + k - 1);
