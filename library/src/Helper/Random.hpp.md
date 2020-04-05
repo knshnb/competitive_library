@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/Random.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-04-06 01:47:22+09:00
 
 
 
@@ -41,7 +41,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
+std::mt19937 rnd(std::chrono::steady_clock::now().time_since_epoch().count());
 
 ```
 {% endraw %}
@@ -50,7 +50,7 @@ mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
 {% raw %}
 ```cpp
 #line 1 "src/Helper/Random.hpp"
-mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
+std::mt19937 rnd(std::chrono::steady_clock::now().time_since_epoch().count());
 
 ```
 {% endraw %}
