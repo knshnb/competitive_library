@@ -136,7 +136,7 @@ layout: default
 * :warning: <a href="library/src/String/SuffixArray.hpp.html">src/String/SuffixArray.hpp</a>
 * :warning: <a href="library/src/String/SuffixArrayDoubling.hpp.html">src/String/SuffixArrayDoubling.hpp</a>
 * :warning: <a href="library/src/String/Trie.hpp.html">src/String/Trie.hpp</a>
-* :warning: <a href="library/src/String/ZAlgorithm.hpp.html">src/String/ZAlgorithm.hpp</a>
+* :heavy_check_mark: <a href="library/src/String/ZAlgorithm.hpp.html">src/String/ZAlgorithm.hpp</a>
 
 
 <div id="ed8431f95262b19a48e972d3753d06d7"></div>
@@ -163,6 +163,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo/staticrmq.test.cpp.html">test/yosupo/staticrmq.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/two_edge_connected_components.test.cpp.html">test/yosupo/two_edge_connected_components.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind.test.cpp.html">test/yosupo/unionfind.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm.test.cpp.html">test/yosupo/zalgorithm.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm_rolling_hash.test.cpp.html">test/yosupo/zalgorithm_rolling_hash.test.cpp</a>
 
 

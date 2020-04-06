@@ -25,15 +25,32 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/String/ZAlgorithm.hpp
+# :heavy_check_mark: src/String/ZAlgorithm.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#ac276d2326c527c8c7dbcbb63d85c6c7">src/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/String/ZAlgorithm.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-04-07 02:21:00+09:00
 
 
+
+
+## 概要
+文字列s[0:]とs[i:]の共通prefixの長さの配列を返す、O(|s|)。
+
+基本的なアイディアは、以前に先頭からの文字列との共通prefixとして計算された値を使い回すこと。
+左から順に求める配列aを計算しながら、それまでに一番右まで到達した部分についてaをもう一度たどると先頭とのprefix一致がショートカットできる。
+
+アルゴリズム参考: https://snuke.hatenablog.com/entry/2014/12/03/214243
+</br>
+実装のrm_idx(rightmost index)は、それまでに共通prefixとして一番右まで到達したときのインデックスを表す。
+苦労して結構うまく実装できたと思ったらsnukeさんのコードとほとんど同じだった、完…
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/yosupo/zalgorithm.test.cpp.html">test/yosupo/zalgorithm.test.cpp</a>
 
 
 ## Code
@@ -41,24 +58,20 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-// SとS[i:]の共通prefixの長さの配列を返す、O(|S|)
-vector<int> Z_algorithm(const string& S) {
-    vector<int> A(S.size());
-    A[0] = S.size();
-    int i = 1, j = 0;
-    while (i < S.size()) {
-        while (i + j < S.size() && S[j] == S[i + j]) ++j;
-        A[i] = j;
-        if (j == 0) {
-            ++i;
-            continue;
+/// @docs src/String/ZAlgorithm.md
+template <class T> std::vector<int> Z_algorithm(const T& s) {
+    std::vector<int> a(s.size());
+    for (int i = 1, rm_idx = 0; i < s.size(); i++) {
+        if (a[i - rm_idx] < a[rm_idx] - (i - rm_idx)) {
+            a[i] = a[i - rm_idx];
+        } else {
+            a[i] = std::max(0, a[rm_idx] - (i - rm_idx));
+            while (i + a[i] < s.size() && s[a[i]] == s[i + a[i]]) a[i]++;
+            rm_idx = i;
         }
-        int k = 1;
-        while (i + k < S.size() && k + A[k] < j) A[i + k] = A[k], ++k;
-        i += k;
-        j -= k;
     }
-    return A;
+    a[0] = s.size();
+    return a;
 }
 
 ```
@@ -68,24 +81,20 @@ vector<int> Z_algorithm(const string& S) {
 {% raw %}
 ```cpp
 #line 1 "src/String/ZAlgorithm.hpp"
-// SとS[i:]の共通prefixの長さの配列を返す、O(|S|)
-vector<int> Z_algorithm(const string& S) {
-    vector<int> A(S.size());
-    A[0] = S.size();
-    int i = 1, j = 0;
-    while (i < S.size()) {
-        while (i + j < S.size() && S[j] == S[i + j]) ++j;
-        A[i] = j;
-        if (j == 0) {
-            ++i;
-            continue;
+/// @docs src/String/ZAlgorithm.md
+template <class T> std::vector<int> Z_algorithm(const T& s) {
+    std::vector<int> a(s.size());
+    for (int i = 1, rm_idx = 0; i < s.size(); i++) {
+        if (a[i - rm_idx] < a[rm_idx] - (i - rm_idx)) {
+            a[i] = a[i - rm_idx];
+        } else {
+            a[i] = std::max(0, a[rm_idx] - (i - rm_idx));
+            while (i + a[i] < s.size() && s[a[i]] == s[i + a[i]]) a[i]++;
+            rm_idx = i;
         }
-        int k = 1;
-        while (i + k < S.size() && k + A[k] < j) A[i + k] = A[k], ++k;
-        i += k;
-        j -= k;
     }
-    return A;
+    a[0] = s.size();
+    return a;
 }
 
 ```
