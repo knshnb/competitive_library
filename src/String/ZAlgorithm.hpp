@@ -1,19 +1,15 @@
-// SとS[i:]の共通prefixの長さの配列を返す、O(|S|)
-vector<int> Z_algorithm(const string& S) {
-    vector<int> A(S.size());
-    A[0] = S.size();
-    int i = 1, j = 0;
-    while (i < S.size()) {
-        while (i + j < S.size() && S[j] == S[i + j]) ++j;
-        A[i] = j;
-        if (j == 0) {
-            ++i;
-            continue;
+/// @docs src/String/ZAlgorithm.md
+template <class T> std::vector<int> Z_algorithm(const T& s) {
+    std::vector<int> a(s.size());
+    for (int i = 1, rm_idx = 0; i < s.size(); i++) {
+        if (a[i - rm_idx] < a[rm_idx] - (i - rm_idx)) {
+            a[i] = a[i - rm_idx];
+        } else {
+            a[i] = std::max(0, a[rm_idx] - (i - rm_idx));
+            while (i + a[i] < s.size() && s[a[i]] == s[i + a[i]]) a[i]++;
+            rm_idx = i;
         }
-        int k = 1;
-        while (i + k < S.size() && k + A[k] < j) A[i + k] = A[k], ++k;
-        i += k;
-        j -= k;
     }
-    return A;
+    a[0] = s.size();
+    return a;
 }
