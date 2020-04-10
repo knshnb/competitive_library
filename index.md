@@ -133,8 +133,7 @@ layout: default
 * :warning: <a href="library/src/String/Manacher.hpp.html">src/String/Manacher.hpp</a>
 * :warning: <a href="library/src/String/MultisetHash.hpp.html">src/String/MultisetHash.hpp</a>
 * :heavy_check_mark: <a href="library/src/String/RollingHash.hpp.html">src/String/RollingHash.hpp</a>
-* :warning: <a href="library/src/String/SuffixArray.hpp.html">src/String/SuffixArray.hpp</a>
-* :warning: <a href="library/src/String/SuffixArrayDoubling.hpp.html">src/String/SuffixArrayDoubling.hpp</a>
+* :heavy_check_mark: <a href="library/src/String/SuffixArray.hpp.html">src/String/SuffixArray.hpp</a>
 * :warning: <a href="library/src/String/Trie.hpp.html">src/String/Trie.hpp</a>
 * :heavy_check_mark: <a href="library/src/String/ZAlgorithm.hpp.html">src/String/ZAlgorithm.hpp</a>
 
@@ -144,6 +143,7 @@ layout: default
 ### src/old
 
 * :warning: <a href="library/src/old/DynamicModInt.hpp.html">src/old/DynamicModInt.hpp</a>
+* :warning: <a href="library/src/old/SuffixArrayDoubling.hpp.html">src/old/SuffixArrayDoubling.hpp</a>
 
 
 ## Verify Files
@@ -161,6 +161,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo/range_affine_range_sum.test.cpp.html">test/yosupo/range_affine_range_sum.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/scc.test.cpp.html">test/yosupo/scc.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/staticrmq.test.cpp.html">test/yosupo/staticrmq.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/suffixarray.test.cpp.html">test/yosupo/suffixarray.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/two_edge_connected_components.test.cpp.html">test/yosupo/two_edge_connected_components.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind.test.cpp.html">test/yosupo/unionfind.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm.test.cpp.html">test/yosupo/zalgorithm.test.cpp</a>

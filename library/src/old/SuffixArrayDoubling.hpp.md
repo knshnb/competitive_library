@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/String/SuffixArrayDoubling.hpp
+# :warning: src/old/SuffixArrayDoubling.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#ac276d2326c527c8c7dbcbb63d85c6c7">src/String</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/String/SuffixArrayDoubling.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/SuffixArrayDoubling.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-10 21:10:59+09:00
 
 
 
@@ -201,7 +201,7 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/String/SuffixArrayDoubling.hpp"
+#line 1 "src/old/SuffixArrayDoubling.hpp"
 template <class T = int> class SegTree {
     using VT = vector<T>;
     int orig_n;
