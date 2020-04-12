@@ -1,4 +1,4 @@
-const vector<pair<int, int>> DIRECTIONS = {
+const std::vector<std::pair<int, int>> DIRECTIONS = {
     {1, 0}, {0, 1},  {-1, 0},  {0, -1},  // 4方向
     {1, 1}, {-1, 1}, {-1, -1}, {1, -1},  // 斜め
     {0, 0},                              // 自身
