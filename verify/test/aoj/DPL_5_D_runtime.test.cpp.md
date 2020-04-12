@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_D_runtime.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 17:42:46+09:00
+    - Last commit date: 2020-04-12 16:47:15+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D</a>
@@ -121,7 +121,7 @@ template <int Mod> struct ModInt {
     // テンプレート引数が負のときは実行時ModInt
     static int mod() { return Mod < 0 ? runtime_mod : Mod; }
     static void set_runtime_mod(int mod) {
-        static_assert(Mod < 0);
+        static_assert(Mod < 0, "template parameter Mod must be negative for runtime ModInt");
         runtime_mod = mod;
         to_inv.clear();
     }

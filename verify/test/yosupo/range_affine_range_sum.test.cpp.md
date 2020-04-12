@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/range_affine_range_sum.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 17:42:46+09:00
+    - Last commit date: 2020-04-12 16:47:15+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -142,7 +142,7 @@ template <int Mod> struct ModInt {
     // テンプレート引数が負のときは実行時ModInt
     static int mod() { return Mod < 0 ? runtime_mod : Mod; }
     static void set_runtime_mod(int mod) {
-        static_assert(Mod < 0);
+        static_assert(Mod < 0, "template parameter Mod must be negative for runtime ModInt");
         runtime_mod = mod;
         to_inv.clear();
     }
