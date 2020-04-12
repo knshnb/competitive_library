@@ -16,7 +16,7 @@ template <int Mod> struct ModInt {
     // テンプレート引数が負のときは実行時ModInt
     static int mod() { return Mod < 0 ? runtime_mod : Mod; }
     static void set_runtime_mod(int mod) {
-        static_assert(Mod < 0);
+        static_assert(Mod < 0, "template parameter Mod must be negative for runtime ModInt");
         runtime_mod = mod;
         to_inv.clear();
     }
