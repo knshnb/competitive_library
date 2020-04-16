@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Helper/Directions.hpp
+# :warning: src/Helper/PairOperations.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Helper/Directions.hpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/Helper/PairOperations.hpp">View this file on GitHub</a>
     - Last commit date: 2020-04-12 17:00:09+09:00
 
 
@@ -41,11 +41,13 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-const std::vector<std::pair<int, int>> DIRECTIONS = {
-    {1, 0}, {0, 1},  {-1, 0},  {0, -1},  // 4方向
-    {1, 1}, {-1, 1}, {-1, -1}, {1, -1},  // 斜め
-    {0, 0},                              // 自身
-};
+template <class A, class B, class C, class D>
+std::pair<A, B>& operator+=(std::pair<A, B>& x, const std::pair<C, D>& y) {
+    return x = {x.first + y.first, x.second + y.second};
+}
+template <class A, class B, class C, class D> std::pair<A, B> operator+(std::pair<A, B> x, const std::pair<C, D>& y) {
+    return x += y;
+}
 
 ```
 {% endraw %}
@@ -53,12 +55,14 @@ const std::vector<std::pair<int, int>> DIRECTIONS = {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Helper/Directions.hpp"
-const std::vector<std::pair<int, int>> DIRECTIONS = {
-    {1, 0}, {0, 1},  {-1, 0},  {0, -1},  // 4方向
-    {1, 1}, {-1, 1}, {-1, -1}, {1, -1},  // 斜め
-    {0, 0},                              // 自身
-};
+#line 1 "src/Helper/PairOperations.hpp"
+template <class A, class B, class C, class D>
+std::pair<A, B>& operator+=(std::pair<A, B>& x, const std::pair<C, D>& y) {
+    return x = {x.first + y.first, x.second + y.second};
+}
+template <class A, class B, class C, class D> std::pair<A, B> operator+(std::pair<A, B> x, const std::pair<C, D>& y) {
+    return x += y;
+}
 
 ```
 {% endraw %}

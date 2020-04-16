@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
-* :heavy_check_mark: <a href="../../../library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
+* :question: <a href="../../../library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
+* :question: <a href="../../../library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
 
 
 ## Code

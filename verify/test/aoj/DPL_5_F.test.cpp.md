@@ -25,16 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_5_D.test.cpp
+# :heavy_check_mark: test/aoj/DPL_5_F.test.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_D.test.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_F.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-04-16 20:04:25+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D</a>
+* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_F">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_F</a>
 
 
 ## Depends on
@@ -48,7 +48,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_F"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -61,7 +61,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 /**
  *    author:  knshnb
- *    created: Wed Apr  1 18:41:55 JST 2020
+ *    created: Sun Apr 12 17:57:28 JST 2020
  **/
 
 #define CALL_FROM_TEST
@@ -74,7 +74,7 @@ signed main() {
     Int n, k;
     std::cin >> n >> k;
     Combination<mint> comb(n + k - 1);
-    std::cout << comb(n + k - 1, n) << std::endl;
+    std::cout << (n < k ? 0 : comb(n - 1, k - 1)) << std::endl;
 }
 
 ```
@@ -83,8 +83,8 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DPL_5_D.test.cpp"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D"
+#line 1 "test/aoj/DPL_5_F.test.cpp"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_F"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -97,7 +97,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 /**
  *    author:  knshnb
- *    created: Wed Apr  1 18:41:55 JST 2020
+ *    created: Sun Apr 12 17:57:28 JST 2020
  **/
 
 #define CALL_FROM_TEST
@@ -183,7 +183,7 @@ template <int Mod> int ModInt<Mod>::runtime_mod;
 #ifndef CALL_FROM_TEST
 using mint = ModInt<1000000007>;
 #endif
-#line 20 "test/aoj/DPL_5_D.test.cpp"
+#line 20 "test/aoj/DPL_5_F.test.cpp"
 #undef CALL_FROM_TEST
 
 using mint = ModInt<1000000007>;
@@ -191,7 +191,7 @@ signed main() {
     Int n, k;
     std::cin >> n >> k;
     Combination<mint> comb(n + k - 1);
-    std::cout << comb(n + k - 1, n) << std::endl;
+    std::cout << (n < k ? 0 : comb(n - 1, k - 1)) << std::endl;
 }
 
 ```
