@@ -1,4 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D"
+#define PROBLEM ""
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -11,7 +11,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 /**
  *    author:  knshnb
- *    created: Wed Apr  1 18:41:55 JST 2020
+ *    created: Sun Apr 12 17:52:03 JST 2020
  **/
 
 #define CALL_FROM_TEST
@@ -24,5 +24,5 @@ signed main() {
     Int n, k;
     std::cin >> n >> k;
     Combination<mint> comb(n + k - 1);
-    std::cout << comb(n + k - 1, n) << std::endl;
+    std::cout << (n > k ? 0 : comb(k, n)) << std::endl;
 }
