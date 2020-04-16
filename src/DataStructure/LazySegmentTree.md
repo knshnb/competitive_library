@@ -17,12 +17,26 @@
 - `update(int l, int t, T1 x)`: $\[l, r)$の範囲に$x$を作用
 
 ## 初期化例
+- `Int`に対するAdd & Sum
+```cpp
+auto seg = make_lazy_segment_tree<Int, Int>(std::plus<Int>(), 0, std::plus<Int>(), 0, std::plus<Int>(),
+                                            [](Int x, int len) { return x * len; });
+```
+
 - `Int`に対するAdd & Max
 ```cpp
 constexpr Int INF = 1e18;
 auto seg = make_lazy_segment_tree<Int, Int>(
-    [](Int x, Int y) { return max(x, y); }, -INF, [](Int x, Int y) { return x + y; }, 0,
+    [](Int x, Int y) { return std::max(x, y); }, -INF, [](Int x, Int y) { return x + y; }, 0,
     [](Int x, Int y) { return x == -INF ? x : x + y; }, [](Int x, int len) { return x; });
+```
+
+- `Int`に対するAdd & Min
+```cpp
+constexpr Int INF = 1e18;
+auto seg = make_lazy_segment_tree<Int, Int>(
+    [](Int x, Int y) { return std::min(x, y); }, INF, [](Int x, Int y) { return x + y; }, 0,
+    [](Int x, Int y) { return x == INF ? x : x + y; }, [](Int x, int len) { return x; });
 ```
 
 - `mint`に対するAffine & Sum
