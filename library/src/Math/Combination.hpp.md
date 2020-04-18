@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: src/Math/Combination.hpp
+# :heavy_check_mark: src/Math/Combination.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -41,7 +41,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_B.test.cpp.html">test/aoj/DPL_5_B.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_D.test.cpp.html">test/aoj/DPL_5_D.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_D_runtime.test.cpp.html">test/aoj/DPL_5_D_runtime.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/DPL_5_E.test.cpp.html">test/aoj/DPL_5_E.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_E.test.cpp.html">test/aoj/DPL_5_E.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_F.test.cpp.html">test/aoj/DPL_5_F.test.cpp</a>
 
 

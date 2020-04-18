@@ -105,6 +105,7 @@ layout: default
 * :warning: <a href="library/src/Helper/PairOperations.hpp.html">src/Helper/PairOperations.hpp</a>
 * :warning: <a href="library/src/Helper/Random.hpp.html">src/Helper/Random.hpp</a>
 * :warning: <a href="library/src/Helper/Rotate2D.hpp.html">src/Helper/Rotate2D.hpp</a>
+* :heavy_check_mark: <a href="library/src/Helper/TernarySearch.hpp.html">src/Helper/TernarySearch.hpp</a>
 * :warning: <a href="library/src/Helper/TreeDFS.hpp.html">src/Helper/TreeDFS.hpp</a>
 * :warning: <a href="library/src/Helper/TreeInput.hpp.html">src/Helper/TreeInput.hpp</a>
 
@@ -114,7 +115,7 @@ layout: default
 ### src/Math
 
 * :warning: <a href="library/src/Math/ChineseRemainderTheorem.hpp.html">src/Math/ChineseRemainderTheorem.hpp</a>
-* :question: <a href="library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
+* :heavy_check_mark: <a href="library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
 * :warning: <a href="library/src/Math/Divisor.hpp.html">src/Math/Divisor.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/Eratosthenes.hpp.html">src/Math/Eratosthenes.hpp</a>
 * :warning: <a href="library/src/Math/EulerTotient.hpp.html">src/Math/EulerTotient.hpp</a>
@@ -122,7 +123,7 @@ layout: default
 * :warning: <a href="library/src/Math/GaussJordan.hpp.html">src/Math/GaussJordan.hpp</a>
 * :warning: <a href="library/src/Math/Matrix.hpp.html">src/Math/Matrix.hpp</a>
 * :warning: <a href="library/src/Math/MillerRabin.hpp.html">src/Math/MillerRabin.hpp</a>
-* :question: <a href="library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
+* :heavy_check_mark: <a href="library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
 
 
 <div id="ac276d2326c527c8c7dbcbb63d85c6c7"></div>
@@ -154,7 +155,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_B.test.cpp.html">test/aoj/DPL_5_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_D.test.cpp.html">test/aoj/DPL_5_D.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_D_runtime.test.cpp.html">test/aoj/DPL_5_D_runtime.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_5_E.test.cpp.html">test/aoj/DPL_5_E.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DPL_5_E.test.cpp.html">test/aoj/DPL_5_E.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_F.test.cpp.html">test/aoj/DPL_5_F.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A.test.cpp.html">test/aoj/DSL_2_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
@@ -171,5 +172,6 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind.test.cpp.html">test/yosupo/unionfind.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm.test.cpp.html">test/yosupo/zalgorithm.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm_rolling_hash.test.cpp.html">test/yosupo/zalgorithm_rolling_hash.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/1028.test.cpp.html">test/yukicoder/1028.test.cpp</a>
 
 

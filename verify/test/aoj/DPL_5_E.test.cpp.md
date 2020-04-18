@@ -25,22 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/DPL_5_E.test.cpp
+# :heavy_check_mark: test/aoj/DPL_5_E.test.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_E.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-16 20:04:25+09:00
+    - Last commit date: 2020-04-18 15:57:55+09:00
 
 
-* see: <a href=""></a>
+* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_E">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_E</a>
 
 
 ## Depends on
 
-* :question: <a href="../../../library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
-* :question: <a href="../../../library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
 
 
 ## Code
@@ -48,7 +48,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM ""
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_E"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -84,7 +84,7 @@ signed main() {
 {% raw %}
 ```cpp
 #line 1 "test/aoj/DPL_5_E.test.cpp"
-#define PROBLEM ""
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_E"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
