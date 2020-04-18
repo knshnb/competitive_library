@@ -1,4 +1,4 @@
-/// @docs src/DataStructure/SegmentTree.md
+/// @docs src/Helper/TernarySearch.md
 template <class F, class T = long long> T ternary_search(T l, T r, F f, bool is_max = true) {
     auto g = [&f, &is_max](T x) { return is_max ? f(x) : -f(x); };
     while (std::abs(l - r) > 2) {
