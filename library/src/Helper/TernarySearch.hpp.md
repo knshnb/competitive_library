@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/TernarySearch.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-18 18:54:06+09:00
+    - Last commit date: 2020-04-18 20:15:36+09:00
 
 
 
@@ -54,7 +54,7 @@ fの評価回数は、O(log (r - l))。
 template <class F, class T = long long> T ternary_search(T l, T r, F f, bool is_max = true) {
     auto g = [&f, &is_max](T x) { return is_max ? f(x) : -f(x); };
     while (std::abs(l - r) > 2) {
-        Int m1 = (2 * l + r) / 3, m2 = (l + 2 * r) / 3;
+        T m1 = (2 * l + r) / 3, m2 = (l + 2 * r) / 3;
         if (g(m1) < g(m2))
             l = m1;
         else
@@ -76,7 +76,7 @@ template <class F, class T = long long> T ternary_search(T l, T r, F f, bool is_
 template <class F, class T = long long> T ternary_search(T l, T r, F f, bool is_max = true) {
     auto g = [&f, &is_max](T x) { return is_max ? f(x) : -f(x); };
     while (std::abs(l - r) > 2) {
-        Int m1 = (2 * l + r) / 3, m2 = (l + 2 * r) / 3;
+        T m1 = (2 * l + r) / 3, m2 = (l + 2 * r) / 3;
         if (g(m1) < g(m2))
             l = m1;
         else

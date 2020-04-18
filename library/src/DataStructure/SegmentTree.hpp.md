@@ -53,23 +53,23 @@ layout: default
 ## 初期化例
 - `Int`に対するmin
 ```cpp
-auto seg_mi = make_segment_tree<Int>([](Int a, Int b) { return min(a, b); }, 1e18);
+auto seg = make_segment_tree<Int>([](Int a, Int b) { return std::min(a, b); }, 1e18);
 ```
 
 - `Int`に対するmax
 ```cpp
-auto seg_ma = make_segment_tree<Int>([](Int a, Int b) { return max(a, b); }, -1e18);
+auto seg = make_segment_tree<Int>([](Int a, Int b) { return std::max(a, b); }, -1e18);
 ```
 
-- `Int`に対するmax
+- `Int`に対するsum
 ```cpp
-auto seg_ma = make_segment_tree<Int>(std::plus<Int>(), -1e18);
+auto seg = make_segment_tree<Int>(std::plus<Int>(), 0);
 ```
 
 - `Int`に対するAffine
 ```cpp
-auto seg_affine = make_segment_tree<pair<Int, Int>>(
-    [](pair<Int, Int> a, pair<Int, Int> b) -> pair<Int, Int> {
+auto seg = make_segment_tree<std::pair<Int, Int>>(
+    [](std::pair<Int, Int> a, std::pair<Int, Int> b) -> std::pair<Int, Int> {
         return {a.first * b.first, b.first * a.second + b.second};
     },
     {1, 0});
