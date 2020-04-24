@@ -14,7 +14,7 @@ template <class T = long long> struct Dinic {
     }
     T max_flow(int s, int t) {
         std::vector<int> level(g.size());
-        auto bfs = [this, &level, &s, &t]() {
+        auto bfs = [this, &level, &s, &t]() -> bool {
             std::fill(level.begin(), level.end(), -1);
             std::queue<int> q;
             level[s] = 0, q.push(s);
