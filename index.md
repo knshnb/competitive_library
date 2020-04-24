@@ -59,7 +59,7 @@ layout: default
 
 ### src/Flow
 
-* :warning: <a href="library/src/Flow/Dinic.hpp.html">src/Flow/Dinic.hpp</a>
+* :heavy_check_mark: <a href="library/src/Flow/Dinic.hpp.html">src/Flow/Dinic.hpp</a>
 * :warning: <a href="library/src/Flow/FordFulkerson.hpp.html">src/Flow/FordFulkerson.hpp</a>
 
 
@@ -160,6 +160,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A.test.cpp.html">test/aoj/DSL_2_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H.test.cpp.html">test/aoj/DSL_2_H.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/bipartitematching.test.cpp.html">test/yosupo/bipartitematching.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/enumerate_primes.test.cpp.html">test/yosupo/enumerate_primes.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/lca.test.cpp.html">test/yosupo/lca.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/point_add_range_sum.test.cpp.html">test/yosupo/point_add_range_sum.test.cpp</a>
