@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/bipartitematching.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-24 20:42:50+09:00
+    - Last commit date: 2020-04-24 21:15:34+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/bipartitematching">https://judge.yosupo.jp/problem/bipartitematching</a>
@@ -128,7 +128,7 @@ template <class T = long long> struct Dinic {
     }
     T max_flow(int s, int t) {
         std::vector<int> level(g.size());
-        auto bfs = [this, &level, &s, &t]() {
+        auto bfs = [this, &level, &s, &t]() -> bool {
             std::fill(level.begin(), level.end(), -1);
             std::queue<int> q;
             level[s] = 0, q.push(s);

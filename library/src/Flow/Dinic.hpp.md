@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#29f578163eb30c67e395a84ad90553a2">src/Flow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Flow/Dinic.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-24 20:42:50+09:00
+    - Last commit date: 2020-04-24 21:15:34+09:00
 
 
 
@@ -73,7 +73,7 @@ template <class T = long long> struct Dinic {
     }
     T max_flow(int s, int t) {
         std::vector<int> level(g.size());
-        auto bfs = [this, &level, &s, &t]() {
+        auto bfs = [this, &level, &s, &t]() -> bool {
             std::fill(level.begin(), level.end(), -1);
             std::queue<int> q;
             level[s] = 0, q.push(s);
@@ -151,7 +151,7 @@ template <class T = long long> struct Dinic {
     }
     T max_flow(int s, int t) {
         std::vector<int> level(g.size());
-        auto bfs = [this, &level, &s, &t]() {
+        auto bfs = [this, &level, &s, &t]() -> bool {
             std::fill(level.begin(), level.end(), -1);
             std::queue<int> q;
             level[s] = 0, q.push(s);
