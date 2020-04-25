@@ -28,6 +28,11 @@ auto seg = make_segment_tree<Int>([](Int a, Int b) { return std::max(a, b); }, -
 auto seg = make_segment_tree<Int>(std::plus<Int>(), 0);
 ```
 
+- gcd
+```cpp
+auto seg = make_segment_tree<Int>([](Int x, Int y) { return std::gcd(x, y); }, 0);
+```
+
 - `Int`に対するAffine
 ```cpp
 auto seg = make_segment_tree<std::pair<Int, Int>>(

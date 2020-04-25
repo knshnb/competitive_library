@@ -9,7 +9,7 @@
 
 ## 使用例
 ```c++
-    auto swag = make_swag<Int>([](Int x, Int y) { return std::gcd(x, y); }, 0);
+auto swag = make_swag<Int>([](Int x, Int y) { return std::gcd(x, y); }, 0);
 ```
 
 ## メモ
