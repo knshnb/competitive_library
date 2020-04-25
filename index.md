@@ -48,7 +48,7 @@ layout: default
 * :warning: <a href="library/src/DataStructure/QuickFind.hpp.html">src/DataStructure/QuickFind.hpp</a>
 * :warning: <a href="library/src/DataStructure/ReversedBinaryIndexedTree.hpp.html">src/DataStructure/ReversedBinaryIndexedTree.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SegmentTree.hpp.html">src/DataStructure/SegmentTree.hpp</a>
-* :warning: <a href="library/src/DataStructure/SlideMin.hpp.html">src/DataStructure/SlideMin.hpp</a>
+* :heavy_check_mark: <a href="library/src/DataStructure/SlidingWindowAggregation.hpp.html">src/DataStructure/SlidingWindowAggregation.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/UnionFind.hpp.html">src/DataStructure/UnionFind.hpp</a>
 * :warning: <a href="library/src/DataStructure/UnionFindRange.hpp.html">src/DataStructure/UnionFindRange.hpp</a>
 * :warning: <a href="library/src/DataStructure/UnionFindWithData.hpp.html">src/DataStructure/UnionFindWithData.hpp</a>
@@ -145,6 +145,7 @@ layout: default
 ### src/old
 
 * :warning: <a href="library/src/old/DynamicModInt.hpp.html">src/old/DynamicModInt.hpp</a>
+* :warning: <a href="library/src/old/SlideMin.hpp.html">src/old/SlideMin.hpp</a>
 * :warning: <a href="library/src/old/SuffixArrayDoubling.hpp.html">src/old/SuffixArrayDoubling.hpp</a>
 
 
@@ -174,5 +175,6 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm.test.cpp.html">test/yosupo/zalgorithm.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm_rolling_hash.test.cpp.html">test/yosupo/zalgorithm_rolling_hash.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/1028.test.cpp.html">test/yukicoder/1028.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/1036.test.cpp.html">test/yukicoder/1036.test.cpp</a>
 
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/DataStructure/SlideMin.hpp
+# :warning: src/old/SlideMin.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/SlideMin.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/SlideMin.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-25 17:31:02+09:00
 
 
 
@@ -66,7 +66,7 @@ template <class T = int> vector<int> slide_min(const vector<T>& a, int w, functi
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/DataStructure/SlideMin.hpp"
+#line 1 "src/old/SlideMin.hpp"
 // 自分を含んだK個前までの中での最小値のindexの配列を返す
 // 最小(最大)値のindexを返すことに注意!
 template <class T = int> vector<int> slide_min(const vector<T>& a, int w, function<bool(T, T)> cmp = less<T>()) {
