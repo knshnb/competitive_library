@@ -41,7 +41,7 @@ layout: default
 * :warning: <a href="library/src/DataStructure/Accumulate2D.hpp.html">src/DataStructure/Accumulate2D.hpp</a>
 * :warning: <a href="library/src/DataStructure/ConvexHullTrick.hpp.html">src/DataStructure/ConvexHullTrick.hpp</a>
 * :warning: <a href="library/src/DataStructure/Doubling.hpp.html">src/DataStructure/Doubling.hpp</a>
-* :warning: <a href="library/src/DataStructure/DynamicUnionFind.hpp.html">src/DataStructure/DynamicUnionFind.hpp</a>
+* :heavy_check_mark: <a href="library/src/DataStructure/DynamicUnionFind.hpp.html">src/DataStructure/DynamicUnionFind.hpp</a>
 * :warning: <a href="library/src/DataStructure/FenwickTree.hpp.html">src/DataStructure/FenwickTree.hpp</a>
 * :warning: <a href="library/src/DataStructure/Imos2D.hpp.html">src/DataStructure/Imos2D.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/LazySegmentTree.hpp.html">src/DataStructure/LazySegmentTree.hpp</a>
@@ -50,9 +50,6 @@ layout: default
 * :heavy_check_mark: <a href="library/src/DataStructure/SegmentTree.hpp.html">src/DataStructure/SegmentTree.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SlidingWindowAggregation.hpp.html">src/DataStructure/SlidingWindowAggregation.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/UnionFind.hpp.html">src/DataStructure/UnionFind.hpp</a>
-* :warning: <a href="library/src/DataStructure/UnionFindRange.hpp.html">src/DataStructure/UnionFindRange.hpp</a>
-* :warning: <a href="library/src/DataStructure/UnionFindWithData.hpp.html">src/DataStructure/UnionFindWithData.hpp</a>
-* :warning: <a href="library/src/DataStructure/UnionFindWithWeight.hpp.html">src/DataStructure/UnionFindWithWeight.hpp</a>
 
 
 <div id="29f578163eb30c67e395a84ad90553a2"></div>
@@ -114,15 +111,11 @@ layout: default
 
 ### src/Math
 
-* :warning: <a href="library/src/Math/ChineseRemainderTheorem.hpp.html">src/Math/ChineseRemainderTheorem.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
 * :warning: <a href="library/src/Math/Divisor.hpp.html">src/Math/Divisor.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/Eratosthenes.hpp.html">src/Math/Eratosthenes.hpp</a>
-* :warning: <a href="library/src/Math/EulerTotient.hpp.html">src/Math/EulerTotient.hpp</a>
-* :warning: <a href="library/src/Math/FFT.hpp.html">src/Math/FFT.hpp</a>
 * :warning: <a href="library/src/Math/GaussJordan.hpp.html">src/Math/GaussJordan.hpp</a>
 * :warning: <a href="library/src/Math/Matrix.hpp.html">src/Math/Matrix.hpp</a>
-* :warning: <a href="library/src/Math/MillerRabin.hpp.html">src/Math/MillerRabin.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
 
 
@@ -130,10 +123,7 @@ layout: default
 
 ### src/String
 
-* :warning: <a href="library/src/String/LongestCommonPrefix.hpp.html">src/String/LongestCommonPrefix.hpp</a>
-* :warning: <a href="library/src/String/LongestCommonSubsequence.hpp.html">src/String/LongestCommonSubsequence.hpp</a>
 * :warning: <a href="library/src/String/Manacher.hpp.html">src/String/Manacher.hpp</a>
-* :warning: <a href="library/src/String/MultisetHash.hpp.html">src/String/MultisetHash.hpp</a>
 * :heavy_check_mark: <a href="library/src/String/RollingHash.hpp.html">src/String/RollingHash.hpp</a>
 * :heavy_check_mark: <a href="library/src/String/SuffixArray.hpp.html">src/String/SuffixArray.hpp</a>
 * :warning: <a href="library/src/String/Trie.hpp.html">src/String/Trie.hpp</a>
@@ -144,9 +134,19 @@ layout: default
 
 ### src/old
 
+* :warning: <a href="library/src/old/ChineseRemainderTheorem.hpp.html">src/old/ChineseRemainderTheorem.hpp</a>
 * :warning: <a href="library/src/old/DynamicModInt.hpp.html">src/old/DynamicModInt.hpp</a>
+* :warning: <a href="library/src/old/EulerTotient.hpp.html">src/old/EulerTotient.hpp</a>
+* :warning: <a href="library/src/old/FFT.hpp.html">src/old/FFT.hpp</a>
+* :warning: <a href="library/src/old/LongestCommonPrefix.hpp.html">src/old/LongestCommonPrefix.hpp</a>
+* :warning: <a href="library/src/old/LongestCommonSubsequence.hpp.html">src/old/LongestCommonSubsequence.hpp</a>
+* :warning: <a href="library/src/old/MillerRabin.hpp.html">src/old/MillerRabin.hpp</a>
+* :warning: <a href="library/src/old/MultisetHash.hpp.html">src/old/MultisetHash.hpp</a>
 * :warning: <a href="library/src/old/SlideMin.hpp.html">src/old/SlideMin.hpp</a>
 * :warning: <a href="library/src/old/SuffixArrayDoubling.hpp.html">src/old/SuffixArrayDoubling.hpp</a>
+* :warning: <a href="library/src/old/UnionFindRange.hpp.html">src/old/UnionFindRange.hpp</a>
+* :warning: <a href="library/src/old/UnionFindWithData.hpp.html">src/old/UnionFindWithData.hpp</a>
+* :warning: <a href="library/src/old/UnionFindWithWeight.hpp.html">src/old/UnionFindWithWeight.hpp</a>
 
 
 ## Verify Files
@@ -172,6 +172,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo/suffixarray.test.cpp.html">test/yosupo/suffixarray.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/two_edge_connected_components.test.cpp.html">test/yosupo/two_edge_connected_components.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind.test.cpp.html">test/yosupo/unionfind.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/unionfind_dynamic.test.cpp.html">test/yosupo/unionfind_dynamic.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm.test.cpp.html">test/yosupo/zalgorithm.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm_rolling_hash.test.cpp.html">test/yosupo/zalgorithm_rolling_hash.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/1028.test.cpp.html">test/yukicoder/1028.test.cpp</a>

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Math/ChineseRemainderTheorem.hpp
+# :warning: src/old/ChineseRemainderTheorem.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Math/ChineseRemainderTheorem.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/ChineseRemainderTheorem.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-25 17:53:12+09:00
 
 
 
@@ -74,7 +74,7 @@ signed main() {}
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Math/ChineseRemainderTheorem.hpp"
+#line 1 "src/old/ChineseRemainderTheorem.hpp"
 // ax + by = gcd(a, b) を満たす(x, y)
 pair<int, int> ext_gcd(int a, int b) {
     if (b == 0) return {1, 0};

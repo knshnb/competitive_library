@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/DataStructure/DynamicUnionFind.hpp
+# :heavy_check_mark: src/DataStructure/DynamicUnionFind.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/DynamicUnionFind.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-04-25 17:49:02+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/yosupo/unionfind_dynamic.test.cpp.html">test/yosupo/unionfind_dynamic.test.cpp</a>
 
 
 ## Code
@@ -42,34 +47,22 @@ layout: default
 {% raw %}
 ```cpp
 struct DynamicUnionFind {
-    unordered_map<int, int> number;
-    // 頂点xが入っていなかったら追加
-    struct Data {
-        Data() {}
-        void merge(Data& s) {
-            // 自分で定義
-        }
-    };
-    unordered_map<int, Data> data;
+    std::unordered_map<int, int> number;
 
     int root(int x) {
         if (!number.count(x)) number[x] = -1;
         return number[x] < 0 ? x : number[x] = root(number[x]);
     }
     void unite(int x, int y) {
-        x = root(x);
-        y = root(y);
+        x = root(x), y = root(y);
         if (x == y) return;
-        if (number[y] < number[x]) swap(x, y);
+        if (number[y] < number[x]) std::swap(x, y);
         // yをxにマージ
         number[x] += number[y];
         number[y] = x;
-        // dataのマージ方法に合わせて変える
-        data[x].merge(data[y]);
     }
     bool is_same(int x, int y) { return root(x) == root(y); }
     int size(int x) { return -number[root(x)]; }
-    Data& ref(int x) { return data[root(x)]; }
 };
 
 ```
@@ -80,34 +73,22 @@ struct DynamicUnionFind {
 ```cpp
 #line 1 "src/DataStructure/DynamicUnionFind.hpp"
 struct DynamicUnionFind {
-    unordered_map<int, int> number;
-    // 頂点xが入っていなかったら追加
-    struct Data {
-        Data() {}
-        void merge(Data& s) {
-            // 自分で定義
-        }
-    };
-    unordered_map<int, Data> data;
+    std::unordered_map<int, int> number;
 
     int root(int x) {
         if (!number.count(x)) number[x] = -1;
         return number[x] < 0 ? x : number[x] = root(number[x]);
     }
     void unite(int x, int y) {
-        x = root(x);
-        y = root(y);
+        x = root(x), y = root(y);
         if (x == y) return;
-        if (number[y] < number[x]) swap(x, y);
+        if (number[y] < number[x]) std::swap(x, y);
         // yをxにマージ
         number[x] += number[y];
         number[y] = x;
-        // dataのマージ方法に合わせて変える
-        data[x].merge(data[y]);
     }
     bool is_same(int x, int y) { return root(x) == root(y); }
     int size(int x) { return -number[root(x)]; }
-    Data& ref(int x) { return data[root(x)]; }
 };
 
 ```

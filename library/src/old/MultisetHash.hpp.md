@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Math/MillerRabin.hpp
+# :warning: src/old/MultisetHash.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Math/MillerRabin.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/MultisetHash.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-25 17:53:12+09:00
 
 
 
@@ -41,6 +41,7 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
+using ull = unsigned long long;
 random_device rnd;
 mt19937 mt(rnd());
 mt19937_64 mt64(rnd());
@@ -49,7 +50,6 @@ int mod_pow(int x, int n, int mod) {
     int tmp = mod_pow(x, n / 2, mod);
     return tmp * tmp % mod * (n % 2 ? x : 1) % mod;
 }
-int mod_inv(int x, int mod) { return mod_pow(x, mod - 2, mod); }
 // Miller-Rabin
 bool is_prime(int n, int times = 50) {
     if (n == 2) return true;
@@ -78,6 +78,29 @@ int gen_prime() {
         if (is_prime(n)) return n;
     }
 }
+class MultisetHash {
+public:
+    vector<ull> hash, pows;
+    ull mod;
+    int to_int(char c) { return c - 'a'; }
+    MultisetHash() {}
+    MultisetHash(const string& S, int k = 26, ull base = gen_prime(), ull m = gen_prime())
+        : hash(S.size() + 1), pows(k), mod(m) {
+        pows[0] = 1;
+        for (int i = 0; i < k - 1; i++) {
+            pows[i + 1] = pows[i] * base % mod;
+        }
+        for (int i = 0; i < S.size(); i++) {
+            hash[i + 1] = hash[i] + pows[to_int(S[i])];
+        }
+    }
+    // [l, r)
+    ull get(int l, int r) {
+        int ret = hash[r] + mod - hash[l];
+        if (ret >= mod) ret -= mod;
+        return ret;
+    }
+};
 
 ```
 {% endraw %}
@@ -85,7 +108,8 @@ int gen_prime() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Math/MillerRabin.hpp"
+#line 1 "src/old/MultisetHash.hpp"
+using ull = unsigned long long;
 random_device rnd;
 mt19937 mt(rnd());
 mt19937_64 mt64(rnd());
@@ -94,7 +118,6 @@ int mod_pow(int x, int n, int mod) {
     int tmp = mod_pow(x, n / 2, mod);
     return tmp * tmp % mod * (n % 2 ? x : 1) % mod;
 }
-int mod_inv(int x, int mod) { return mod_pow(x, mod - 2, mod); }
 // Miller-Rabin
 bool is_prime(int n, int times = 50) {
     if (n == 2) return true;
@@ -123,6 +146,29 @@ int gen_prime() {
         if (is_prime(n)) return n;
     }
 }
+class MultisetHash {
+public:
+    vector<ull> hash, pows;
+    ull mod;
+    int to_int(char c) { return c - 'a'; }
+    MultisetHash() {}
+    MultisetHash(const string& S, int k = 26, ull base = gen_prime(), ull m = gen_prime())
+        : hash(S.size() + 1), pows(k), mod(m) {
+        pows[0] = 1;
+        for (int i = 0; i < k - 1; i++) {
+            pows[i + 1] = pows[i] * base % mod;
+        }
+        for (int i = 0; i < S.size(); i++) {
+            hash[i + 1] = hash[i] + pows[to_int(S[i])];
+        }
+    }
+    // [l, r)
+    ull get(int l, int r) {
+        int ret = hash[r] + mod - hash[l];
+        if (ret >= mod) ret -= mod;
+        return ret;
+    }
+};
 
 ```
 {% endraw %}

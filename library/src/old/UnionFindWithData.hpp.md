@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/DataStructure/UnionFindRange.hpp
+# :warning: src/old/UnionFindWithData.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/UnionFindRange.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/UnionFindWithData.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-25 17:53:12+09:00
 
 
 
@@ -41,14 +41,18 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-// 1次元上の要素のマージをしていくときに、各連結成分の[left, right)を更新
 struct UnionFind {
-    int cnt;                      // 集合の数
-    vector<int> number;           // 0以上のとき親のindex, 負のときは集合サイズ
-    vector<pair<int, int>> data;  // [left, right)
-    UnionFind(int n) : cnt(n), number(n, -1), data(n) {
-        for (int i = 0; i < n; i++) data[i] = {i, i + 1};
-    }
+    int cnt;             // 集合の数
+    vector<int> number;  // 0以上のとき親のindex, 負のときは集合サイズ
+    struct Data {
+        Data() {}
+        void merge(Data& s) {
+            // 自分で定義
+        }
+    };
+    vector<Data> data;
+
+    UnionFind(int n) : cnt(n), number(n, -1), data(n) {}
     int root(int x) { return number[x] < 0 ? x : number[x] = root(number[x]); }
     void unite(int x, int y) {
         x = root(x);
@@ -59,14 +63,13 @@ struct UnionFind {
         number[x] += number[y];
         number[y] = x;
         // dataのマージ方法に合わせて変える
-        data[x] = {min(data[x].first, data[y].first), max(data[x].second, data[y].second)};
+        data[x].merge(data[y]);
+
         cnt--;
     }
     bool is_same(int x, int y) { return root(x) == root(y); }
     int size(int x) { return -number[root(x)]; }
-    int& left(int x) { return data[root(x)].first; }
-    int& right(int x) { return data[root(x)].second; }
-    pair<int, int>& ref(int x) { return data[root(x)]; }
+    Data& ref(int x) { return data[root(x)]; }
 };
 
 ```
@@ -75,15 +78,19 @@ struct UnionFind {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/DataStructure/UnionFindRange.hpp"
-// 1次元上の要素のマージをしていくときに、各連結成分の[left, right)を更新
+#line 1 "src/old/UnionFindWithData.hpp"
 struct UnionFind {
-    int cnt;                      // 集合の数
-    vector<int> number;           // 0以上のとき親のindex, 負のときは集合サイズ
-    vector<pair<int, int>> data;  // [left, right)
-    UnionFind(int n) : cnt(n), number(n, -1), data(n) {
-        for (int i = 0; i < n; i++) data[i] = {i, i + 1};
-    }
+    int cnt;             // 集合の数
+    vector<int> number;  // 0以上のとき親のindex, 負のときは集合サイズ
+    struct Data {
+        Data() {}
+        void merge(Data& s) {
+            // 自分で定義
+        }
+    };
+    vector<Data> data;
+
+    UnionFind(int n) : cnt(n), number(n, -1), data(n) {}
     int root(int x) { return number[x] < 0 ? x : number[x] = root(number[x]); }
     void unite(int x, int y) {
         x = root(x);
@@ -94,14 +101,13 @@ struct UnionFind {
         number[x] += number[y];
         number[y] = x;
         // dataのマージ方法に合わせて変える
-        data[x] = {min(data[x].first, data[y].first), max(data[x].second, data[y].second)};
+        data[x].merge(data[y]);
+
         cnt--;
     }
     bool is_same(int x, int y) { return root(x) == root(y); }
     int size(int x) { return -number[root(x)]; }
-    int& left(int x) { return data[root(x)].first; }
-    int& right(int x) { return data[root(x)].second; }
-    pair<int, int>& ref(int x) { return data[root(x)]; }
+    Data& ref(int x) { return data[root(x)]; }
 };
 
 ```
