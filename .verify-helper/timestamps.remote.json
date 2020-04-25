@@ -22,5 +22,6 @@
 "test/yosupo/unionfind.test.cpp": "2020-04-01 18:40:05 +0900",
 "test/yosupo/zalgorithm.test.cpp": "2020-04-07 02:27:18 +0900",
 "test/yosupo/zalgorithm_rolling_hash.test.cpp": "2020-04-06 03:23:38 +0900",
-"test/yukicoder/1028.test.cpp": "2020-04-18 20:15:36 +0900"
+"test/yukicoder/1028.test.cpp": "2020-04-18 20:15:36 +0900",
+"test/yukicoder/1036.test.cpp": "2020-04-25 17:31:02 +0900"
 }
