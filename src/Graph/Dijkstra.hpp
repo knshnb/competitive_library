@@ -1,33 +1,30 @@
-class UndirectedGraph {
+template <class T, bool directed = true> struct Dijkstra {
     struct Edge {
-        int to, cost;
+        int to;
+        T cost;
     };
-
-public:
-    vector<vector<Edge>> G;
-    int V;
-    UndirectedGraph(int V) : G(V), V(V) {}
-    void add_edge(int u, int v, int cost) {
-        G[u].push_back({v, cost});
-        G[v].push_back({u, cost});
+    std::vector<std::vector<Edge>> g;
+    Dijkstra(int n) : g(n) {}
+    void add_edge(int u, int v, T cost) {
+        g[u].push_back({v, cost});
+        if (!directed) g[v].push_back({u, cost});
     }
-    vector<int> dijkstra(int s) {
-        vector<int> d(V, 1e18);
-        d[s] = 0;
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> que;  // {dist, v}
-        que.push({0, s});
-        while (!que.empty()) {
-            pair<int, int> p = que.top();
-            que.pop();
+    std::vector<T> run(int s) {
+        std::vector<T> dist(g.size(), std::numeric_limits<T>::max() / 2);
+        // {d, v}
+        std::priority_queue<std::pair<T, int>, std::vector<std::pair<T, int>>, std::greater<std::pair<T, int>>> q;
+        q.push({0, s});
+        while (!q.empty()) {
+            std::pair<T, int> p = q.top();
+            q.pop();
             int v = p.second;
-            if (d[v] < p.first) continue;  // 定数倍枝刈り
-            for (Edge e : G[v]) {
-                int tmp = d[v] + e.cost;
-                if (d[e.to] <= tmp) continue;
-                d[e.to] = tmp;
-                que.push({tmp, e.to});
+            if (dist[v] <= p.first) continue;
+            dist[v] = p.first;
+            for (const Edge& e : g[v]) {
+                if (dist[e.to] <= p.first + e.cost) continue;  // 定数倍枝刈り
+                q.emplace(p.first + e.cost, e.to);
             }
         }
-        return d;
+        return dist;
     }
 };
