@@ -79,7 +79,7 @@ layout: default
 ### src/Helper
 
 * :warning: <a href="library/src/Helper/ArithmeticParser.hpp.html">src/Helper/ArithmeticParser.hpp</a>
-* :warning: <a href="library/src/Helper/BinarySearch.hpp.html">src/Helper/BinarySearch.hpp</a>
+* :heavy_check_mark: <a href="library/src/Helper/BinarySearch.hpp.html">src/Helper/BinarySearch.hpp</a>
 * :warning: <a href="library/src/Helper/BitOperation.hpp.html">src/Helper/BitOperation.hpp</a>
 * :heavy_check_mark: <a href="library/src/Helper/ChminChmax.hpp.html">src/Helper/ChminChmax.hpp</a>
 * :warning: <a href="library/src/Helper/Directions.hpp.html">src/Helper/Directions.hpp</a>
@@ -151,6 +151,7 @@ layout: default
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/test/aoj/0423.test.cpp.html">test/aoj/0423.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/0646.test.cpp.html">test/aoj/0646.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_1_E.test.cpp.html">test/aoj/DPL_1_E.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_A.test.cpp.html">test/aoj/DPL_5_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_B.test.cpp.html">test/aoj/DPL_5_B.test.cpp</a>
