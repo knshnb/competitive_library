@@ -1,25 +1,19 @@
-class QuickFind {
-public:
-    int N;
-    vector<int> i2g;          // 各頂点のグループ
-    vector<vector<int>> g2i;  // 各グループの頂点集合
-    QuickFind(int n) : N(n) {
-        i2g.resize(N);
-        g2i = vector<vector<int>>(N, vector<int>(1));
-        for (int i = 0; i < N; i++) {
-            i2g[i] = i;
-            g2i[i][0] = i;
-        }
+/// @docs src/DataStructure/QuickFind.md
+struct QuickFind {
+    std::vector<int> belong_to;
+    std::vector<std::vector<int>> groups;
+    QuickFind(int n) : belong_to(n), groups(n, std::vector<int>(1)) {
+        std::iota(belong_to.begin(), belong_to.end(), 0);
+        for (int i = 0; i < n; i++) groups[i][0] = i;
     }
-    // iを含むグループとjを含むグループをmerge
-    void merge(int i, int j) {
-        int gi = i2g[i], gj = i2g[j];
-        if (gi == gj) return;
-        if (g2i[gi].size() < g2i[j].size()) swap(gi, gj);
-        // jをiにmerge
-        for (int v : g2i[gj]) i2g[v] = gi;
-        g2i[gi].insert(g2i[gi].end(), g2i[gj].begin(), g2i[gj].end());
-        g2i[gj].clear();
+    void unite(int x, int y) {
+        x = belong_to[x], y = belong_to[y];
+        if (x == y) return;
+        if (groups[x].size() < groups[y].size()) std::swap(x, y);
+        // yをxにマージ
+        for (int v : groups[y]) belong_to[v] = x;
+        groups[x].insert(groups[x].end(), groups[y].begin(), groups[y].end());
+        groups[y].clear();
     }
-    bool same(int i, int j) { return i2g[i] == i2g[j]; }
+    bool is_same(int x, int y) { return belong_to[x] == belong_to[y]; }
 };
