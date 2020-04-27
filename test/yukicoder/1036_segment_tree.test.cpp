@@ -15,7 +15,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
  **/
 
 #define CALL_FROM_TEST
-#include "../../src/Datastructure/SegmentTree.hpp"
+#include "../../src/DataStructure/SegmentTree.hpp"
 #undef CALL_FROM_TEST
 
 signed main() {
