@@ -1,4 +1,3 @@
-#define IGNORE  // 原因不明だが"../../src/Datastructure/SegmentTree.hpp"がincludeできないので一旦ignore
 #define PROBLEM "https://yukicoder.me/problems/no/1036"
 
 #include <bits/stdc++.h>  // clang-format off
