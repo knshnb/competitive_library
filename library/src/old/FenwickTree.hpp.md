@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/DataStructure/FenwickTree.hpp
+# :warning: src/old/FenwickTree.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/FenwickTree.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/FenwickTree.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-28 00:07:31+09:00
 
 
 
@@ -128,7 +128,7 @@ template <class T> struct FenwickTree {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/DataStructure/FenwickTree.hpp"
+#line 1 "src/old/FenwickTree.hpp"
 // 0-indexed
 template <class T> struct FenwickTree {
     const T e;

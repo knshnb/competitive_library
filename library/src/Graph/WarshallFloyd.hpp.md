@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#6e5c608398952d411d1862b1f8dc05f5">src/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Graph/WarshallFloyd.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-04-28 00:07:31+09:00
 
 
 
@@ -41,13 +41,13 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> void warshall_floyd(vector<vector<T>> &d) {
+template <class T> void warshall_floyd(std::vector<std::vector<T>> &d) {
     int n = d.size();
     for (int i = 0; i < n; i++) assert(d[i][i] == 0);
     for (int k = 0; k < n; k++) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
+                d[i][j] = std::min(d[i][j], d[i][k] + d[k][j]);
             }
         }
     }
@@ -60,13 +60,13 @@ template <class T> void warshall_floyd(vector<vector<T>> &d) {
 {% raw %}
 ```cpp
 #line 1 "src/Graph/WarshallFloyd.hpp"
-template <class T> void warshall_floyd(vector<vector<T>> &d) {
+template <class T> void warshall_floyd(std::vector<std::vector<T>> &d) {
     int n = d.size();
     for (int i = 0; i < n; i++) assert(d[i][i] == 0);
     for (int k = 0; k < n; k++) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
+                d[i][j] = std::min(d[i][j], d[i][k] + d[k][j]);
             }
         }
     }

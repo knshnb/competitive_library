@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Graph/AllDirectionTreeDP.hpp
+# :warning: src/old/AllDirectionTreeDP.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#6e5c608398952d411d1862b1f8dc05f5">src/Graph</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Graph/AllDirectionTreeDP.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/AllDirectionTreeDP.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-28 00:07:31+09:00
 
 
 
@@ -95,7 +95,7 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Graph/AllDirectionTreeDP.hpp"
+#line 1 "src/old/AllDirectionTreeDP.hpp"
 // 全方位木DP
 // ds[v]: vを根としたときのそれぞれの葉までの距離
 signed main() {
