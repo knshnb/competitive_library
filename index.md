@@ -62,7 +62,7 @@ layout: default
 
 ### src/Graph
 
-* :warning: <a href="library/src/Graph/BellmanFord.hpp.html">src/Graph/BellmanFord.hpp</a>
+* :heavy_check_mark: <a href="library/src/Graph/BellmanFord.hpp.html">src/Graph/BellmanFord.hpp</a>
 * :warning: <a href="library/src/Graph/Boruvka.hpp.html">src/Graph/Boruvka.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/Dijkstra.hpp.html">src/Graph/Dijkstra.hpp</a>
 * :warning: <a href="library/src/Graph/ErdosGallai.hpp.html">src/Graph/ErdosGallai.hpp</a>
@@ -161,6 +161,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A.test.cpp.html">test/aoj/DSL_2_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H.test.cpp.html">test/aoj/DSL_2_H.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/GRL_1_B.test.cpp.html">test/aoj/GRL_1_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/bipartitematching.test.cpp.html">test/yosupo/bipartitematching.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/enumerate_primes.test.cpp.html">test/yosupo/enumerate_primes.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/lca.test.cpp.html">test/yosupo/lca.test.cpp</a>
