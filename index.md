@@ -45,7 +45,7 @@ layout: default
 * :warning: <a href="library/src/DataStructure/FenwickTree.hpp.html">src/DataStructure/FenwickTree.hpp</a>
 * :warning: <a href="library/src/DataStructure/Imos2D.hpp.html">src/DataStructure/Imos2D.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/LazySegmentTree.hpp.html">src/DataStructure/LazySegmentTree.hpp</a>
-* :warning: <a href="library/src/DataStructure/QuickFind.hpp.html">src/DataStructure/QuickFind.hpp</a>
+* :heavy_check_mark: <a href="library/src/DataStructure/QuickFind.hpp.html">src/DataStructure/QuickFind.hpp</a>
 * :warning: <a href="library/src/DataStructure/ReversedBinaryIndexedTree.hpp.html">src/DataStructure/ReversedBinaryIndexedTree.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SegmentTree.hpp.html">src/DataStructure/SegmentTree.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SlidingWindowAggregation.hpp.html">src/DataStructure/SlidingWindowAggregation.hpp</a>
@@ -173,6 +173,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo/two_edge_connected_components.test.cpp.html">test/yosupo/two_edge_connected_components.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind.test.cpp.html">test/yosupo/unionfind.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind_dynamic.test.cpp.html">test/yosupo/unionfind_dynamic.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/unionfind_quick_find.test.cpp.html">test/yosupo/unionfind_quick_find.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm.test.cpp.html">test/yosupo/zalgorithm.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm_rolling_hash.test.cpp.html">test/yosupo/zalgorithm_rolling_hash.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/1028.test.cpp.html">test/yukicoder/1028.test.cpp</a>
