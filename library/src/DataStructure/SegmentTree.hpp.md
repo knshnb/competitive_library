@@ -66,6 +66,11 @@ auto seg = make_segment_tree<Int>([](Int a, Int b) { return std::max(a, b); }, -
 auto seg = make_segment_tree<Int>(std::plus<Int>(), 0);
 ```
 
+- gcd
+```cpp
+auto seg = make_segment_tree<Int>([](Int x, Int y) { return std::gcd(x, y); }, 0);
+```
+
 - `Int`に対するAffine
 ```cpp
 auto seg = make_segment_tree<std::pair<Int, Int>>(
@@ -82,6 +87,7 @@ auto seg = make_segment_tree<std::pair<Int, Int>>(
 * :heavy_check_mark: <a href="../../../verify/test/yosupo/point_add_range_sum.test.cpp.html">test/yosupo/point_add_range_sum.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo/point_set_range_composite.test.cpp.html">test/yosupo/point_set_range_composite.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo/staticrmq.test.cpp.html">test/yosupo/staticrmq.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/1036_segment_tree.test.cpp.html">test/yukicoder/1036_segment_tree.test.cpp</a>
 
 
 ## Code

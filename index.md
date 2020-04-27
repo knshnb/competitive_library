@@ -71,11 +71,10 @@ layout: default
 
 ### src/Graph
 
-* :warning: <a href="library/src/Graph/AbstractDijkstra.hpp.html">src/Graph/AbstractDijkstra.hpp</a>
 * :warning: <a href="library/src/Graph/AllDirectionTreeDP.hpp.html">src/Graph/AllDirectionTreeDP.hpp</a>
 * :warning: <a href="library/src/Graph/BellmanFord.hpp.html">src/Graph/BellmanFord.hpp</a>
 * :warning: <a href="library/src/Graph/Boruvka.hpp.html">src/Graph/Boruvka.hpp</a>
-* :warning: <a href="library/src/Graph/Dijkstra.hpp.html">src/Graph/Dijkstra.hpp</a>
+* :heavy_check_mark: <a href="library/src/Graph/Dijkstra.hpp.html">src/Graph/Dijkstra.hpp</a>
 * :warning: <a href="library/src/Graph/ErdosGallai.hpp.html">src/Graph/ErdosGallai.hpp</a>
 * :warning: <a href="library/src/Graph/GridGraph.hpp.html">src/Graph/GridGraph.hpp</a>
 * :warning: <a href="library/src/Graph/Kruskal.hpp.html">src/Graph/Kruskal.hpp</a>
@@ -151,6 +150,7 @@ layout: default
 
 ## Verify Files
 
+* :heavy_check_mark: <a href="verify/test/aoj/0423.test.cpp.html">test/aoj/0423.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_1_E.test.cpp.html">test/aoj/DPL_1_E.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_A.test.cpp.html">test/aoj/DPL_5_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_B.test.cpp.html">test/aoj/DPL_5_B.test.cpp</a>
@@ -177,5 +177,6 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo/zalgorithm_rolling_hash.test.cpp.html">test/yosupo/zalgorithm_rolling_hash.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/1028.test.cpp.html">test/yukicoder/1028.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/1036.test.cpp.html">test/yukicoder/1036.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/1036_segment_tree.test.cpp.html">test/yukicoder/1036_segment_tree.test.cpp</a>
 
 

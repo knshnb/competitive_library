@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Graph/Dijkstra.hpp
+# :heavy_check_mark: src/Graph/Dijkstra.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#6e5c608398952d411d1862b1f8dc05f5">src/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Graph/Dijkstra.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-04-27 03:13:15+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0423.test.cpp.html">test/aoj/0423.test.cpp</a>
 
 
 ## Code
@@ -41,37 +46,34 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-class UndirectedGraph {
+template <class T, bool directed = true> struct Dijkstra {
     struct Edge {
-        int to, cost;
+        int to;
+        T cost;
     };
-
-public:
-    vector<vector<Edge>> G;
-    int V;
-    UndirectedGraph(int V) : G(V), V(V) {}
-    void add_edge(int u, int v, int cost) {
-        G[u].push_back({v, cost});
-        G[v].push_back({u, cost});
+    std::vector<std::vector<Edge>> g;
+    Dijkstra(int n) : g(n) {}
+    void add_edge(int u, int v, T cost) {
+        g[u].push_back({v, cost});
+        if (!directed) g[v].push_back({u, cost});
     }
-    vector<int> dijkstra(int s) {
-        vector<int> d(V, 1e18);
-        d[s] = 0;
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> que;  // {dist, v}
-        que.push({0, s});
-        while (!que.empty()) {
-            pair<int, int> p = que.top();
-            que.pop();
+    std::vector<T> run(int s) {
+        std::vector<T> dist(g.size(), std::numeric_limits<T>::max() / 2);
+        // {d, v}
+        std::priority_queue<std::pair<T, int>, std::vector<std::pair<T, int>>, std::greater<std::pair<T, int>>> q;
+        q.push({0, s});
+        while (!q.empty()) {
+            std::pair<T, int> p = q.top();
+            q.pop();
             int v = p.second;
-            if (d[v] < p.first) continue;  // 定数倍枝刈り
-            for (Edge e : G[v]) {
-                int tmp = d[v] + e.cost;
-                if (d[e.to] <= tmp) continue;
-                d[e.to] = tmp;
-                que.push({tmp, e.to});
+            if (dist[v] <= p.first) continue;
+            dist[v] = p.first;
+            for (const Edge& e : g[v]) {
+                if (dist[e.to] <= p.first + e.cost) continue;  // 定数倍枝刈り
+                q.emplace(p.first + e.cost, e.to);
             }
         }
-        return d;
+        return dist;
     }
 };
 
@@ -82,37 +84,34 @@ public:
 {% raw %}
 ```cpp
 #line 1 "src/Graph/Dijkstra.hpp"
-class UndirectedGraph {
+template <class T, bool directed = true> struct Dijkstra {
     struct Edge {
-        int to, cost;
+        int to;
+        T cost;
     };
-
-public:
-    vector<vector<Edge>> G;
-    int V;
-    UndirectedGraph(int V) : G(V), V(V) {}
-    void add_edge(int u, int v, int cost) {
-        G[u].push_back({v, cost});
-        G[v].push_back({u, cost});
+    std::vector<std::vector<Edge>> g;
+    Dijkstra(int n) : g(n) {}
+    void add_edge(int u, int v, T cost) {
+        g[u].push_back({v, cost});
+        if (!directed) g[v].push_back({u, cost});
     }
-    vector<int> dijkstra(int s) {
-        vector<int> d(V, 1e18);
-        d[s] = 0;
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> que;  // {dist, v}
-        que.push({0, s});
-        while (!que.empty()) {
-            pair<int, int> p = que.top();
-            que.pop();
+    std::vector<T> run(int s) {
+        std::vector<T> dist(g.size(), std::numeric_limits<T>::max() / 2);
+        // {d, v}
+        std::priority_queue<std::pair<T, int>, std::vector<std::pair<T, int>>, std::greater<std::pair<T, int>>> q;
+        q.push({0, s});
+        while (!q.empty()) {
+            std::pair<T, int> p = q.top();
+            q.pop();
             int v = p.second;
-            if (d[v] < p.first) continue;  // 定数倍枝刈り
-            for (Edge e : G[v]) {
-                int tmp = d[v] + e.cost;
-                if (d[e.to] <= tmp) continue;
-                d[e.to] = tmp;
-                que.push({tmp, e.to});
+            if (dist[v] <= p.first) continue;
+            dist[v] = p.first;
+            for (const Edge& e : g[v]) {
+                if (dist[e.to] <= p.first + e.cost) continue;  // 定数倍枝刈り
+                q.emplace(p.first + e.cost, e.to);
             }
         }
-        return d;
+        return dist;
     }
 };
 
