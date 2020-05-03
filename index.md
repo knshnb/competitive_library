@@ -71,7 +71,7 @@ layout: default
 * :heavy_check_mark: <a href="library/src/Graph/StronglyConnectedComponents.hpp.html">src/Graph/StronglyConnectedComponents.hpp</a>
 * :warning: <a href="library/src/Graph/TreeDiameter.hpp.html">src/Graph/TreeDiameter.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/TwoEdgeConnectedComponents.hpp.html">src/Graph/TwoEdgeConnectedComponents.hpp</a>
-* :warning: <a href="library/src/Graph/WarshallFloyd.hpp.html">src/Graph/WarshallFloyd.hpp</a>
+* :heavy_check_mark: <a href="library/src/Graph/WarshallFloyd.hpp.html">src/Graph/WarshallFloyd.hpp</a>
 
 
 <div id="1b49b634354b8edb1dc8ef8a73014950"></div>
@@ -163,6 +163,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H.test.cpp.html">test/aoj/DSL_2_H.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_1_B.test.cpp.html">test/aoj/GRL_1_B.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/GRL_1_C.test.cpp.html">test/aoj/GRL_1_C.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/bipartitematching.test.cpp.html">test/yosupo/bipartitematching.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/enumerate_primes.test.cpp.html">test/yosupo/enumerate_primes.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/lca.test.cpp.html">test/yosupo/lca.test.cpp</a>

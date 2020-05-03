@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Graph/WarshallFloyd.hpp
+# :heavy_check_mark: src/Graph/WarshallFloyd.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#6e5c608398952d411d1862b1f8dc05f5">src/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Graph/WarshallFloyd.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-28 00:07:31+09:00
+    - Last commit date: 2020-05-03 20:57:15+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_1_C.test.cpp.html">test/aoj/GRL_1_C.test.cpp</a>
 
 
 ## Code
@@ -41,12 +46,14 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> void warshall_floyd(std::vector<std::vector<T>> &d) {
+/// @docs src/Graph/WarshallFloyd.md
+template <class T> void warshall_floyd(std::vector<std::vector<T>> &d, const T INF) {
     int n = d.size();
     for (int i = 0; i < n; i++) assert(d[i][i] == 0);
     for (int k = 0; k < n; k++) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
+                if (d[i][k] == INF || d[k][j] == INF) continue;
                 d[i][j] = std::min(d[i][j], d[i][k] + d[k][j]);
             }
         }
@@ -60,12 +67,14 @@ template <class T> void warshall_floyd(std::vector<std::vector<T>> &d) {
 {% raw %}
 ```cpp
 #line 1 "src/Graph/WarshallFloyd.hpp"
-template <class T> void warshall_floyd(std::vector<std::vector<T>> &d) {
+/// @docs src/Graph/WarshallFloyd.md
+template <class T> void warshall_floyd(std::vector<std::vector<T>> &d, const T INF) {
     int n = d.size();
     for (int i = 0; i < n; i++) assert(d[i][i] == 0);
     for (int k = 0; k < n; k++) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
+                if (d[i][k] == INF || d[k][j] == INF) continue;
                 d[i][j] = std::min(d[i][j], d[i][k] + d[k][j]);
             }
         }
