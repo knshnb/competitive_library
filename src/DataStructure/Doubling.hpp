@@ -1,11 +1,11 @@
 struct Doubling {
     int n;
-    int size;                  // MSB + 1
-    vector<vector<int>> next;  // next[k][i]: iから(1<<k)回でどこまで進めるか
+    int size;                            // MSB + 1
+    std::vector<std::vector<int>> next;  // next[k][i]: iから(1<<k)回でどこまで進めるか
 
     // edge[i]: 1回でiからどこまで進めるか
-    Doubling(vector<int>& edge) : n(edge.size()), size(64 - __builtin_clzll(edge.size())) {
-        next.resize(size, vector<int>(n + 1, n));
+    Doubling(std::vector<int>& edge) : n(edge.size()), size(64 - __builtin_clzll(edge.size())) {
+        next.resize(size, std::vector<int>(n + 1, n));
         for (int i = 0; i < n; i++) next[0][i] = edge[i];
         for (int k = 0; k < size - 1; k++) {
             for (int i = 0; i < n; i++) {
@@ -32,6 +32,6 @@ struct Doubling {
                 cur = next[wid][cur];
             }
         }
-        return min(n, acc + 1);
+        return std::min(n, acc + 1);
     }
 };
