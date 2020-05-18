@@ -2,8 +2,8 @@
 // update(i, j, x) -> run() -> query(i0, j0, i1, j1)
 template <class T> struct Accumulate2D {
     int n, m;
-    vector<vector<T>> t;  // 1-indexed!!
-    Accumulate2D(int n_, int m_) : n(n_), m(m_), t(n_ + 1, vector<T>(m_ + 1)) {}
+    std::vector<std::vector<T>> t;  // 1-indexed!!
+    Accumulate2D(int n_, int m_) : n(n_), m(m_), t(n_ + 1, std::vector<T>(m_ + 1)) {}
     void update(int i, int j, T x) { t[i + 1][j + 1] = x; }
     // 累積和を取る
     void run() {
