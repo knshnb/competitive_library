@@ -31,9 +31,18 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/Imos2D.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-05-19 02:16:10+09:00
 
 
+
+
+## 概要
+H*Wの二次元データで長方形部分に区間加算するクエリをimos法によって行う。
+各クエリO(1)、構築にO(HW)。
+
+imos法: https://imoz.jp/algorithms/imos_method.html
+<br/>
+多次元の累積和についてはこれがわかりやすい: https://qiita.com/convexineq/items/afc84dfb9ee4ec4a67d5
 
 
 ## Code
@@ -41,29 +50,26 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-// インターフェイスは0-indexed
-// add(i0, j0, i1, j1) -> run() -> get(i, j)
+/// @docs src/DataStructure/Imos2D.md
+// 0-indexed
+// t.add(i0, j0, i1, j1) -> t.run() -> t[i][j]
 template <class T> struct Imos2D {
     int n, m;
-    vector<vector<T>> t;  // 1-indexed!!, -x分のために配列の外側も1大きめ
-    Imos2D(int n_, int m_) : n(n_), m(m_), t(n_ + 2, vector<T>(m_ + 2)) {}
+    std::vector<std::vector<T>> t;  // 0-indexed!!, -x分のために配列の外側を1大きめに
+    Imos2D(int n_, int m_) : n(n_), m(m_), t(n_ + 1, std::vector<T>(m_ + 1)) {}
     // i0 <= i < i1, j0 < j < j1の範囲に+x
     void add(int i0, int j0, int i1, int j1, T x) {
-        i0++, j0++, i1++, j1++;
-        t[i0][j0] += x;
-        t[i1][j0] -= x;
-        t[i0][j1] -= x;
-        t[i1][j1] += x;
+        t[i0][j0] += x, t[i1][j1] += x;
+        t[i1][j0] -= x, t[i0][j1] -= x;
     }
-    // 累積和を取る
-    void run() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                t[i + 1][j + 1] += t[i][j + 1] + t[i + 1][j] - t[i][j];
-            }
-        }
+    // 2方向に累積和をとる
+    void build() {
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++) t[i + 1][j] += t[i][j];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++) t[i][j + 1] += t[i][j];
     }
-    T get(int i, int j) { return t[i + 1][j + 1]; }
+    std::vector<T>& operator[](int i) { return t[i]; }
 };
 
 ```
@@ -73,29 +79,26 @@ template <class T> struct Imos2D {
 {% raw %}
 ```cpp
 #line 1 "src/DataStructure/Imos2D.hpp"
-// インターフェイスは0-indexed
-// add(i0, j0, i1, j1) -> run() -> get(i, j)
+/// @docs src/DataStructure/Imos2D.md
+// 0-indexed
+// t.add(i0, j0, i1, j1) -> t.run() -> t[i][j]
 template <class T> struct Imos2D {
     int n, m;
-    vector<vector<T>> t;  // 1-indexed!!, -x分のために配列の外側も1大きめ
-    Imos2D(int n_, int m_) : n(n_), m(m_), t(n_ + 2, vector<T>(m_ + 2)) {}
+    std::vector<std::vector<T>> t;  // 0-indexed!!, -x分のために配列の外側を1大きめに
+    Imos2D(int n_, int m_) : n(n_), m(m_), t(n_ + 1, std::vector<T>(m_ + 1)) {}
     // i0 <= i < i1, j0 < j < j1の範囲に+x
     void add(int i0, int j0, int i1, int j1, T x) {
-        i0++, j0++, i1++, j1++;
-        t[i0][j0] += x;
-        t[i1][j0] -= x;
-        t[i0][j1] -= x;
-        t[i1][j1] += x;
+        t[i0][j0] += x, t[i1][j1] += x;
+        t[i1][j0] -= x, t[i0][j1] -= x;
     }
-    // 累積和を取る
-    void run() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                t[i + 1][j + 1] += t[i][j + 1] + t[i + 1][j] - t[i][j];
-            }
-        }
+    // 2方向に累積和をとる
+    void build() {
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++) t[i + 1][j] += t[i][j];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++) t[i][j + 1] += t[i][j];
     }
-    T get(int i, int j) { return t[i + 1][j + 1]; }
+    std::vector<T>& operator[](int i) { return t[i]; }
 };
 
 ```

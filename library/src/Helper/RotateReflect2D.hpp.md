@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Helper/Rotate2D.hpp
+# :warning: src/Helper/RotateReflect2D.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Helper/Rotate2D.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/src/Helper/RotateReflect2D.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-10 22:28:28+09:00
 
 
 
@@ -52,19 +52,41 @@ template <class T> std::vector<std::vector<T>> rotate_2D(const std::vector<std::
     return ret;
 }
 
+template <class T> std::vector<std::vector<T>> reflect_2D(const std::vector<std::vector<T>>& t) {
+    int H = t.size(), W = t[0].size();
+    std::vector<std::vector<T>> ret(W, std::vector<T>(H));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            ret[j][i] = t[i][j];
+        }
+    }
+    return ret;
+}
+
 ```
 {% endraw %}
 
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Helper/Rotate2D.hpp"
+#line 1 "src/Helper/RotateReflect2D.hpp"
 template <class T> std::vector<std::vector<T>> rotate_2D(const std::vector<std::vector<T>>& t, bool counterclockwise = true) {
     int H = t.size(), W = t[0].size();
     std::vector<std::vector<T>> ret(W, std::vector<T>(H));
     for (int i = 0; i < H; i++) {
         for (int j = 0; j < W; j++) {
             ret[j][i] = counterclockwise ? t[i][W - 1 - j] : t[H - 1 - i][j];
+        }
+    }
+    return ret;
+}
+
+template <class T> std::vector<std::vector<T>> reflect_2D(const std::vector<std::vector<T>>& t) {
+    int H = t.size(), W = t[0].size();
+    std::vector<std::vector<T>> ret(W, std::vector<T>(H));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            ret[j][i] = t[i][j];
         }
     }
     return ret;

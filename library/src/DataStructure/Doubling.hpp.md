@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/Doubling.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-05-10 22:27:58+09:00
 
 
 
@@ -43,12 +43,12 @@ layout: default
 ```cpp
 struct Doubling {
     int n;
-    int size;                  // MSB + 1
-    vector<vector<int>> next;  // next[k][i]: iから(1<<k)回でどこまで進めるか
+    int size;                            // MSB + 1
+    std::vector<std::vector<int>> next;  // next[k][i]: iから(1<<k)回でどこまで進めるか
 
     // edge[i]: 1回でiからどこまで進めるか
-    Doubling(vector<int>& edge) : n(edge.size()), size(64 - __builtin_clzll(edge.size())) {
-        next.resize(size, vector<int>(n + 1, n));
+    Doubling(std::vector<int>& edge) : n(edge.size()), size(64 - __builtin_clzll(edge.size())) {
+        next.resize(size, std::vector<int>(n + 1, n));
         for (int i = 0; i < n; i++) next[0][i] = edge[i];
         for (int k = 0; k < size - 1; k++) {
             for (int i = 0; i < n; i++) {
@@ -75,7 +75,7 @@ struct Doubling {
                 cur = next[wid][cur];
             }
         }
-        return min(n, acc + 1);
+        return std::min(n, acc + 1);
     }
 };
 
@@ -88,12 +88,12 @@ struct Doubling {
 #line 1 "src/DataStructure/Doubling.hpp"
 struct Doubling {
     int n;
-    int size;                  // MSB + 1
-    vector<vector<int>> next;  // next[k][i]: iから(1<<k)回でどこまで進めるか
+    int size;                            // MSB + 1
+    std::vector<std::vector<int>> next;  // next[k][i]: iから(1<<k)回でどこまで進めるか
 
     // edge[i]: 1回でiからどこまで進めるか
-    Doubling(vector<int>& edge) : n(edge.size()), size(64 - __builtin_clzll(edge.size())) {
-        next.resize(size, vector<int>(n + 1, n));
+    Doubling(std::vector<int>& edge) : n(edge.size()), size(64 - __builtin_clzll(edge.size())) {
+        next.resize(size, std::vector<int>(n + 1, n));
         for (int i = 0; i < n; i++) next[0][i] = edge[i];
         for (int k = 0; k < size - 1; k++) {
             for (int i = 0; i < n; i++) {
@@ -120,7 +120,7 @@ struct Doubling {
                 cur = next[wid][cur];
             }
         }
-        return min(n, acc + 1);
+        return std::min(n, acc + 1);
     }
 };
 
