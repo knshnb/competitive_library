@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/Compressor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-10 22:28:38+09:00
+    - Last commit date: 2020-05-22 22:25:40+09:00
 
 
 
@@ -44,11 +44,13 @@ layout: default
 template <class T> struct Compressor {
     std::vector<T> val;
     void insert(T x) { val.push_back(x); }
+    void insert(const std::vector<T>& v) { val.insert(val.begin(), v.begin(), v.end()); }
     void build() {
         std::sort(val.begin(), val.end());
         val.erase(std::unique(val.begin(), val.end()), val.end());
     }
-    int operator[](T x) { return std::lower_bound(val.begin(), val.end(), x) - val.begin(); }
+    int operator()(T x) { return std::lower_bound(val.begin(), val.end(), x) - val.begin(); }
+    T operator[](int idx) { return val[idx]; }
     int size() { return val.size(); }
 };
 
@@ -62,11 +64,13 @@ template <class T> struct Compressor {
 template <class T> struct Compressor {
     std::vector<T> val;
     void insert(T x) { val.push_back(x); }
+    void insert(const std::vector<T>& v) { val.insert(val.begin(), v.begin(), v.end()); }
     void build() {
         std::sort(val.begin(), val.end());
         val.erase(std::unique(val.begin(), val.end()), val.end());
     }
-    int operator[](T x) { return std::lower_bound(val.begin(), val.end(), x) - val.begin(); }
+    int operator()(T x) { return std::lower_bound(val.begin(), val.end(), x) - val.begin(); }
+    T operator[](int idx) { return val[idx]; }
     int size() { return val.size(); }
 };
 

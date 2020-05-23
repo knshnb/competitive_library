@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/ChminChmax.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-05-24 02:38:04+09:00
 
 
 
@@ -46,16 +46,8 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> inline bool chmin(T& a, const T& b) {
-    if (a <= b) return false;
-    a = b;
-    return true;
-}
-template <class T> inline bool chmax(T& a, const T& b) {
-    if (a >= b) return false;
-    a = b;
-    return true;
-}
+template <class T> bool chmin(T& a, const T& b) { return a > b ? a = b, true : false; }
+template <class T> bool chmax(T& a, const T& b) { return a < b ? a = b, true : false; }
 
 ```
 {% endraw %}
@@ -64,16 +56,8 @@ template <class T> inline bool chmax(T& a, const T& b) {
 {% raw %}
 ```cpp
 #line 1 "src/Helper/ChminChmax.hpp"
-template <class T> inline bool chmin(T& a, const T& b) {
-    if (a <= b) return false;
-    a = b;
-    return true;
-}
-template <class T> inline bool chmax(T& a, const T& b) {
-    if (a >= b) return false;
-    a = b;
-    return true;
-}
+template <class T> bool chmin(T& a, const T& b) { return a > b ? a = b, true : false; }
+template <class T> bool chmax(T& a, const T& b) { return a < b ? a = b, true : false; }
 
 ```
 {% endraw %}

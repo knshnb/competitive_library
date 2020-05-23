@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_E.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 18:40:05+09:00
+    - Last commit date: 2020-05-24 02:38:04+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_1_E</a>
@@ -110,16 +110,8 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 #define CALL_FROM_TEST
 #line 1 "src/Helper/ChminChmax.hpp"
-template <class T> inline bool chmin(T& a, const T& b) {
-    if (a <= b) return false;
-    a = b;
-    return true;
-}
-template <class T> inline bool chmax(T& a, const T& b) {
-    if (a >= b) return false;
-    a = b;
-    return true;
-}
+template <class T> bool chmin(T& a, const T& b) { return a > b ? a = b, true : false; }
+template <class T> bool chmax(T& a, const T& b) { return a < b ? a = b, true : false; }
 #line 1 "src/Helper/MakeVec.hpp"
 template <class T, class S> T make_vec(S x) { return x; }
 template <class T, class... Ts> auto make_vec(size_t n, Ts... ts) {
