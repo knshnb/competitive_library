@@ -1,10 +1,2 @@
-template <class T> inline bool chmin(T& a, const T& b) {
-    if (a <= b) return false;
-    a = b;
-    return true;
-}
-template <class T> inline bool chmax(T& a, const T& b) {
-    if (a >= b) return false;
-    a = b;
-    return true;
-}
+template <class T> bool chmin(T& a, const T& b) { return a > b ? a = b, true : false; }
+template <class T> bool chmax(T& a, const T& b) { return a < b ? a = b, true : false; }
