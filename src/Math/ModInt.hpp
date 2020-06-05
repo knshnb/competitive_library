@@ -1,4 +1,4 @@
-template <class T> T pow(T x, int n, const T UNION = 1) {
+template <class T> T pow(T x, long long n, const T UNION = 1) {
     T ret = UNION;
     while (n) {
         if (n & 1) ret *= x;
