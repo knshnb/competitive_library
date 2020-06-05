@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_B.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-12 16:56:35+09:00
+    - Last commit date: 2020-06-06 01:48:24+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_B">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_B</a>
@@ -102,7 +102,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 #define CALL_FROM_TEST
 #line 1 "src/Math/ModInt.hpp"
-template <class T> T pow(T x, int n, const T UNION = 1) {
+template <class T> T pow(T x, long long n, const T UNION = 1) {
     T ret = UNION;
     while (n) {
         if (n & 1) ret *= x;

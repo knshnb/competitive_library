@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Math/ModInt.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-12 16:47:15+09:00
+    - Last commit date: 2020-06-06 01:48:24+09:00
 
 
 
@@ -54,6 +54,8 @@ modにおける四則演算クラス。
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_F.test.cpp.html">test/aoj/DPL_5_F.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo/point_set_range_composite.test.cpp.html">test/yosupo/point_set_range_composite.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo/range_affine_range_sum.test.cpp.html">test/yosupo/range_affine_range_sum.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/1073.test.cpp.html">test/yukicoder/1073.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/1073_matrix_static.test.cpp.html">test/yukicoder/1073_matrix_static.test.cpp</a>
 
 
 ## Code
@@ -61,7 +63,7 @@ modにおける四則演算クラス。
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> T pow(T x, int n, const T UNION = 1) {
+template <class T> T pow(T x, long long n, const T UNION = 1) {
     T ret = UNION;
     while (n) {
         if (n & 1) ret *= x;
@@ -139,7 +141,7 @@ using mint = ModInt<1000000007>;
 {% raw %}
 ```cpp
 #line 1 "src/Math/ModInt.hpp"
-template <class T> T pow(T x, int n, const T UNION = 1) {
+template <class T> T pow(T x, long long n, const T UNION = 1) {
     T ret = UNION;
     while (n) {
         if (n & 1) ret *= x;

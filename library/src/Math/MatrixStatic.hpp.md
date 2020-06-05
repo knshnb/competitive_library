@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: src/Math/Matrix.hpp
+# :heavy_check_mark: src/Math/MatrixStatic.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Math/Matrix.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-06 02:12:18+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/src/Math/MatrixStatic.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-06 02:12:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/1073.test.cpp.html">test/yukicoder/1073.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/1073_matrix_static.test.cpp.html">test/yukicoder/1073_matrix_static.test.cpp</a>
 
 
 ## Code
@@ -46,51 +46,42 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class T> struct Matrix {
-    std::vector<std::vector<T>> A;
+template <class T, int size> struct Matrix {
+    std::array<std::array<T, size>, size> A;
     Matrix() {}
-    Matrix(int n) : A(n, std::vector<T>(n, 0)) {}
-    Matrix(const std::vector<std::vector<T>> &A_) : A(A_) {}
-    static Matrix eye(int n) {
-        Matrix mat(n);
-        for (int i = 0; i < n; i++) mat[i][i] = 1;
+    Matrix(const std::array<std::array<T, size>, size> &A_) : A(A_) {}
+    static Matrix eye() {
+        Matrix mat{};
+        for (int i = 0; i < size; i++) mat[i][i] = 1;
         return mat;
     }
-    int height() const { return (A.size()); }
-    int width() const { return (A[0].size()); }
-    std::vector<T> &operator[](int k) { return A[k]; }
-    const std::vector<T> &operator[](int k) const { return (A[k]); }
+    std::array<T, size> &operator[](int k) { return A[k]; }
+    const std::array<T, size> &operator[](int k) const { return (A[k]); }
     Matrix &operator+=(const Matrix &B) {
-        assert(A.size() == B.A.size() && A[0].size() == B.A[0].size());
         for (int i = 0; i < A.size(); i++)
             for (int j = 0; j < A[0].size(); j++) A[i][j] += B[i][j];
         return *this;
     }
     Matrix &operator-=(const Matrix &B) {
-        assert(A.size() == B.A.size() && A[0].size() == B.A[0].size());
         for (int i = 0; i < A.size(); i++)
             for (int j = 0; j < A[0].size(); j++) A[i][j] -= B[i][j];
         return *this;
     }
     Matrix &operator*=(const Matrix &B) {
-        int n = height(), m = B.width(), p = width();
-        assert(p == B.height());
-        std::vector<std::vector<T>> C(n, std::vector<T>(m, 0));
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
-                for (int k = 0; k < p; k++) C[i][j] += A[i][k] * B[k][j];
+        std::array<std::array<T, size>, size> C{};
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
+                for (int k = 0; k < size; k++) C[i][j] += A[i][k] * B[k][j];
         std::swap(A, C);
         return *this;
     }
     Matrix operator+(const Matrix &B) const { return Matrix(*this) += B; }
     Matrix operator-(const Matrix &B) const { return Matrix(*this) -= B; }
     Matrix operator*(const Matrix &B) const { return Matrix(*this) *= B; }
-    std::vector<T> operator*(const std::vector<T> &x) const {
-        int n = height(), m = width();
-        assert(m == x.size());
-        std::vector<T> ret(n);
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++) ret[i] += A[i][j] * x[j];
+    std::array<T, size> operator*(const std::array<T, size> &x) const {
+        std::array<T, size> ret{};
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) ret[i] += A[i][j] * x[j];
         return ret;
     }
 };
@@ -101,52 +92,43 @@ template <class T> struct Matrix {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Math/Matrix.hpp"
-template <class T> struct Matrix {
-    std::vector<std::vector<T>> A;
+#line 1 "src/Math/MatrixStatic.hpp"
+template <class T, int size> struct Matrix {
+    std::array<std::array<T, size>, size> A;
     Matrix() {}
-    Matrix(int n) : A(n, std::vector<T>(n, 0)) {}
-    Matrix(const std::vector<std::vector<T>> &A_) : A(A_) {}
-    static Matrix eye(int n) {
-        Matrix mat(n);
-        for (int i = 0; i < n; i++) mat[i][i] = 1;
+    Matrix(const std::array<std::array<T, size>, size> &A_) : A(A_) {}
+    static Matrix eye() {
+        Matrix mat{};
+        for (int i = 0; i < size; i++) mat[i][i] = 1;
         return mat;
     }
-    int height() const { return (A.size()); }
-    int width() const { return (A[0].size()); }
-    std::vector<T> &operator[](int k) { return A[k]; }
-    const std::vector<T> &operator[](int k) const { return (A[k]); }
+    std::array<T, size> &operator[](int k) { return A[k]; }
+    const std::array<T, size> &operator[](int k) const { return (A[k]); }
     Matrix &operator+=(const Matrix &B) {
-        assert(A.size() == B.A.size() && A[0].size() == B.A[0].size());
         for (int i = 0; i < A.size(); i++)
             for (int j = 0; j < A[0].size(); j++) A[i][j] += B[i][j];
         return *this;
     }
     Matrix &operator-=(const Matrix &B) {
-        assert(A.size() == B.A.size() && A[0].size() == B.A[0].size());
         for (int i = 0; i < A.size(); i++)
             for (int j = 0; j < A[0].size(); j++) A[i][j] -= B[i][j];
         return *this;
     }
     Matrix &operator*=(const Matrix &B) {
-        int n = height(), m = B.width(), p = width();
-        assert(p == B.height());
-        std::vector<std::vector<T>> C(n, std::vector<T>(m, 0));
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
-                for (int k = 0; k < p; k++) C[i][j] += A[i][k] * B[k][j];
+        std::array<std::array<T, size>, size> C{};
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
+                for (int k = 0; k < size; k++) C[i][j] += A[i][k] * B[k][j];
         std::swap(A, C);
         return *this;
     }
     Matrix operator+(const Matrix &B) const { return Matrix(*this) += B; }
     Matrix operator-(const Matrix &B) const { return Matrix(*this) -= B; }
     Matrix operator*(const Matrix &B) const { return Matrix(*this) *= B; }
-    std::vector<T> operator*(const std::vector<T> &x) const {
-        int n = height(), m = width();
-        assert(m == x.size());
-        std::vector<T> ret(n);
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++) ret[i] += A[i][j] * x[j];
+    std::array<T, size> operator*(const std::array<T, size> &x) const {
+        std::array<T, size> ret{};
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) ret[i] += A[i][j] * x[j];
         return ret;
     }
 };

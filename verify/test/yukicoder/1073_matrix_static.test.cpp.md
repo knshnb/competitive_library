@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_5_F.test.cpp
+# :heavy_check_mark: test/yukicoder/1073_matrix_static.test.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_F.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-06 01:48:24+09:00
+* category: <a href="../../../index.html#de60e5ba474ac43bf7562c10f5977e2d">test/yukicoder</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1073_matrix_static.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-06 02:12:27+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_F">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_F</a>
+* see: <a href="https://yukicoder.me/problems/no/1073">https://yukicoder.me/problems/no/1073</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/Math/MatrixStatic.hpp.html">src/Math/MatrixStatic.hpp</a>
 * :heavy_check_mark: <a href="../../../library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
 
 
@@ -48,33 +48,38 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_F"
+#define PROBLEM "https://yukicoder.me/problems/no/1073"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
 #define REP_(i, a_, b_, a, b, ...) for (Int i = (a), lim##i = (b); i < lim##i; i++)
 #define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
 struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
-#ifndef _MY_DEBUG
+#ifndef dump
 #define dump(...)
 #endif  // clang-format on
 
 /**
  *    author:  knshnb
- *    created: Sun Apr 12 17:57:28 JST 2020
+ *    created: Sat Jun  6 01:52:00 JST 2020
  **/
 
 #define CALL_FROM_TEST
-#include "../../src/Math/Combination.hpp"
+#include "../../src/Math/MatrixStatic.hpp"
 #include "../../src/Math/ModInt.hpp"
 #undef CALL_FROM_TEST
-
 using mint = ModInt<1000000007>;
+
 signed main() {
-    Int n, k;
-    std::cin >> n >> k;
-    Combination<mint> comb(n + k - 1);
-    std::cout << (n < k ? 0 : comb(n - 1, k - 1)) << std::endl;
+    Int n;
+    std::cin >> n;
+    std::array<mint, 6> x{};
+    x[0] = 1;
+    Matrix<mint, 6> A{};
+    REP(j, 6) A[0][j] = mint(1) / 6;
+    REP(i, 1, 6) A[i][i - 1] = 1;
+    auto ret = pow(A, n, Matrix<mint, 6>::eye()) * x;
+    std::cout << ret[0] << std::endl;
 }
 
 ```
@@ -83,34 +88,63 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DPL_5_F.test.cpp"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_F"
+#line 1 "test/yukicoder/1073_matrix_static.test.cpp"
+#define PROBLEM "https://yukicoder.me/problems/no/1073"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
 #define REP_(i, a_, b_, a, b, ...) for (Int i = (a), lim##i = (b); i < lim##i; i++)
 #define REP(i, ...) REP_(i, __VA_ARGS__, __VA_ARGS__, 0, __VA_ARGS__)
 struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(false), std::cout << std::fixed << std::setprecision(13); } } setup_io;
-#ifndef _MY_DEBUG
+#ifndef dump
 #define dump(...)
 #endif  // clang-format on
 
 /**
  *    author:  knshnb
- *    created: Sun Apr 12 17:57:28 JST 2020
+ *    created: Sat Jun  6 01:52:00 JST 2020
  **/
 
 #define CALL_FROM_TEST
-#line 1 "src/Math/Combination.hpp"
-template <class T> struct Combination {
-    std::vector<T> fact, fact_inv;
-    Combination(int n = 1000003) : fact(n + 1, 1), fact_inv(n + 1) {
-        for (int i = 0; i < n; i++) fact[i + 1] = fact[i] * (i + 1);
-        fact_inv[n] = (T)1 / fact[n];
-        for (int i = n - 1; i >= 0; i--) fact_inv[i] = fact_inv[i + 1] * (i + 1);
-        // for (int i = 0; i < n + 1; i++) assert(fact[i] * fact_inv[i] == 1);
+#line 1 "src/Math/MatrixStatic.hpp"
+template <class T, int size> struct Matrix {
+    std::array<std::array<T, size>, size> A;
+    Matrix() {}
+    Matrix(const std::array<std::array<T, size>, size> &A_) : A(A_) {}
+    static Matrix eye() {
+        Matrix mat{};
+        for (int i = 0; i < size; i++) mat[i][i] = 1;
+        return mat;
     }
-    T operator()(int n, int r) { return fact[n] * fact_inv[r] * fact_inv[n - r]; }
+    std::array<T, size> &operator[](int k) { return A[k]; }
+    const std::array<T, size> &operator[](int k) const { return (A[k]); }
+    Matrix &operator+=(const Matrix &B) {
+        for (int i = 0; i < A.size(); i++)
+            for (int j = 0; j < A[0].size(); j++) A[i][j] += B[i][j];
+        return *this;
+    }
+    Matrix &operator-=(const Matrix &B) {
+        for (int i = 0; i < A.size(); i++)
+            for (int j = 0; j < A[0].size(); j++) A[i][j] -= B[i][j];
+        return *this;
+    }
+    Matrix &operator*=(const Matrix &B) {
+        std::array<std::array<T, size>, size> C{};
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
+                for (int k = 0; k < size; k++) C[i][j] += A[i][k] * B[k][j];
+        std::swap(A, C);
+        return *this;
+    }
+    Matrix operator+(const Matrix &B) const { return Matrix(*this) += B; }
+    Matrix operator-(const Matrix &B) const { return Matrix(*this) -= B; }
+    Matrix operator*(const Matrix &B) const { return Matrix(*this) *= B; }
+    std::array<T, size> operator*(const std::array<T, size> &x) const {
+        std::array<T, size> ret{};
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) ret[i] += A[i][j] * x[j];
+        return ret;
+    }
 };
 #line 1 "src/Math/ModInt.hpp"
 template <class T> T pow(T x, long long n, const T UNION = 1) {
@@ -183,15 +217,20 @@ template <int Mod> int ModInt<Mod>::runtime_mod;
 #ifndef CALL_FROM_TEST
 using mint = ModInt<1000000007>;
 #endif
-#line 20 "test/aoj/DPL_5_F.test.cpp"
+#line 20 "test/yukicoder/1073_matrix_static.test.cpp"
 #undef CALL_FROM_TEST
-
 using mint = ModInt<1000000007>;
+
 signed main() {
-    Int n, k;
-    std::cin >> n >> k;
-    Combination<mint> comb(n + k - 1);
-    std::cout << (n < k ? 0 : comb(n - 1, k - 1)) << std::endl;
+    Int n;
+    std::cin >> n;
+    std::array<mint, 6> x{};
+    x[0] = 1;
+    Matrix<mint, 6> A{};
+    REP(j, 6) A[0][j] = mint(1) / 6;
+    REP(i, 1, 6) A[i][i - 1] = 1;
+    auto ret = pow(A, n, Matrix<mint, 6>::eye()) * x;
+    std::cout << ret[0] << std::endl;
 }
 
 ```

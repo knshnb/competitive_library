@@ -104,7 +104,8 @@ layout: default
 * :warning: <a href="library/src/Math/Divisor.hpp.html">src/Math/Divisor.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/Eratosthenes.hpp.html">src/Math/Eratosthenes.hpp</a>
 * :warning: <a href="library/src/Math/GaussJordan.hpp.html">src/Math/GaussJordan.hpp</a>
-* :warning: <a href="library/src/Math/Matrix.hpp.html">src/Math/Matrix.hpp</a>
+* :heavy_check_mark: <a href="library/src/Math/Matrix.hpp.html">src/Math/Matrix.hpp</a>
+* :heavy_check_mark: <a href="library/src/Math/MatrixStatic.hpp.html">src/Math/MatrixStatic.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
 
 
@@ -183,5 +184,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yukicoder/1028.test.cpp.html">test/yukicoder/1028.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/1036.test.cpp.html">test/yukicoder/1036.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/1036_segment_tree.test.cpp.html">test/yukicoder/1036_segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/1073.test.cpp.html">test/yukicoder/1073.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/1073_matrix_static.test.cpp.html">test/yukicoder/1073_matrix_static.test.cpp</a>
 
 

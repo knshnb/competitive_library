@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/point_set_range_composite.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-12 16:47:15+09:00
+    - Last commit date: 2020-06-06 01:48:24+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -119,7 +119,7 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 #define CALL_FROM_TEST
 #line 1 "src/Math/ModInt.hpp"
-template <class T> T pow(T x, int n, const T UNION = 1) {
+template <class T> T pow(T x, long long n, const T UNION = 1) {
     T ret = UNION;
     while (n) {
         if (n & 1) ret *= x;
