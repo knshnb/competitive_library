@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Helper/PairOperations.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-12 17:00:09+09:00
+    - Last commit date: 2020-06-06 22:51:08+09:00
 
 
 
@@ -48,6 +48,9 @@ std::pair<A, B>& operator+=(std::pair<A, B>& x, const std::pair<C, D>& y) {
 template <class A, class B, class C, class D> std::pair<A, B> operator+(std::pair<A, B> x, const std::pair<C, D>& y) {
     return x += y;
 }
+template <class T, class integer> T& get(std::vector<std::vector<T>>& v, const std::pair<integer, integer>& p) {
+    return v[p.first][p.second];
+}
 
 ```
 {% endraw %}
@@ -62,6 +65,9 @@ std::pair<A, B>& operator+=(std::pair<A, B>& x, const std::pair<C, D>& y) {
 }
 template <class A, class B, class C, class D> std::pair<A, B> operator+(std::pair<A, B> x, const std::pair<C, D>& y) {
     return x += y;
+}
+template <class T, class integer> T& get(std::vector<std::vector<T>>& v, const std::pair<integer, integer>& p) {
+    return v[p.first][p.second];
 }
 
 ```

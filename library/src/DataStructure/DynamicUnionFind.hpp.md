@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/DynamicUnionFind.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 17:49:02+09:00
+    - Last commit date: 2020-06-12 19:44:07+09:00
 
 
 
@@ -47,10 +47,11 @@ layout: default
 {% raw %}
 ```cpp
 struct DynamicUnionFind {
+    int cnt = 0;
     std::unordered_map<int, int> number;
 
     int root(int x) {
-        if (!number.count(x)) number[x] = -1;
+        if (!number.count(x)) number[x] = -1, cnt++;
         return number[x] < 0 ? x : number[x] = root(number[x]);
     }
     void unite(int x, int y) {
@@ -60,6 +61,7 @@ struct DynamicUnionFind {
         // yをxにマージ
         number[x] += number[y];
         number[y] = x;
+        cnt--;
     }
     bool is_same(int x, int y) { return root(x) == root(y); }
     int size(int x) { return -number[root(x)]; }
@@ -73,10 +75,11 @@ struct DynamicUnionFind {
 ```cpp
 #line 1 "src/DataStructure/DynamicUnionFind.hpp"
 struct DynamicUnionFind {
+    int cnt = 0;
     std::unordered_map<int, int> number;
 
     int root(int x) {
-        if (!number.count(x)) number[x] = -1;
+        if (!number.count(x)) number[x] = -1, cnt++;
         return number[x] < 0 ? x : number[x] = root(number[x]);
     }
     void unite(int x, int y) {
@@ -86,6 +89,7 @@ struct DynamicUnionFind {
         // yをxにマージ
         number[x] += number[y];
         number[y] = x;
+        cnt--;
     }
     bool is_same(int x, int y) { return root(x) == root(y); }
     int size(int x) { return -number[root(x)]; }

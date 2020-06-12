@@ -71,6 +71,7 @@ layout: default
 * :heavy_check_mark: <a href="library/src/Graph/StronglyConnectedComponents.hpp.html">src/Graph/StronglyConnectedComponents.hpp</a>
 * :warning: <a href="library/src/Graph/TreeDiameter.hpp.html">src/Graph/TreeDiameter.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/TwoEdgeConnectedComponents.hpp.html">src/Graph/TwoEdgeConnectedComponents.hpp</a>
+* :heavy_check_mark: <a href="library/src/Graph/TwoSat.hpp.html">src/Graph/TwoSat.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/WarshallFloyd.hpp.html">src/Graph/WarshallFloyd.hpp</a>
 
 
@@ -176,6 +177,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo/staticrmq.test.cpp.html">test/yosupo/staticrmq.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/suffixarray.test.cpp.html">test/yosupo/suffixarray.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/two_edge_connected_components.test.cpp.html">test/yosupo/two_edge_connected_components.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/two_sat.test.cpp.html">test/yosupo/two_sat.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind.test.cpp.html">test/yosupo/unionfind.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind_dynamic.test.cpp.html">test/yosupo/unionfind_dynamic.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/unionfind_quick_find.test.cpp.html">test/yosupo/unionfind_quick_find.test.cpp</a>
