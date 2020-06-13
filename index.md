@@ -39,7 +39,6 @@ layout: default
 ### src/DataStructure
 
 * :warning: <a href="library/src/DataStructure/Accumulate2D.hpp.html">src/DataStructure/Accumulate2D.hpp</a>
-* :warning: <a href="library/src/DataStructure/ConvexHullTrick.hpp.html">src/DataStructure/ConvexHullTrick.hpp</a>
 * :warning: <a href="library/src/DataStructure/Doubling.hpp.html">src/DataStructure/Doubling.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/DynamicUnionFind.hpp.html">src/DataStructure/DynamicUnionFind.hpp</a>
 * :warning: <a href="library/src/DataStructure/Imos2D.hpp.html">src/DataStructure/Imos2D.hpp</a>
@@ -63,13 +62,9 @@ layout: default
 ### src/Graph
 
 * :heavy_check_mark: <a href="library/src/Graph/BellmanFord.hpp.html">src/Graph/BellmanFord.hpp</a>
-* :warning: <a href="library/src/Graph/Boruvka.hpp.html">src/Graph/Boruvka.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/Dijkstra.hpp.html">src/Graph/Dijkstra.hpp</a>
-* :warning: <a href="library/src/Graph/ErdosGallai.hpp.html">src/Graph/ErdosGallai.hpp</a>
-* :warning: <a href="library/src/Graph/Kruskal.hpp.html">src/Graph/Kruskal.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/LowestCommonAncestor.hpp.html">src/Graph/LowestCommonAncestor.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/StronglyConnectedComponents.hpp.html">src/Graph/StronglyConnectedComponents.hpp</a>
-* :warning: <a href="library/src/Graph/TreeDiameter.hpp.html">src/Graph/TreeDiameter.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/TwoEdgeConnectedComponents.hpp.html">src/Graph/TwoEdgeConnectedComponents.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/TwoSat.hpp.html">src/Graph/TwoSat.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/WarshallFloyd.hpp.html">src/Graph/WarshallFloyd.hpp</a>
@@ -102,9 +97,7 @@ layout: default
 ### src/Math
 
 * :heavy_check_mark: <a href="library/src/Math/Combination.hpp.html">src/Math/Combination.hpp</a>
-* :warning: <a href="library/src/Math/Divisor.hpp.html">src/Math/Divisor.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/Eratosthenes.hpp.html">src/Math/Eratosthenes.hpp</a>
-* :warning: <a href="library/src/Math/GaussJordan.hpp.html">src/Math/GaussJordan.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/Matrix.hpp.html">src/Math/Matrix.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/MatrixStatic.hpp.html">src/Math/MatrixStatic.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
@@ -126,12 +119,18 @@ layout: default
 ### src/old
 
 * :warning: <a href="library/src/old/AllDirectionTreeDP.hpp.html">src/old/AllDirectionTreeDP.hpp</a>
+* :warning: <a href="library/src/old/Boruvka.hpp.html">src/old/Boruvka.hpp</a>
 * :warning: <a href="library/src/old/ChineseRemainderTheorem.hpp.html">src/old/ChineseRemainderTheorem.hpp</a>
+* :warning: <a href="library/src/old/ConvexHullTrick.hpp.html">src/old/ConvexHullTrick.hpp</a>
+* :warning: <a href="library/src/old/Divisor.hpp.html">src/old/Divisor.hpp</a>
 * :warning: <a href="library/src/old/DynamicModInt.hpp.html">src/old/DynamicModInt.hpp</a>
+* :warning: <a href="library/src/old/ErdosGallai.hpp.html">src/old/ErdosGallai.hpp</a>
 * :warning: <a href="library/src/old/EulerTotient.hpp.html">src/old/EulerTotient.hpp</a>
 * :warning: <a href="library/src/old/FFT.hpp.html">src/old/FFT.hpp</a>
 * :warning: <a href="library/src/old/FenwickTree.hpp.html">src/old/FenwickTree.hpp</a>
+* :warning: <a href="library/src/old/GaussJordan.hpp.html">src/old/GaussJordan.hpp</a>
 * :warning: <a href="library/src/old/GridGraph.hpp.html">src/old/GridGraph.hpp</a>
+* :warning: <a href="library/src/old/Kruskal.hpp.html">src/old/Kruskal.hpp</a>
 * :warning: <a href="library/src/old/LongestCommonPrefix.hpp.html">src/old/LongestCommonPrefix.hpp</a>
 * :warning: <a href="library/src/old/LongestCommonSubsequence.hpp.html">src/old/LongestCommonSubsequence.hpp</a>
 * :warning: <a href="library/src/old/MillerRabin.hpp.html">src/old/MillerRabin.hpp</a>
@@ -139,6 +138,7 @@ layout: default
 * :warning: <a href="library/src/old/ReversedBinaryIndexedTree.hpp.html">src/old/ReversedBinaryIndexedTree.hpp</a>
 * :warning: <a href="library/src/old/SlideMin.hpp.html">src/old/SlideMin.hpp</a>
 * :warning: <a href="library/src/old/SuffixArrayDoubling.hpp.html">src/old/SuffixArrayDoubling.hpp</a>
+* :warning: <a href="library/src/old/TreeDiameter.hpp.html">src/old/TreeDiameter.hpp</a>
 * :warning: <a href="library/src/old/UnionFindRange.hpp.html">src/old/UnionFindRange.hpp</a>
 * :warning: <a href="library/src/old/UnionFindWithData.hpp.html">src/old/UnionFindWithData.hpp</a>
 * :warning: <a href="library/src/old/UnionFindWithWeight.hpp.html">src/old/UnionFindWithWeight.hpp</a>

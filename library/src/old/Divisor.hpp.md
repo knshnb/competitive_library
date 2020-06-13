@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Math/Divisor.hpp
+# :warning: src/old/Divisor.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Math/Divisor.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/Divisor.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-13 20:39:55+09:00
 
 
 
@@ -62,7 +62,7 @@ vector<vector<signed>> divisor(signed n) {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Math/Divisor.hpp"
+#line 1 "src/old/Divisor.hpp"
 // ret[x]: xの約数のvector
 // 構築: O(nlogn)
 vector<vector<signed>> divisor(signed n) {

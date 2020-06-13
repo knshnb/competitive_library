@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/DataStructure/ConvexHullTrick.hpp
+# :warning: src/old/ConvexHullTrick.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/ConvexHullTrick.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/ConvexHullTrick.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-13 20:39:55+09:00
 
 
 
@@ -112,7 +112,7 @@ private:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/DataStructure/ConvexHullTrick.hpp"
+#line 1 "src/old/ConvexHullTrick.hpp"
 template <typename T, const T id = (int)-1e18> class convex_hull_trick {
     struct line {
         T a, b;

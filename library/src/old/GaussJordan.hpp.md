@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Math/GaussJordan.hpp
+# :warning: src/old/GaussJordan.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#64f6d80a21cfb0c7e1026d02dde4f7fa">src/Math</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Math/GaussJordan.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/GaussJordan.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-13 20:39:55+09:00
 
 
 
@@ -71,7 +71,7 @@ template <class T> void gauss_jordan(vector<vector<T>>& A) {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Math/GaussJordan.hpp"
+#line 1 "src/old/GaussJordan.hpp"
 // A[n-1]にはAx = bのbの値
 template <class T> void gauss_jordan(vector<vector<T>>& A) {
     int n = A.size(), m = A[0].size();

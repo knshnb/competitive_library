@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Graph/TreeDiameter.hpp
+# :warning: src/old/TreeDiameter.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#6e5c608398952d411d1862b1f8dc05f5">src/Graph</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Graph/TreeDiameter.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+* category: <a href="../../../index.html#ed8431f95262b19a48e972d3753d06d7">src/old</a>
+* <a href="{{ site.github.repository_url }}/blob/master/src/old/TreeDiameter.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-13 20:39:55+09:00
 
 
 
@@ -74,7 +74,7 @@ signed main() {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Graph/TreeDiameter.hpp"
+#line 1 "src/old/TreeDiameter.hpp"
 // 木の直径がdiameterに格納される
 signed main() {
     int n;
