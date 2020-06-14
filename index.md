@@ -87,6 +87,7 @@ layout: default
 * :warning: <a href="library/src/Helper/PairOperations.hpp.html">src/Helper/PairOperations.hpp</a>
 * :warning: <a href="library/src/Helper/Random.hpp.html">src/Helper/Random.hpp</a>
 * :warning: <a href="library/src/Helper/RotateReflect2D.hpp.html">src/Helper/RotateReflect2D.hpp</a>
+* :warning: <a href="library/src/Helper/RunLengthEncode.hpp.html">src/Helper/RunLengthEncode.hpp</a>
 * :heavy_check_mark: <a href="library/src/Helper/TernarySearch.hpp.html">src/Helper/TernarySearch.hpp</a>
 * :warning: <a href="library/src/Helper/TreeDFS.hpp.html">src/Helper/TreeDFS.hpp</a>
 * :warning: <a href="library/src/Helper/TreeInput.hpp.html">src/Helper/TreeInput.hpp</a>
