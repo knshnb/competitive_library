@@ -102,6 +102,7 @@ layout: default
 * :heavy_check_mark: <a href="library/src/Math/Matrix.hpp.html">src/Math/Matrix.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/MatrixStatic.hpp.html">src/Math/MatrixStatic.hpp</a>
 * :heavy_check_mark: <a href="library/src/Math/ModInt.hpp.html">src/Math/ModInt.hpp</a>
+* :warning: <a href="library/src/Math/PascalTriangle.hpp.html">src/Math/PascalTriangle.hpp</a>
 
 
 <div id="ac276d2326c527c8c7dbcbb63d85c6c7"></div>
