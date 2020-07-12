@@ -46,6 +46,7 @@ layout: default
 * :heavy_check_mark: <a href="library/src/DataStructure/QuickFind.hpp.html">src/DataStructure/QuickFind.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SegmentTree.hpp.html">src/DataStructure/SegmentTree.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SlidingWindowAggregation.hpp.html">src/DataStructure/SlidingWindowAggregation.hpp</a>
+* :heavy_check_mark: <a href="library/src/DataStructure/SparseTable.hpp.html">src/DataStructure/SparseTable.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/UnionFind.hpp.html">src/DataStructure/UnionFind.hpp</a>
 
 
@@ -178,6 +179,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo/range_affine_range_sum.test.cpp.html">test/yosupo/range_affine_range_sum.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/scc.test.cpp.html">test/yosupo/scc.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/staticrmq.test.cpp.html">test/yosupo/staticrmq.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/staticrmq_sparse_table.test.cpp.html">test/yosupo/staticrmq_sparse_table.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/suffixarray.test.cpp.html">test/yosupo/suffixarray.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/two_edge_connected_components.test.cpp.html">test/yosupo/two_edge_connected_components.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/two_sat.test.cpp.html">test/yosupo/two_sat.test.cpp</a>
