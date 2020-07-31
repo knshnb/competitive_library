@@ -39,6 +39,7 @@ layout: default
 ### src/DataStructure
 
 * :warning: <a href="library/src/DataStructure/Accumulate2D.hpp.html">src/DataStructure/Accumulate2D.hpp</a>
+* :warning: <a href="library/src/DataStructure/DominatorTree.hpp.html">src/DataStructure/DominatorTree.hpp</a>
 * :warning: <a href="library/src/DataStructure/Doubling.hpp.html">src/DataStructure/Doubling.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/DynamicUnionFind.hpp.html">src/DataStructure/DynamicUnionFind.hpp</a>
 * :warning: <a href="library/src/DataStructure/Imos2D.hpp.html">src/DataStructure/Imos2D.hpp</a>
