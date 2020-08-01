@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#6e5c608398952d411d1862b1f8dc05f5">src/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Graph/DominatorTree.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-01 16:38:56+09:00
+    - Last commit date: 2020-08-01 18:40:24+09:00
 
 
 
@@ -133,18 +133,13 @@ std::vector<int> construct_domnator_tree(const std::vector<std::vector<int>>& ed
         uf.link(par[i], i);
     }
     // dfs順にimmediate dominatorを求める
-    std::vector<int> idom(m, -1);
+    std::vector<int> idom(n, -1);  // dfs順序ではなくではなく元の頂点番号で表していることに注意！
     for (int i = 1; i < m; i++) {
         int u = U[i];
-        idom[i] = sdom[i] == sdom[u] ? sdom[i] : idom[u];
+        idom[to_vertex[i]] = sdom[i] == sdom[u] ? to_vertex[sdom[i]] : idom[to_vertex[u]];
     }
-    // dfs順序からもとの頂点番号で表示したものに直す
-    std::vector<int> ret(n, -1);
-    for (int i = 1; i < m; i++) {
-        ret[to_vertex[i]] = to_vertex[idom[i]];
-    }
-    ret[root] = root;
-    return ret;
+    idom[root] = root;
+    return idom;
 }
 ```
 {% endraw %}
@@ -227,18 +222,13 @@ std::vector<int> construct_domnator_tree(const std::vector<std::vector<int>>& ed
         uf.link(par[i], i);
     }
     // dfs順にimmediate dominatorを求める
-    std::vector<int> idom(m, -1);
+    std::vector<int> idom(n, -1);  // dfs順序ではなくではなく元の頂点番号で表していることに注意！
     for (int i = 1; i < m; i++) {
         int u = U[i];
-        idom[i] = sdom[i] == sdom[u] ? sdom[i] : idom[u];
+        idom[to_vertex[i]] = sdom[i] == sdom[u] ? to_vertex[sdom[i]] : idom[to_vertex[u]];
     }
-    // dfs順序からもとの頂点番号で表示したものに直す
-    std::vector<int> ret(n, -1);
-    for (int i = 1; i < m; i++) {
-        ret[to_vertex[i]] = to_vertex[idom[i]];
-    }
-    ret[root] = root;
-    return ret;
+    idom[root] = root;
+    return idom;
 }
 
 ```
