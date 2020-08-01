@@ -65,6 +65,7 @@ layout: default
 
 * :heavy_check_mark: <a href="library/src/Graph/BellmanFord.hpp.html">src/Graph/BellmanFord.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/Dijkstra.hpp.html">src/Graph/Dijkstra.hpp</a>
+* :heavy_check_mark: <a href="library/src/Graph/DominatorTree.hpp.html">src/Graph/DominatorTree.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/LowestCommonAncestor.hpp.html">src/Graph/LowestCommonAncestor.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/StronglyConnectedComponents.hpp.html">src/Graph/StronglyConnectedComponents.hpp</a>
 * :warning: <a href="library/src/Graph/TreeOrders.hpp.html">src/Graph/TreeOrders.hpp</a>
@@ -158,6 +159,7 @@ layout: default
 
 ## Verify Files
 
+* :heavy_check_mark: <a href="verify/test/aoj/0294.test.cpp.html">test/aoj/0294.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/0423.test.cpp.html">test/aoj/0423.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/0646.test.cpp.html">test/aoj/0646.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_1_E.test.cpp.html">test/aoj/DPL_1_E.test.cpp</a>
@@ -173,6 +175,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_1_B.test.cpp.html">test/aoj/GRL_1_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_1_C.test.cpp.html">test/aoj/GRL_1_C.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/bipartitematching.test.cpp.html">test/yosupo/bipartitematching.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo/dominatortree.test.cpp.html">test/yosupo/dominatortree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/enumerate_primes.test.cpp.html">test/yosupo/enumerate_primes.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/lca.test.cpp.html">test/yosupo/lca.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/point_add_range_sum.test.cpp.html">test/yosupo/point_add_range_sum.test.cpp</a>

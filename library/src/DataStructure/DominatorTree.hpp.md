@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/DominatorTree.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-31 23:54:28+09:00
+    - Last commit date: 2020-08-01 16:38:56+09:00
 
 
 
@@ -41,7 +41,8 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-// TODO
+// https://knshnb.github.io/competitive_library/library/src/Graph/DominatorTree.hpp.html
+// に移行しました
 ```
 {% endraw %}
 
@@ -49,7 +50,8 @@ layout: default
 {% raw %}
 ```cpp
 #line 1 "src/DataStructure/DominatorTree.hpp"
-// TODO
+// https://knshnb.github.io/competitive_library/library/src/Graph/DominatorTree.hpp.html
+// に移行しました
 
 ```
 {% endraw %}
