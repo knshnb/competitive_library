@@ -39,7 +39,7 @@ std::vector<int> construct_domnator_tree(const std::vector<std::vector<int>>& ed
     std::vector<std::vector<int>> redge(n);
     for (int u = 0; u < n; u++)
         for (int v : edge[u]) redge[v].push_back(u);
-    // dfs木を作る
+    // step1: dfs木を作る
     std::vector<int> par(n, -1), to_vertex, to_ord(n, -1);
     auto dfs = [&](auto&& self, int v) -> void {
         to_ord[v] = to_vertex.size();
@@ -60,16 +60,16 @@ std::vector<int> construct_domnator_tree(const std::vector<std::vector<int>>& ed
     for (int i = 0; i < m; i++) uf.val[i] = i;
     std::vector<std::vector<int>> bucket(n);
     for (int i = m - 1; i >= 1; i--) {
-        // dfs逆順にsemidominatorを求める(Theorem 4)
+        // step2: dfs逆順にsemidominatorを求める(Theorem 4)
         for (int v : redge[to_vertex[i]]) {
             int j = to_ord[v];
             if (j == -1) continue;  // rootから到達できない頂点
             sdom[i] = std::min(sdom[i], sdom[uf.eval(j)]);
         }
-        // Corollary 1
+        uf.link(par[i], i);
+        // step3: Corollary 1
         bucket[sdom[i]].push_back(i);
         for (int j : bucket[par[i]]) U[j] = uf.eval(j);
-        uf.link(par[i], i);
     }
     // dfs順にimmediate dominatorを求める
     std::vector<int> idom(n, -1);  // dfs順序ではなくではなく元の頂点番号で表していることに注意！
