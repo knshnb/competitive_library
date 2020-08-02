@@ -44,6 +44,7 @@ layout: default
 * :heavy_check_mark: <a href="library/src/DataStructure/DynamicUnionFind.hpp.html">src/DataStructure/DynamicUnionFind.hpp</a>
 * :warning: <a href="library/src/DataStructure/Imos2D.hpp.html">src/DataStructure/Imos2D.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/LazySegmentTree.hpp.html">src/DataStructure/LazySegmentTree.hpp</a>
+* :warning: <a href="library/src/DataStructure/MoAlgorithm.hpp.html">src/DataStructure/MoAlgorithm.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/QuickFind.hpp.html">src/DataStructure/QuickFind.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SegmentTree.hpp.html">src/DataStructure/SegmentTree.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SlidingWindowAggregation.hpp.html">src/DataStructure/SlidingWindowAggregation.hpp</a>
