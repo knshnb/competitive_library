@@ -50,6 +50,7 @@ layout: default
 * :heavy_check_mark: <a href="library/src/DataStructure/SlidingWindowAggregation.hpp.html">src/DataStructure/SlidingWindowAggregation.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/SparseTable.hpp.html">src/DataStructure/SparseTable.hpp</a>
 * :heavy_check_mark: <a href="library/src/DataStructure/UnionFind.hpp.html">src/DataStructure/UnionFind.hpp</a>
+* :heavy_check_mark: <a href="library/src/DataStructure/WaveletMatrix.hpp.html">src/DataStructure/WaveletMatrix.hpp</a>
 
 
 <div id="29f578163eb30c67e395a84ad90553a2"></div>
@@ -163,6 +164,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/0294.test.cpp.html">test/aoj/0294.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/0423.test.cpp.html">test/aoj/0423.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/0646.test.cpp.html">test/aoj/0646.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ALDS1_5_D.test.cpp.html">test/aoj/ALDS1_5_D.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_1_E.test.cpp.html">test/aoj/DPL_1_E.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_A.test.cpp.html">test/aoj/DPL_5_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DPL_5_B.test.cpp.html">test/aoj/DPL_5_B.test.cpp</a>
