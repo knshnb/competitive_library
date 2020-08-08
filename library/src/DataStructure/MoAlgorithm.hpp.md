@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/MoAlgorithm.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-03 01:22:03+09:00
+    - Last commit date: 2020-08-09 02:48:18+09:00
 
 
 
@@ -60,7 +60,7 @@ struct Mo {
     std::vector<bool> v;
 
     // widthは指定しないと自動でsqrt(n)にする
-    Mo(int n, int width_ = -1) : width(width == -1 ? (int)sqrt(n) : width_), v(n) {}
+    Mo(int n, int width_ = -1) : width(width_ == -1 ? (int)sqrt(n) : width_), v(n) {}
     void add(int l, int r) {
         int idx = query.size();
         query.emplace_back(l, r, idx);
@@ -109,7 +109,7 @@ struct Mo {
     std::vector<bool> v;
 
     // widthは指定しないと自動でsqrt(n)にする
-    Mo(int n, int width_ = -1) : width(width == -1 ? (int)sqrt(n) : width_), v(n) {}
+    Mo(int n, int width_ = -1) : width(width_ == -1 ? (int)sqrt(n) : width_), v(n) {}
     void add(int l, int r) {
         int idx = query.size();
         query.emplace_back(l, r, idx);
