@@ -37,7 +37,7 @@ template <bool select_by_memo = false, class block_type = std::uint32_t> struct 
     }
 };
 
-template <class T, int maxlog = 32, bool select_by_memo = false, class block_type = std::uint32_t>
+template <class T, int maxlog = 31, bool select_by_memo = false, class block_type = std::uint32_t>
 struct WaveletMatrix {
     using bv_type = BitVector<select_by_memo, block_type>;
     std::array<bv_type, maxlog> bvs;      // [maxlog, n]の01行列
@@ -78,5 +78,23 @@ struct WaveletMatrix {
             eq -= prv_num - (r - l);
         }
         return {lt, eq, gt};
+    }
+    // [l, r)内の(小さい方から)j番目(0-index)の数
+    int quantile(int l, int r, int j) {
+        T ret = 0;
+        for (int k = maxlog - 1; k >= 0; k--) {
+            int zl = bvs[k].template rank<0>(l);
+            int zr = bvs[k].template rank<0>(r);
+            if (zr - zl > j) {  // kビット目は0
+                l = zl;
+                r = zr;
+            } else {  // kビット目は1
+                l = offset[k] + (l - zl);
+                r = offset[k] + (r - zr);
+                ret |= (T)1 << k;
+                j -= zr - zl;
+            }
+        }
+        return ret;
     }
 };
