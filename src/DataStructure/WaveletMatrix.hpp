@@ -27,11 +27,11 @@ template <class block_type = std::uint64_t> struct BitVector {
             return i - rank<true>(i);
     }
     // j番目のxのindex
-    int select(int j, bool x) {
+    template <bool x> int select(int j) {
         int ok = n, ng = -1;
         while (std::abs(ok - ng) > 1) {
             int mid = (ok + ng) / 2;
-            (rank(mid + 1, x) > j ? ok : ng) = mid;
+            (rank<x>(mid + 1, x) > j ? ok : ng) = mid;
         }
         return ok;
     }
