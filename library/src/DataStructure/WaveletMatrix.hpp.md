@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/WaveletMatrix.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-08 22:55:05+09:00
+    - Last commit date: 2020-08-08 23:11:24+09:00
 
 
 
@@ -50,14 +50,14 @@ layout: default
 int popcount(std::uint32_t x) { return __builtin_popcount(x); }
 int popcount(std::uint64_t x) { return __builtin_popcountll(x); }
 
-template <bool select_by_memo = false, class block_type = std::uint32_t> struct BitVector {
+template <class block_type = std::uint64_t> struct BitVector {
     static constexpr int b = sizeof(block_type) * CHAR_BIT;  // blockのサイズ
     int n;
     std::vector<block_type> bit;
     std::vector<int> acc;
     BitVector() {}
     BitVector(int n_) : n(n_), bit(n / b + 1), acc(n / b + 1) {}
-    void set(int i, bool x) {
+    template <bool x = 1> void set(int i) {
         if (x)
             bit[i / b] |= (block_type)1 << (i % b);
         else
@@ -76,19 +76,18 @@ template <bool select_by_memo = false, class block_type = std::uint32_t> struct 
             return i - rank<true>(i);
     }
     // j番目のxのindex
-    int select(int j, bool x) {
+    template <bool x> int select(int j) {
         int ok = n, ng = -1;
         while (std::abs(ok - ng) > 1) {
             int mid = (ok + ng) / 2;
-            (rank(mid + 1, x) > j ? ok : ng) = mid;
+            (rank<x>(mid + 1, x) > j ? ok : ng) = mid;
         }
         return ok;
     }
 };
 
-template <class T, int maxlog = 31, bool select_by_memo = false, class block_type = std::uint32_t>
-struct WaveletMatrix {
-    using bv_type = BitVector<select_by_memo, block_type>;
+template <class T, int maxlog = 31, class block_type = std::uint64_t> struct WaveletMatrix {
+    using bv_type = BitVector<block_type>;
     std::array<bv_type, maxlog> bvs;      // [maxlog, n]の01行列
     std::array<int, maxlog> offset = {};  // 各列でbitが0になっている要素の数
 
@@ -100,7 +99,7 @@ struct WaveletMatrix {
             for (int i = 0; i < a.size(); i++) {
                 bool bit = cur_data[i] >> k & 1;
                 if (bit)
-                    one.push_back(cur_data[i]), bvs[k].set(i, 1);
+                    one.push_back(cur_data[i]), bvs[k].template set<1>(i);
                 else
                     zero.push_back(cur_data[i]);
             }
@@ -158,14 +157,14 @@ struct WaveletMatrix {
 int popcount(std::uint32_t x) { return __builtin_popcount(x); }
 int popcount(std::uint64_t x) { return __builtin_popcountll(x); }
 
-template <bool select_by_memo = false, class block_type = std::uint32_t> struct BitVector {
+template <class block_type = std::uint64_t> struct BitVector {
     static constexpr int b = sizeof(block_type) * CHAR_BIT;  // blockのサイズ
     int n;
     std::vector<block_type> bit;
     std::vector<int> acc;
     BitVector() {}
     BitVector(int n_) : n(n_), bit(n / b + 1), acc(n / b + 1) {}
-    void set(int i, bool x) {
+    template <bool x = 1> void set(int i) {
         if (x)
             bit[i / b] |= (block_type)1 << (i % b);
         else
@@ -184,19 +183,18 @@ template <bool select_by_memo = false, class block_type = std::uint32_t> struct 
             return i - rank<true>(i);
     }
     // j番目のxのindex
-    int select(int j, bool x) {
+    template <bool x> int select(int j) {
         int ok = n, ng = -1;
         while (std::abs(ok - ng) > 1) {
             int mid = (ok + ng) / 2;
-            (rank(mid + 1, x) > j ? ok : ng) = mid;
+            (rank<x>(mid + 1, x) > j ? ok : ng) = mid;
         }
         return ok;
     }
 };
 
-template <class T, int maxlog = 31, bool select_by_memo = false, class block_type = std::uint32_t>
-struct WaveletMatrix {
-    using bv_type = BitVector<select_by_memo, block_type>;
+template <class T, int maxlog = 31, class block_type = std::uint64_t> struct WaveletMatrix {
+    using bv_type = BitVector<block_type>;
     std::array<bv_type, maxlog> bvs;      // [maxlog, n]の01行列
     std::array<int, maxlog> offset = {};  // 各列でbitが0になっている要素の数
 
@@ -208,7 +206,7 @@ struct WaveletMatrix {
             for (int i = 0; i < a.size(); i++) {
                 bool bit = cur_data[i] >> k & 1;
                 if (bit)
-                    one.push_back(cur_data[i]), bvs[k].set(i, 1);
+                    one.push_back(cur_data[i]), bvs[k].template set<1>(i);
                 else
                     zero.push_back(cur_data[i]);
             }
