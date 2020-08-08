@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_5_D.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-07 22:45:08+09:00
+    - Last commit date: 2020-08-08 22:55:05+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/5/ALDS1_5_D">https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/5/ALDS1_5_D</a>
@@ -147,7 +147,7 @@ template <bool select_by_memo = false, class block_type = std::uint32_t> struct 
     }
 };
 
-template <class T, int maxlog = 32, bool select_by_memo = false, class block_type = std::uint32_t>
+template <class T, int maxlog = 31, bool select_by_memo = false, class block_type = std::uint32_t>
 struct WaveletMatrix {
     using bv_type = BitVector<select_by_memo, block_type>;
     std::array<bv_type, maxlog> bvs;      // [maxlog, n]の01行列
@@ -188,6 +188,24 @@ struct WaveletMatrix {
             eq -= prv_num - (r - l);
         }
         return {lt, eq, gt};
+    }
+    // [l, r)内の(小さい方から)j番目(0-index)の数
+    int quantile(int l, int r, int j) {
+        T ret = 0;
+        for (int k = maxlog - 1; k >= 0; k--) {
+            int zl = bvs[k].template rank<0>(l);
+            int zr = bvs[k].template rank<0>(r);
+            if (zr - zl > j) {  // kビット目は0
+                l = zl;
+                r = zr;
+            } else {  // kビット目は1
+                l = offset[k] + (l - zl);
+                r = offset[k] + (r - zr);
+                ret |= (T)1 << k;
+                j -= zr - zl;
+            }
+        }
+        return ret;
     }
 };
 #line 20 "test/aoj/ALDS1_5_D.test.cpp"
