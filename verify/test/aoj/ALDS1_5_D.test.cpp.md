@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_5_D.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-09 03:00:35+09:00
+    - Last commit date: 2020-08-09 03:43:51+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/5/ALDS1_5_D">https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/5/ALDS1_5_D</a>
@@ -73,7 +73,7 @@ signed main() {
     std::cin >> n;
     std::vector<int> a(n);
     REP(i, n) std::cin >> a[i];
-    WaveletMatrix<int, 32> wm(a);
+    WaveletMatrix<int, 31> wm(a);
 
     Int ans1 = 0;
     REP(i, n) { ans1 += wm.rank_3way(0, i, a[i])[2]; }
@@ -148,6 +148,7 @@ template <class block_type = std::uint64_t> struct BitVector {
 };
 
 template <class T, int maxlog = 31, class block_type = std::uint64_t> struct WaveletMatrix {
+    static_assert((T(1) << (maxlog - 1)) > 0);
     using bv_type = BitVector<block_type>;
     std::array<bv_type, maxlog> bvs;      // [maxlog, n]の01行列
     std::array<int, maxlog> offset = {};  // 各列でbitが0になっている要素の数
@@ -190,6 +191,7 @@ template <class T, int maxlog = 31, class block_type = std::uint64_t> struct Wav
     }
     // [l, r)内の(小さい方から)j番目(0-index)の数
     int quantile(int l, int r, int j) {
+        assert(j < r - l);
         T ret = 0;
         for (int k = maxlog - 1; k >= 0; k--) {
             int zl = bvs[k].template rank<0>(l);
@@ -215,7 +217,7 @@ signed main() {
     std::cin >> n;
     std::vector<int> a(n);
     REP(i, n) std::cin >> a[i];
-    WaveletMatrix<int, 32> wm(a);
+    WaveletMatrix<int, 31> wm(a);
 
     Int ans1 = 0;
     REP(i, n) { ans1 += wm.rank_3way(0, i, a[i])[2]; }
