@@ -1,14 +1,14 @@
 int popcount(std::uint32_t x) { return __builtin_popcount(x); }
 int popcount(std::uint64_t x) { return __builtin_popcountll(x); }
 
-template <bool select_by_memo = false, class block_type = std::uint32_t> struct BitVector {
+template <class block_type = std::uint64_t> struct BitVector {
     static constexpr int b = sizeof(block_type) * CHAR_BIT;  // blockのサイズ
     int n;
     std::vector<block_type> bit;
     std::vector<int> acc;
     BitVector() {}
     BitVector(int n_) : n(n_), bit(n / b + 1), acc(n / b + 1) {}
-    void set(int i, bool x) {
+    template <bool x = 1> void set(int i) {
         if (x)
             bit[i / b] |= (block_type)1 << (i % b);
         else
@@ -37,9 +37,8 @@ template <bool select_by_memo = false, class block_type = std::uint32_t> struct 
     }
 };
 
-template <class T, int maxlog = 31, bool select_by_memo = false, class block_type = std::uint32_t>
-struct WaveletMatrix {
-    using bv_type = BitVector<select_by_memo, block_type>;
+template <class T, int maxlog = 31, class block_type = std::uint64_t> struct WaveletMatrix {
+    using bv_type = BitVector<block_type>;
     std::array<bv_type, maxlog> bvs;      // [maxlog, n]の01行列
     std::array<int, maxlog> offset = {};  // 各列でbitが0になっている要素の数
 
@@ -51,7 +50,7 @@ struct WaveletMatrix {
             for (int i = 0; i < a.size(); i++) {
                 bool bit = cur_data[i] >> k & 1;
                 if (bit)
-                    one.push_back(cur_data[i]), bvs[k].set(i, 1);
+                    one.push_back(cur_data[i]), bvs[k].template set<1>(i);
                 else
                     zero.push_back(cur_data[i]);
             }

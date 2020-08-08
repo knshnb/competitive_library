@@ -24,7 +24,7 @@ signed main() {
     std::cin >> n >> Q;
     std::vector<int> a(n);
     REP(i, n) std::cin >> a[i];
-    WaveletMatrix wm(a);
+    WaveletMatrix<int, 31, std::uint64_t> wm(a);
     REP(q, Q) {
         Int l, r, k;
         std::cin >> l >> r >> k;
