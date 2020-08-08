@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_5_D.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-08 23:11:24+09:00
+    - Last commit date: 2020-08-09 03:00:35+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/5/ALDS1_5_D">https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/5/ALDS1_5_D</a>
@@ -76,9 +76,9 @@ signed main() {
     WaveletMatrix<int, 32> wm(a);
 
     Int ans1 = 0;
-    REP(i, n) { ans1 += wm.rank_3way(a[i], 0, i)[2]; }
+    REP(i, n) { ans1 += wm.rank_3way(0, i, a[i])[2]; }
     Int ans2 = 0;
-    REP(i, n) { ans2 += wm.rank_3way(a[i], i + 1, n)[0]; }
+    REP(i, n) { ans2 += wm.rank_3way(i + 1, n, a[i])[0]; }
     assert(ans1 == ans2);
     std::cout << ans1 << std::endl;
 }
@@ -171,7 +171,7 @@ template <class T, int maxlog = 31, class block_type = std::uint64_t> struct Wav
         }
     }
     // [l, r)の{x未満の個数, xの個数, xより大の個数}
-    std::array<int, 3> rank_3way(int x, int l, int r) {
+    std::array<int, 3> rank_3way(int l, int r, int x) {
         int lt = 0, eq = r - l, gt = 0;
         for (int k = maxlog - 1; k >= 0; k--) {
             int prv_num = r - l;
@@ -218,9 +218,9 @@ signed main() {
     WaveletMatrix<int, 32> wm(a);
 
     Int ans1 = 0;
-    REP(i, n) { ans1 += wm.rank_3way(a[i], 0, i)[2]; }
+    REP(i, n) { ans1 += wm.rank_3way(0, i, a[i])[2]; }
     Int ans2 = 0;
-    REP(i, n) { ans2 += wm.rank_3way(a[i], i + 1, n)[0]; }
+    REP(i, n) { ans2 += wm.rank_3way(i + 1, n, a[i])[0]; }
     assert(ans1 == ans2);
     std::cout << ans1 << std::endl;
 }

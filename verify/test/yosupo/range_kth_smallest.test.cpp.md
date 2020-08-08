@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/range_kth_smallest.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-08 23:11:24+09:00
+    - Last commit date: 2020-08-09 03:00:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -170,7 +170,7 @@ template <class T, int maxlog = 31, class block_type = std::uint64_t> struct Wav
         }
     }
     // [l, r)の{x未満の個数, xの個数, xより大の個数}
-    std::array<int, 3> rank_3way(int x, int l, int r) {
+    std::array<int, 3> rank_3way(int l, int r, int x) {
         int lt = 0, eq = r - l, gt = 0;
         for (int k = maxlog - 1; k >= 0; k--) {
             int prv_num = r - l;
