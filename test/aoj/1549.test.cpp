@@ -1,4 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/5/ALDS1_5_D"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/1549"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
@@ -12,11 +12,12 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 /**
  *    author:  knshnb
- *    created: Fri Aug  7 22:18:24 JST 2020
+ *    created: Sun Aug  9 03:20:07 JST 2020
  **/
 
 #define CALL_FROM_TEST
 #include "../../src/DataStructure/WaveletMatrix.hpp"
+#include "../../src/Helper/ChminChmax.hpp"
 #undef CALL_FROM_TEST
 
 signed main() {
@@ -24,12 +25,16 @@ signed main() {
     std::cin >> n;
     std::vector<int> a(n);
     REP(i, n) std::cin >> a[i];
-    WaveletMatrix<int, 31> wm(a);
-
-    Int ans1 = 0;
-    REP(i, n) { ans1 += wm.rank_3way(0, i, a[i])[2]; }
-    Int ans2 = 0;
-    REP(i, n) { ans2 += wm.rank_3way(i + 1, n, a[i])[0]; }
-    assert(ans1 == ans2);
-    std::cout << ans1 << std::endl;
+    WaveletMatrix<int, 20> wm(a);
+    Int Q;
+    std::cin >> Q;
+    REP(q, Q) {
+        Int l, r, d;
+        std::cin >> l >> r >> d, r++;
+        Int cnt = wm.rank_3way(l, r, d)[0];
+        Int ans = 1e9;
+        if (cnt > 0) chmin(ans, std::abs(d - wm.quantile(l, r, cnt - 1)));
+        if (cnt < r - l) chmin(ans, std::abs(d - wm.quantile(l, r, cnt)));
+        std::cout << ans << "\n";
+    }
 }
