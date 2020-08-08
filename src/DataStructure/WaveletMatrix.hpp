@@ -61,7 +61,7 @@ template <class T, int maxlog = 31, class block_type = std::uint64_t> struct Wav
         }
     }
     // [l, r)の{x未満の個数, xの個数, xより大の個数}
-    std::array<int, 3> rank_3way(int x, int l, int r) {
+    std::array<int, 3> rank_3way(int l, int r, int x) {
         int lt = 0, eq = r - l, gt = 0;
         for (int k = maxlog - 1; k >= 0; k--) {
             int prv_num = r - l;

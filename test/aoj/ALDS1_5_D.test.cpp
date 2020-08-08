@@ -27,9 +27,9 @@ signed main() {
     WaveletMatrix<int, 32> wm(a);
 
     Int ans1 = 0;
-    REP(i, n) { ans1 += wm.rank_3way(a[i], 0, i)[2]; }
+    REP(i, n) { ans1 += wm.rank_3way(0, i, a[i])[2]; }
     Int ans2 = 0;
-    REP(i, n) { ans2 += wm.rank_3way(a[i], i + 1, n)[0]; }
+    REP(i, n) { ans2 += wm.rank_3way(i + 1, n, a[i])[0]; }
     assert(ans1 == ans2);
     std::cout << ans1 << std::endl;
 }
