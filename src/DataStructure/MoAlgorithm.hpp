@@ -9,7 +9,7 @@ struct Mo {
     std::vector<bool> v;
 
     // widthは指定しないと自動でsqrt(n)にする
-    Mo(int n, int width_ = -1) : width(width == -1 ? (int)sqrt(n) : width_), v(n) {}
+    Mo(int n, int width_ = -1) : width(width_ == -1 ? (int)sqrt(n) : width_), v(n) {}
     void add(int l, int r) {
         int idx = query.size();
         query.emplace_back(l, r, idx);
