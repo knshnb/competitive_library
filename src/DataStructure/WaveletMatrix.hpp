@@ -31,7 +31,7 @@ template <class block_type = std::uint64_t> struct BitVector {
         int ok = n, ng = -1;
         while (std::abs(ok - ng) > 1) {
             int mid = (ok + ng) / 2;
-            (rank<x>(mid + 1, x) > j ? ok : ng) = mid;
+            (rank<x>(mid + 1) > j ? ok : ng) = mid;
         }
         return ok;
     }
