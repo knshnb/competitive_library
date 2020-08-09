@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_5_D.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-09 03:43:51+09:00
+    - Last commit date: 2020-08-09 16:06:04+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/5/ALDS1_5_D">https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/5/ALDS1_5_D</a>
@@ -141,7 +141,7 @@ template <class block_type = std::uint64_t> struct BitVector {
         int ok = n, ng = -1;
         while (std::abs(ok - ng) > 1) {
             int mid = (ok + ng) / 2;
-            (rank<x>(mid + 1, x) > j ? ok : ng) = mid;
+            (rank<x>(mid + 1) > j ? ok : ng) = mid;
         }
         return ok;
     }

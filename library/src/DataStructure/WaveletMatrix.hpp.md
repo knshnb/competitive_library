@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#e73c6b5872115ad0f2896f8e8476ef39">src/DataStructure</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/DataStructure/WaveletMatrix.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-09 03:43:51+09:00
+    - Last commit date: 2020-08-09 16:06:04+09:00
 
 
 
@@ -81,7 +81,7 @@ template <class block_type = std::uint64_t> struct BitVector {
         int ok = n, ng = -1;
         while (std::abs(ok - ng) > 1) {
             int mid = (ok + ng) / 2;
-            (rank<x>(mid + 1, x) > j ? ok : ng) = mid;
+            (rank<x>(mid + 1) > j ? ok : ng) = mid;
         }
         return ok;
     }
@@ -190,7 +190,7 @@ template <class block_type = std::uint64_t> struct BitVector {
         int ok = n, ng = -1;
         while (std::abs(ok - ng) > 1) {
             int mid = (ok + ng) / 2;
-            (rank<x>(mid + 1, x) > j ? ok : ng) = mid;
+            (rank<x>(mid + 1) > j ? ok : ng) = mid;
         }
         return ok;
     }
