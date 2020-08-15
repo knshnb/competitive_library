@@ -17,17 +17,21 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 #define CALL_FROM_TEST
 #include "../../src/DataStructure/WaveletMatrix.hpp"
+#include "../../src/Helper/Compressor.hpp"
 #undef CALL_FROM_TEST
 
 signed main() {
+    Compressor<int> cmp;
     Int n, Q;
     std::cin >> n >> Q;
     std::vector<int> a(n);
-    REP(i, n) std::cin >> a[i];
-    WaveletMatrix<int, 31, std::uint64_t> wm(a);
+    REP(i, n) std::cin >> a[i], cmp.insert(a[i]);
+    cmp.build();
+    REP(i, n) a[i] = cmp(a[i]);
+    WaveletMatrix<int, 18, std::uint64_t> wm(a);
     REP(q, Q) {
         Int l, r, k;
         std::cin >> l >> r >> k;
-        std::cout << wm.quantile(l, r, k) << "\n";
+        std::cout << cmp[wm.quantile(l, r, k)] << "\n";
     }
 }

@@ -2,13 +2,13 @@ int popcount(std::uint32_t x) { return __builtin_popcount(x); }
 int popcount(std::uint64_t x) { return __builtin_popcountll(x); }
 
 template <class block_type = std::uint64_t> struct BitVector {
-    static constexpr int b = sizeof(block_type) * CHAR_BIT;  // blockのサイズ
+    static constexpr size_t b = sizeof(block_type) * CHAR_BIT;  // blockのサイズ
     int n;
     std::vector<block_type> bit;
     std::vector<int> acc;
     BitVector() {}
     BitVector(int n_) : n(n_), bit(n / b + 1), acc(n / b + 1) {}
-    template <bool x = 1> void set(int i) {
+    template <bool x = 1> void set(size_t i) {
         if (x)
             bit[i / b] |= (block_type)1 << (i % b);
         else
@@ -20,14 +20,14 @@ template <class block_type = std::uint64_t> struct BitVector {
         }
     }
     // [0, i)内のxの個数
-    template <bool x> int rank(int i) {
+    template <bool x> int rank(size_t i) {
         if (x)
             return acc[i / b] + (i % b ? popcount(bit[i / b] << (b - i % b)) : 0);
         else
-            return i - rank<true>(i);
+            return i - rank<1>(i);
     }
     // j番目のxのindex
-    template <bool x> int select(int j) {
+    template <bool x> int select(size_t j) {
         int ok = n, ng = -1;
         while (std::abs(ok - ng) > 1) {
             int mid = (ok + ng) / 2;
