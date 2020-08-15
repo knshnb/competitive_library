@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0b58406058f6619a0f31a172defc0230">test/yosupo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo/range_kth_smallest.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-09 16:06:04+09:00
+    - Last commit date: 2020-08-15 16:14:21+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -40,6 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../library/src/DataStructure/WaveletMatrix.hpp.html">src/DataStructure/WaveletMatrix.hpp</a>
+* :heavy_check_mark: <a href="../../../library/src/Helper/Compressor.hpp.html">src/Helper/Compressor.hpp</a>
 
 
 ## Code
@@ -66,18 +67,22 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 #define CALL_FROM_TEST
 #include "../../src/DataStructure/WaveletMatrix.hpp"
+#include "../../src/Helper/Compressor.hpp"
 #undef CALL_FROM_TEST
 
 signed main() {
+    Compressor<int> cmp;
     Int n, Q;
     std::cin >> n >> Q;
     std::vector<int> a(n);
-    REP(i, n) std::cin >> a[i];
-    WaveletMatrix<int, 31, std::uint64_t> wm(a);
+    REP(i, n) std::cin >> a[i], cmp.insert(a[i]);
+    cmp.build();
+    REP(i, n) a[i] = cmp(a[i]);
+    WaveletMatrix<int, 18, std::uint64_t> wm(a);
     REP(q, Q) {
         Int l, r, k;
         std::cin >> l >> r >> k;
-        std::cout << wm.quantile(l, r, k) << "\n";
+        std::cout << cmp[wm.quantile(l, r, k)] << "\n";
     }
 }
 
@@ -111,13 +116,13 @@ int popcount(std::uint32_t x) { return __builtin_popcount(x); }
 int popcount(std::uint64_t x) { return __builtin_popcountll(x); }
 
 template <class block_type = std::uint64_t> struct BitVector {
-    static constexpr int b = sizeof(block_type) * CHAR_BIT;  // blockのサイズ
+    static constexpr size_t b = sizeof(block_type) * CHAR_BIT;  // blockのサイズ
     int n;
     std::vector<block_type> bit;
     std::vector<int> acc;
     BitVector() {}
     BitVector(int n_) : n(n_), bit(n / b + 1), acc(n / b + 1) {}
-    template <bool x = 1> void set(int i) {
+    template <bool x = 1> void set(size_t i) {
         if (x)
             bit[i / b] |= (block_type)1 << (i % b);
         else
@@ -129,14 +134,14 @@ template <class block_type = std::uint64_t> struct BitVector {
         }
     }
     // [0, i)内のxの個数
-    template <bool x> int rank(int i) {
+    template <bool x> int rank(size_t i) {
         if (x)
             return acc[i / b] + (i % b ? popcount(bit[i / b] << (b - i % b)) : 0);
         else
-            return i - rank<true>(i);
+            return i - rank<1>(i);
     }
     // j番目のxのindex
-    template <bool x> int select(int j) {
+    template <bool x> int select(size_t j) {
         int ok = n, ng = -1;
         while (std::abs(ok - ng) > 1) {
             int mid = (ok + ng) / 2;
@@ -208,19 +213,35 @@ template <class T, int maxlog = 31, class block_type = std::uint64_t> struct Wav
         return ret;
     }
 };
-#line 20 "test/yosupo/range_kth_smallest.test.cpp"
+#line 1 "src/Helper/Compressor.hpp"
+template <class T> struct Compressor {
+    std::vector<T> val;
+    void insert(T x) { val.push_back(x); }
+    void insert(const std::vector<T>& v) { val.insert(val.begin(), v.begin(), v.end()); }
+    void build() {
+        std::sort(val.begin(), val.end());
+        val.erase(std::unique(val.begin(), val.end()), val.end());
+    }
+    int operator()(T x) { return std::lower_bound(val.begin(), val.end(), x) - val.begin(); }
+    T operator[](int idx) { return val[idx]; }
+    int size() { return val.size(); }
+};
+#line 21 "test/yosupo/range_kth_smallest.test.cpp"
 #undef CALL_FROM_TEST
 
 signed main() {
+    Compressor<int> cmp;
     Int n, Q;
     std::cin >> n >> Q;
     std::vector<int> a(n);
-    REP(i, n) std::cin >> a[i];
-    WaveletMatrix<int, 31, std::uint64_t> wm(a);
+    REP(i, n) std::cin >> a[i], cmp.insert(a[i]);
+    cmp.build();
+    REP(i, n) a[i] = cmp(a[i]);
+    WaveletMatrix<int, 18, std::uint64_t> wm(a);
     REP(q, Q) {
         Int l, r, k;
         std::cin >> l >> r >> k;
-        std::cout << wm.quantile(l, r, k) << "\n";
+        std::cout << cmp[wm.quantile(l, r, k)] << "\n";
     }
 }
 

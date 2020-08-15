@@ -84,7 +84,7 @@ layout: default
 * :heavy_check_mark: <a href="library/src/Helper/BinarySearch.hpp.html">src/Helper/BinarySearch.hpp</a>
 * :warning: <a href="library/src/Helper/BitOperation.hpp.html">src/Helper/BitOperation.hpp</a>
 * :heavy_check_mark: <a href="library/src/Helper/ChminChmax.hpp.html">src/Helper/ChminChmax.hpp</a>
-* :warning: <a href="library/src/Helper/Compressor.cpp.html">src/Helper/Compressor.cpp</a>
+* :heavy_check_mark: <a href="library/src/Helper/Compressor.hpp.html">src/Helper/Compressor.hpp</a>
 * :warning: <a href="library/src/Helper/Directions.hpp.html">src/Helper/Directions.hpp</a>
 * :warning: <a href="library/src/Helper/EnumerateFixedSizeSet.hpp.html">src/Helper/EnumerateFixedSizeSet.hpp</a>
 * :warning: <a href="library/src/Helper/GccTree.hpp.html">src/Helper/GccTree.hpp</a>

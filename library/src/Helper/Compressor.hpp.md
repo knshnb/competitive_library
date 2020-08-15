@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: src/Helper/Compressor.cpp
+# :heavy_check_mark: src/Helper/Compressor.hpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#1b49b634354b8edb1dc8ef8a73014950">src/Helper</a>
-* <a href="{{ site.github.repository_url }}/blob/master/src/Helper/Compressor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 22:25:40+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/src/Helper/Compressor.hpp">View this file on GitHub</a>
+    - Last commit date: 2020-08-15 16:14:21+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/yosupo/range_kth_smallest.test.cpp.html">test/yosupo/range_kth_smallest.test.cpp</a>
 
 
 ## Code
@@ -60,7 +65,7 @@ template <class T> struct Compressor {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "src/Helper/Compressor.cpp"
+#line 1 "src/Helper/Compressor.hpp"
 template <class T> struct Compressor {
     std::vector<T> val;
     void insert(T x) { val.push_back(x); }
