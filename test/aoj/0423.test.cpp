@@ -1,4 +1,4 @@
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0423"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/0423"
 
 #include <bits/stdc++.h>  // clang-format off
 using Int = long long;
