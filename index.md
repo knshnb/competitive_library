@@ -65,6 +65,7 @@ layout: default
 
 ### src/Graph
 
+* :heavy_check_mark: <a href="library/src/Graph/AbstractDijkstra.hpp.html">src/Graph/AbstractDijkstra.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/BellmanFord.hpp.html">src/Graph/BellmanFord.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/Dijkstra.hpp.html">src/Graph/Dijkstra.hpp</a>
 * :heavy_check_mark: <a href="library/src/Graph/DominatorTree.hpp.html">src/Graph/DominatorTree.hpp</a>
@@ -176,6 +177,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A.test.cpp.html">test/aoj/DSL_2_A.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B.test.cpp.html">test/aoj/DSL_2_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H.test.cpp.html">test/aoj/DSL_2_H.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/GRL_1_A_abstract.test.cpp.html">test/aoj/GRL_1_A_abstract.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_1_B.test.cpp.html">test/aoj/GRL_1_B.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_1_C.test.cpp.html">test/aoj/GRL_1_C.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo/bipartitematching.test.cpp.html">test/yosupo/bipartitematching.test.cpp</a>
