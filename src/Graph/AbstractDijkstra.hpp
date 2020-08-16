@@ -1,4 +1,5 @@
-template <class Dist, class Key, class Delta>  // Delta: Key, (Key, Dist -> void) -> void
+/// @docs src/Graph/AbstractDijkstra.md
+template <class Dist, class Key, class Delta>  // Delta: Key from, (Key to, Dist d -> void) update -> void
 std::map<Key, Dist> dijkstra(Key s, Delta delta) {
     std::map<Key, Dist> dist;
     using P = std::pair<Dist, Key>;
