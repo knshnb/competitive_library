@@ -31,9 +31,17 @@ layout: default
 
 * category: <a href="../../../index.html#6e5c608398952d411d1862b1f8dc05f5">src/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Graph/AbstractDijkstra.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-16 16:02:11+09:00
+    - Last commit date: 2020-08-16 16:36:41+09:00
 
 
+
+
+## 概要
+抽象化dijkstra。
+記事: https://blog.knshnb.com/posts/abstract-dijkstra/
+
+## 参考
+https://niuez.github.io/posts/impl_abstract_dijkstra/
 
 
 ## Verified with
@@ -46,7 +54,8 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-template <class Dist, class Key, class Delta>  // Delta: Key, (Key, Dist -> void) -> void
+/// @docs src/Graph/AbstractDijkstra.md
+template <class Dist, class Key, class Delta>  // Delta: Key from, (Key to, Dist d -> void) update -> void
 std::map<Key, Dist> dijkstra(Key s, Delta delta) {
     std::map<Key, Dist> dist;
     using P = std::pair<Dist, Key>;
@@ -71,7 +80,8 @@ std::map<Key, Dist> dijkstra(Key s, Delta delta) {
 {% raw %}
 ```cpp
 #line 1 "src/Graph/AbstractDijkstra.hpp"
-template <class Dist, class Key, class Delta>  // Delta: Key, (Key, Dist -> void) -> void
+/// @docs src/Graph/AbstractDijkstra.md
+template <class Dist, class Key, class Delta>  // Delta: Key from, (Key to, Dist d -> void) update -> void
 std::map<Key, Dist> dijkstra(Key s, Delta delta) {
     std::map<Key, Dist> dist;
     using P = std::pair<Dist, Key>;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_1_A_abstract.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-16 16:02:11+09:00
+    - Last commit date: 2020-08-16 16:36:41+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/problems/GRL_1_A">https://onlinejudge.u-aizu.ac.jp/problems/GRL_1_A</a>
@@ -121,7 +121,8 @@ struct SetupIO { SetupIO() { std::cin.tie(nullptr), std::ios::sync_with_stdio(fa
 
 #define CALL_FROM_TEST
 #line 1 "src/Graph/AbstractDijkstra.hpp"
-template <class Dist, class Key, class Delta>  // Delta: Key, (Key, Dist -> void) -> void
+/// @docs src/Graph/AbstractDijkstra.md
+template <class Dist, class Key, class Delta>  // Delta: Key from, (Key to, Dist d -> void) update -> void
 std::map<Key, Dist> dijkstra(Key s, Delta delta) {
     std::map<Key, Dist> dist;
     using P = std::pair<Dist, Key>;
