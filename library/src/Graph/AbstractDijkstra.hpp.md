@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#6e5c608398952d411d1862b1f8dc05f5">src/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/Graph/AbstractDijkstra.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-16 16:36:41+09:00
+    - Last commit date: 2020-08-26 17:58:25+09:00
 
 
 
@@ -59,7 +59,8 @@ template <class Dist, class Key, class Delta>  // Delta: Key from, (Key to, Dist
 std::map<Key, Dist> dijkstra(Key s, Delta delta) {
     std::map<Key, Dist> dist;
     using P = std::pair<Dist, Key>;
-    std::priority_queue<P, std::vector<P>, std::greater<P>> q;
+    auto cmp_first = [](const P& a, const P& b) { return a.first > b.first; };
+    std::priority_queue<P, std::vector<P>, decltype(cmp_first)> q{cmp_first};
     q.push({dist[s] = Dist(), s});
     while (!q.empty()) {
         std::pair<Dist, Key> p = q.top();
@@ -85,7 +86,8 @@ template <class Dist, class Key, class Delta>  // Delta: Key from, (Key to, Dist
 std::map<Key, Dist> dijkstra(Key s, Delta delta) {
     std::map<Key, Dist> dist;
     using P = std::pair<Dist, Key>;
-    std::priority_queue<P, std::vector<P>, std::greater<P>> q;
+    auto cmp_first = [](const P& a, const P& b) { return a.first > b.first; };
+    std::priority_queue<P, std::vector<P>, decltype(cmp_first)> q{cmp_first};
     q.push({dist[s] = Dist(), s});
     while (!q.empty()) {
         std::pair<Dist, Key> p = q.top();
