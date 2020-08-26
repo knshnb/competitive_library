@@ -3,7 +3,8 @@ template <class Dist, class Key, class Delta>  // Delta: Key from, (Key to, Dist
 std::map<Key, Dist> dijkstra(Key s, Delta delta) {
     std::map<Key, Dist> dist;
     using P = std::pair<Dist, Key>;
-    std::priority_queue<P, std::vector<P>, std::greater<P>> q;
+    auto cmp_first = [](const P& a, const P& b) { return a.first > b.first; };
+    std::priority_queue<P, std::vector<P>, decltype(cmp_first)> q{cmp_first};
     q.push({dist[s] = Dist(), s});
     while (!q.empty()) {
         std::pair<Dist, Key> p = q.top();
