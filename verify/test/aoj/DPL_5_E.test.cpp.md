@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0d0c91c0cca30af9c1c9faef0cf04aa9">test/aoj</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_E.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-29 03:59:22+09:00
+    - Last commit date: 2020-08-29 04:09:47+09:00
 
 
 * see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_E">https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_E</a>
@@ -126,17 +126,19 @@ template <class T> T pow(T x, long long n, const T UNION = 1) {
 /// @docs src/Math/ModInt.md
 template <int Mod> struct ModInt {
     int x;
-    static int runtime_mod;
+    static int& runtime_mod() {
+        static int runtime_mod_;
+        return runtime_mod_;
+    }
     // テンプレート引数が負のときは実行時ModInt
-    static int mod() { return Mod < 0 ? runtime_mod : Mod; }
+    static constexpr int mod() { return Mod < 0 ? runtime_mod() : Mod; }
     static std::unordered_map<int, int>& to_inv() {
         static std::unordered_map<int, int> to_inv_;
         return to_inv_;
     }
     static void set_runtime_mod(int mod) {
         static_assert(Mod < 0, "template parameter Mod must be negative for runtime ModInt");
-        runtime_mod = mod;
-        to_inv().clear();
+        runtime_mod() = mod, to_inv().clear();
     }
     ModInt() : x(0) {}
     ModInt(long long x_) {
@@ -167,10 +169,7 @@ template <int Mod> struct ModInt {
     bool operator==(ModInt rhs) const { return x == rhs.x; }
     bool operator!=(ModInt rhs) const { return x != rhs.x; }
 
-    friend std::ostream& operator<<(std::ostream& s, ModInt<Mod> a) {
-        s << a.x;
-        return s;
-    }
+    friend std::ostream& operator<<(std::ostream& s, ModInt<Mod> a) { return s << a.x; }
     friend std::istream& operator>>(std::istream& s, ModInt<Mod>& a) {
         long long tmp;
         s >> tmp;
@@ -179,7 +178,6 @@ template <int Mod> struct ModInt {
     }
     friend std::string to_string(ModInt<Mod> a) { return std::to_string(a.x); }
 };
-template <int Mod> int ModInt<Mod>::runtime_mod;
 
 #ifndef CALL_FROM_TEST
 using mint = ModInt<1000000007>;
