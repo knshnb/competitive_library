@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#ac276d2326c527c8c7dbcbb63d85c6c7">src/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/src/String/Trie.hpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-29 16:30:46+09:00
+    - Last commit date: 2020-08-26 20:43:44+09:00
 
 
 
@@ -43,16 +43,16 @@ layout: default
 ```cpp
 template <char margin = 'A', int char_size = 26> struct Trie {
     struct TrieNode {
-        array<int, char_size> node;
+        std::array<int, char_size> node;
         TrieNode() { node.fill(-1); };
-        typename array<int, char_size>::iterator begin() { return node.begin(); }
-        typename array<int, char_size>::iterator end() { return node.end(); }
+        typename std::array<int, char_size>::iterator begin() { return node.begin(); }
+        typename std::array<int, char_size>::iterator end() { return node.end(); }
         int& operator[](int i) { return node[i]; }
     };
-    vector<TrieNode> tree;
-    vector<int> num;  // 部分木内の個数
+    std::vector<TrieNode> tree;
+    std::vector<int> num;  // 部分木内の個数
     Trie() : tree(1), num(1) {}
-    void insert(string& s) {
+    void insert(const std::string& s) {
         num[0]++;
         int t = 0;
         for (char c : s) {
@@ -66,7 +66,7 @@ template <char margin = 'A', int char_size = 26> struct Trie {
             num[t]++;
         }
     }
-    void erase(string& s) {
+    void erase(const std::string& s) {
         int par = 0;
         num[par]--;
         for (char c : s) {
@@ -88,16 +88,16 @@ template <char margin = 'A', int char_size = 26> struct Trie {
 #line 1 "src/String/Trie.hpp"
 template <char margin = 'A', int char_size = 26> struct Trie {
     struct TrieNode {
-        array<int, char_size> node;
+        std::array<int, char_size> node;
         TrieNode() { node.fill(-1); };
-        typename array<int, char_size>::iterator begin() { return node.begin(); }
-        typename array<int, char_size>::iterator end() { return node.end(); }
+        typename std::array<int, char_size>::iterator begin() { return node.begin(); }
+        typename std::array<int, char_size>::iterator end() { return node.end(); }
         int& operator[](int i) { return node[i]; }
     };
-    vector<TrieNode> tree;
-    vector<int> num;  // 部分木内の個数
+    std::vector<TrieNode> tree;
+    std::vector<int> num;  // 部分木内の個数
     Trie() : tree(1), num(1) {}
-    void insert(string& s) {
+    void insert(const std::string& s) {
         num[0]++;
         int t = 0;
         for (char c : s) {
@@ -111,7 +111,7 @@ template <char margin = 'A', int char_size = 26> struct Trie {
             num[t]++;
         }
     }
-    void erase(string& s) {
+    void erase(const std::string& s) {
         int par = 0;
         num[par]--;
         for (char c : s) {
