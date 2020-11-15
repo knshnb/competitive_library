@@ -71,8 +71,8 @@ data:
   timestamp: '2020-04-03 18:03:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo/scc.test.cpp
   - test/yosupo/two_sat.test.cpp
+  - test/yosupo/scc.test.cpp
 documentation_of: src/Graph/StronglyConnectedComponents.hpp
 layout: document
 redirect_from:

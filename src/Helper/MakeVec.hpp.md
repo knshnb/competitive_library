@@ -27,8 +27,8 @@ data:
   timestamp: '2020-03-29 16:30:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/GRL_1_C.test.cpp
   - test/aoj/DPL_1_E.test.cpp
+  - test/aoj/GRL_1_C.test.cpp
 documentation_of: src/Helper/MakeVec.hpp
 layout: document
 redirect_from:

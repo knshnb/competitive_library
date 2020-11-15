@@ -42,6 +42,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/DataStructure/UnionFind.hpp
       title: src/DataStructure/UnionFind.hpp
+    - icon: ':warning:'
+      path: src/DataStructure/UnionFindWithData.hpp
+      title: src/DataStructure/UnionFindWithData.hpp
     - icon: ':heavy_check_mark:'
       path: src/DataStructure/WaveletMatrix.hpp
       title: src/DataStructure/WaveletMatrix.hpp
@@ -243,9 +246,6 @@ data:
     - icon: ':warning:'
       path: src/old/UnionFindRange.hpp
       title: src/old/UnionFindRange.hpp
-    - icon: ':warning:'
-      path: src/old/UnionFindWithData.hpp
-      title: src/old/UnionFindWithData.hpp
     - icon: ':warning:'
       path: src/old/UnionFindWithWeight.hpp
       title: src/old/UnionFindWithWeight.hpp

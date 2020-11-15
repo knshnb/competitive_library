@@ -124,8 +124,8 @@ data:
   timestamp: '2020-08-15 16:14:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/1549.test.cpp
   - test/aoj/ALDS1_5_D.test.cpp
+  - test/aoj/1549.test.cpp
   - test/yosupo/range_kth_smallest.test.cpp
 documentation_of: src/DataStructure/WaveletMatrix.hpp
 layout: document
