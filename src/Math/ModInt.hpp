@@ -54,6 +54,28 @@ template <int Mod> struct ModInt {
     bool operator==(ModInt rhs) const { return x == rhs.x; }
     bool operator!=(ModInt rhs) const { return x != rhs.x; }
 
+    // 計算結果をmapに保存するべき乗
+    ModInt save_pow(int n) const {
+        static std::map<std::pair<int, int>, int> tbl_pow;
+        if (tbl_pow.count({x, n})) return tbl_pow[{x, n}];
+        if (n == 0) return 1;
+        if (n % 2) return tbl_pow[{x, n}] = (*this * save_pow(n - 1)).x;
+        return tbl_pow[{x, n}] = (save_pow(n / 2) * save_pow(n / 2)).x;
+    }
+    // 1 + r + r^2 + ... + r^(n-1)を逆元がない（modが素数でない）場合に計算
+    static ModInt geometric_progression(ModInt r, int n) {
+        if (n == 0) return 0;
+        if (n % 2) return geometric_progression(r, n - 1) + r.save_pow(n - 1);
+        return geometric_progression(r, n / 2) * (r.save_pow(n / 2) + 1);
+    }
+    // a + r * (a - d) + r^2 * (a - 2d) + ... + r^(n-1) * (a - (n - 1)d)
+    static ModInt linear_sum(ModInt r, ModInt a, ModInt d, int n) {
+        if (n == 0) return 0;
+        if (n % 2) return linear_sum(r, a, d, n - 1) + r.save_pow(n - 1) * (a - d * (n - 1));
+        return linear_sum(r, a, d, n / 2) * (r.save_pow(n / 2) + 1) -
+               d * (n / 2) * r.save_pow(n / 2) * geometric_progression(r, n / 2);
+    }
+
     friend std::ostream& operator<<(std::ostream& s, ModInt<Mod> a) { return s << a.x; }
     friend std::istream& operator>>(std::istream& s, ModInt<Mod>& a) {
         long long tmp;
