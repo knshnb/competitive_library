@@ -6,6 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo/staticrmq_sparse_table.test.cpp
     title: test/yosupo/staticrmq_sparse_table.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

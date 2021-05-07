@@ -3,6 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
@@ -11,21 +12,29 @@ data:
     \ B, class C, class D>\nstd::pair<A, B>& operator+=(std::pair<A, B>& x, const\
     \ std::pair<C, D>& y) {\n    return x = {x.first + y.first, x.second + y.second};\n\
     }\ntemplate <class A, class B, class C, class D> std::pair<A, B> operator+(std::pair<A,\
-    \ B> x, const std::pair<C, D>& y) {\n    return x += y;\n}\ntemplate <class T,\
+    \ B> x, const std::pair<C, D>& y) {\n    return x += y;\n}\ntemplate <class A,\
+    \ class B, class C, class D>\nstd::pair<A, B>& operator-=(std::pair<A, B>& x,\
+    \ const std::pair<C, D>& y) {\n    return x = {x.first - y.first, x.second - y.second};\n\
+    }\ntemplate <class A, class B, class C, class D> std::pair<A, B> operator-(std::pair<A,\
+    \ B> x, const std::pair<C, D>& y) {\n    return x -= y;\n}\ntemplate <class T,\
     \ class integer> T& get(std::vector<std::vector<T>>& v, const std::pair<integer,\
     \ integer>& p) {\n    return v[p.first][p.second];\n}\n"
   code: "template <class A, class B, class C, class D>\nstd::pair<A, B>& operator+=(std::pair<A,\
     \ B>& x, const std::pair<C, D>& y) {\n    return x = {x.first + y.first, x.second\
     \ + y.second};\n}\ntemplate <class A, class B, class C, class D> std::pair<A,\
     \ B> operator+(std::pair<A, B> x, const std::pair<C, D>& y) {\n    return x +=\
+    \ y;\n}\ntemplate <class A, class B, class C, class D>\nstd::pair<A, B>& operator-=(std::pair<A,\
+    \ B>& x, const std::pair<C, D>& y) {\n    return x = {x.first - y.first, x.second\
+    \ - y.second};\n}\ntemplate <class A, class B, class C, class D> std::pair<A,\
+    \ B> operator-(std::pair<A, B> x, const std::pair<C, D>& y) {\n    return x -=\
     \ y;\n}\ntemplate <class T, class integer> T& get(std::vector<std::vector<T>>&\
     \ v, const std::pair<integer, integer>& p) {\n    return v[p.first][p.second];\n\
-    }\n"
+    }"
   dependsOn: []
   isVerificationFile: false
   path: src/Helper/PairOperations.hpp
   requiredBy: []
-  timestamp: '2020-06-06 22:51:08+09:00'
+  timestamp: '2021-03-05 23:10:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/Helper/PairOperations.hpp

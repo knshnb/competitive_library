@@ -9,6 +9,7 @@ data:
     title: src/Math/ModInt.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -50,35 +51,51 @@ data:
     \ }\n    ModInt operator-(ModInt rhs) const { return ModInt(*this) -= rhs; }\n\
     \    ModInt operator/(ModInt rhs) const { return ModInt(*this) /= rhs; }\n   \
     \ bool operator==(ModInt rhs) const { return x == rhs.x; }\n    bool operator!=(ModInt\
-    \ rhs) const { return x != rhs.x; }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ s, ModInt<Mod> a) { return s << a.x; }\n    friend std::istream& operator>>(std::istream&\
-    \ s, ModInt<Mod>& a) {\n        long long tmp;\n        s >> tmp;\n        a =\
-    \ ModInt<Mod>(tmp);\n        return s;\n    }\n    friend std::string to_string(ModInt<Mod>\
-    \ a) { return std::to_string(a.x); }\n};\n\n#ifndef CALL_FROM_TEST\nusing mint\
-    \ = ModInt<1000000007>;\n#endif\n#line 1 \"src/DataStructure/SegmentTree.hpp\"\
-    \n/// @docs src/DataStructure/SegmentTree.md\ntemplate <class T, class F> struct\
-    \ SegmentTree {\n    const F op;\n    const T e;\n    SegmentTree(F op_, T e_)\
-    \ : op(op_), e(e_) {}\n    int n;\n    std::vector<T> t;\n    void set_by_identity(int\
-    \ n_) {\n        n = n_;\n        t.clear(), t.resize(2 * n, e);\n    }\n    void\
-    \ set_by_vector(const std::vector<T>& a) {\n        n = a.size();\n        t.clear(),\
-    \ t.resize(2 * n, e);\n        for (int i = 0; i < n; i++) t[i + n] = a[i];\n\
-    \        build();\n    }\n    void build() {\n        for (int i = n - 1; i; --i)\
-    \ t[i] = op(t[2 * i], t[2 * i + 1]);\n    }\n    T& operator[](int i) { return\
-    \ t[i + n]; }\n    // [l, r)\n    T query(int l, int r) const {\n        assert(0\
-    \ <= l && l <= r && r <= n);\n        T resl = e, resr = e;\n        for (l +=\
-    \ n, r += n; l < r; l >>= 1, r >>= 1) {\n            if (l & 1) resl = op(resl,\
-    \ t[l++]);\n            if (r & 1) resr = op(t[--r], resr);\n        }\n     \
-    \   return op(resl, resr);\n    }\n    // i\u756A\u76EE\u3092x\u306B\u5909\u66F4\
-    \n    void update(int i, const T& x) {\n        assert(0 <= i && i < n);\n   \
-    \     t[i += n] = x;\n        while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);\n\
-    \    }\n    // i\u756A\u76EE\u306Bx\u3092\u4F5C\u7528 (a[i] = op(a[i], x))\n \
-    \   void operate(int i, const T& x) {\n        assert(0 <= i && i < n);\n    \
-    \    i += n;\n        t[i] = op(t[i], x);\n        while (i >>= 1) t[i] = op(t[2\
-    \ * i], t[2 * i + 1]);\n    }\n    friend std::string to_string(const SegmentTree<T,\
-    \ F>& seg) {\n        return to_string(std::vector<T>(seg.t.begin() + seg.n, seg.t.end()));\n\
-    \    }\n};\ntemplate <class T, class F> auto make_segment_tree(F op, T e) { return\
-    \ SegmentTree<T, F>(op, e); }\n#line 20 \"test/yosupo/point_set_range_composite.test.cpp\"\
-    \n#undef CALL_FROM_TEST\n\nusing mint = ModInt<998244353>;\nusing pmm = std::pair<mint,\
+    \ rhs) const { return x != rhs.x; }\n\n    // \u8A08\u7B97\u7D50\u679C\u3092map\u306B\
+    \u4FDD\u5B58\u3059\u308B\u3079\u304D\u4E57\n    ModInt save_pow(int n) const {\n\
+    \        static std::map<std::pair<int, int>, int> tbl_pow;\n        if (tbl_pow.count({x,\
+    \ n})) return tbl_pow[{x, n}];\n        if (n == 0) return 1;\n        if (n %\
+    \ 2) return tbl_pow[{x, n}] = (*this * save_pow(n - 1)).x;\n        return tbl_pow[{x,\
+    \ n}] = (save_pow(n / 2) * save_pow(n / 2)).x;\n    }\n    // 1 + r + r^2 + ...\
+    \ + r^(n-1)\u3092\u9006\u5143\u304C\u306A\u3044\uFF08mod\u304C\u7D20\u6570\u3067\
+    \u306A\u3044\uFF09\u5834\u5408\u306B\u8A08\u7B97\n    static ModInt geometric_progression(ModInt\
+    \ r, int n) {\n        if (n == 0) return 0;\n        if (n % 2) return geometric_progression(r,\
+    \ n - 1) + r.save_pow(n - 1);\n        return geometric_progression(r, n / 2)\
+    \ * (r.save_pow(n / 2) + 1);\n    }\n    // a + r * (a - d) + r^2 * (a - 2d) +\
+    \ ... + r^(n-1) * (a - (n - 1)d)\n    static ModInt linear_sum(ModInt r, ModInt\
+    \ a, ModInt d, int n) {\n        if (n == 0) return 0;\n        if (n % 2) return\
+    \ linear_sum(r, a, d, n - 1) + r.save_pow(n - 1) * (a - d * (n - 1));\n      \
+    \  return linear_sum(r, a, d, n / 2) * (r.save_pow(n / 2) + 1) -\n           \
+    \    d * (n / 2) * r.save_pow(n / 2) * geometric_progression(r, n / 2);\n    }\n\
+    \n    friend std::ostream& operator<<(std::ostream& s, ModInt<Mod> a) { return\
+    \ s << a.x; }\n    friend std::istream& operator>>(std::istream& s, ModInt<Mod>&\
+    \ a) {\n        long long tmp;\n        s >> tmp;\n        a = ModInt<Mod>(tmp);\n\
+    \        return s;\n    }\n    friend std::string to_string(ModInt<Mod> a) { return\
+    \ std::to_string(a.x); }\n};\n\n#ifndef CALL_FROM_TEST\nusing mint = ModInt<1000000007>;\n\
+    #endif\n#line 1 \"src/DataStructure/SegmentTree.hpp\"\n/// @docs src/DataStructure/SegmentTree.md\n\
+    template <class T, class F> struct SegmentTree {\n    const F op;\n    const T\
+    \ e;\n    SegmentTree(F op_, T e_) : op(op_), e(e_) {}\n    int n;\n    std::vector<T>\
+    \ t;\n    void set_by_identity(int n_) {\n        n = n_;\n        t.clear(),\
+    \ t.resize(2 * n, e);\n    }\n    void set_by_vector(const std::vector<T>& a)\
+    \ {\n        n = a.size();\n        t.clear(), t.resize(2 * n, e);\n        for\
+    \ (int i = 0; i < n; i++) t[i + n] = a[i];\n        build();\n    }\n    void\
+    \ build() {\n        for (int i = n - 1; i; --i) t[i] = op(t[2 * i], t[2 * i +\
+    \ 1]);\n    }\n    T& operator[](int i) { return t[i + n]; }\n    // [l, r)\n\
+    \    T query(int l, int r) const {\n        assert(0 <= l && l <= r && r <= n);\n\
+    \        T resl = e, resr = e;\n        for (l += n, r += n; l < r; l >>= 1, r\
+    \ >>= 1) {\n            if (l & 1) resl = op(resl, t[l++]);\n            if (r\
+    \ & 1) resr = op(t[--r], resr);\n        }\n        return op(resl, resr);\n \
+    \   }\n    // i\u756A\u76EE\u3092x\u306B\u5909\u66F4\n    void update(int i, const\
+    \ T& x) {\n        assert(0 <= i && i < n);\n        t[i += n] = x;\n        while\
+    \ (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);\n    }\n    // i\u756A\u76EE\u306B\
+    x\u3092\u4F5C\u7528 (a[i] = op(a[i], x))\n    void operate(int i, const T& x)\
+    \ {\n        assert(0 <= i && i < n);\n        i += n;\n        t[i] = op(t[i],\
+    \ x);\n        while (i >>= 1) t[i] = op(t[2 * i], t[2 * i + 1]);\n    }\n   \
+    \ friend std::string to_string(const SegmentTree<T, F>& seg) {\n        return\
+    \ to_string(std::vector<T>(seg.t.begin() + seg.n, seg.t.end()));\n    }\n};\n\
+    template <class T, class F> auto make_segment_tree(F op, T e) { return SegmentTree<T,\
+    \ F>(op, e); }\n#line 20 \"test/yosupo/point_set_range_composite.test.cpp\"\n\
+    #undef CALL_FROM_TEST\n\nusing mint = ModInt<998244353>;\nusing pmm = std::pair<mint,\
     \ mint>;\nsigned main() {\n    Int n, Q;\n    std::cin >> n >> Q;\n    std::vector<pmm>\
     \ a(n);\n    REP(i, n) std::cin >> a[i].first >> a[i].second;\n    auto seg =\
     \ make_segment_tree<pmm>(\n        [](pmm x, pmm y) {\n            return pmm{x.first\
@@ -111,7 +128,7 @@ data:
   isVerificationFile: true
   path: test/yosupo/point_set_range_composite.test.cpp
   requiredBy: []
-  timestamp: '2020-08-29 04:09:47+09:00'
+  timestamp: '2021-03-05 23:09:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo/point_set_range_composite.test.cpp

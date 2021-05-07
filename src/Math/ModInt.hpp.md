@@ -33,6 +33,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/1073_matrix_static.test.cpp
     title: test/yukicoder/1073_matrix_static.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -64,12 +65,28 @@ data:
     \ }\n    ModInt operator-(ModInt rhs) const { return ModInt(*this) -= rhs; }\n\
     \    ModInt operator/(ModInt rhs) const { return ModInt(*this) /= rhs; }\n   \
     \ bool operator==(ModInt rhs) const { return x == rhs.x; }\n    bool operator!=(ModInt\
-    \ rhs) const { return x != rhs.x; }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ s, ModInt<Mod> a) { return s << a.x; }\n    friend std::istream& operator>>(std::istream&\
-    \ s, ModInt<Mod>& a) {\n        long long tmp;\n        s >> tmp;\n        a =\
-    \ ModInt<Mod>(tmp);\n        return s;\n    }\n    friend std::string to_string(ModInt<Mod>\
-    \ a) { return std::to_string(a.x); }\n};\n\n#ifndef CALL_FROM_TEST\nusing mint\
-    \ = ModInt<1000000007>;\n#endif\n"
+    \ rhs) const { return x != rhs.x; }\n\n    // \u8A08\u7B97\u7D50\u679C\u3092map\u306B\
+    \u4FDD\u5B58\u3059\u308B\u3079\u304D\u4E57\n    ModInt save_pow(int n) const {\n\
+    \        static std::map<std::pair<int, int>, int> tbl_pow;\n        if (tbl_pow.count({x,\
+    \ n})) return tbl_pow[{x, n}];\n        if (n == 0) return 1;\n        if (n %\
+    \ 2) return tbl_pow[{x, n}] = (*this * save_pow(n - 1)).x;\n        return tbl_pow[{x,\
+    \ n}] = (save_pow(n / 2) * save_pow(n / 2)).x;\n    }\n    // 1 + r + r^2 + ...\
+    \ + r^(n-1)\u3092\u9006\u5143\u304C\u306A\u3044\uFF08mod\u304C\u7D20\u6570\u3067\
+    \u306A\u3044\uFF09\u5834\u5408\u306B\u8A08\u7B97\n    static ModInt geometric_progression(ModInt\
+    \ r, int n) {\n        if (n == 0) return 0;\n        if (n % 2) return geometric_progression(r,\
+    \ n - 1) + r.save_pow(n - 1);\n        return geometric_progression(r, n / 2)\
+    \ * (r.save_pow(n / 2) + 1);\n    }\n    // a + r * (a - d) + r^2 * (a - 2d) +\
+    \ ... + r^(n-1) * (a - (n - 1)d)\n    static ModInt linear_sum(ModInt r, ModInt\
+    \ a, ModInt d, int n) {\n        if (n == 0) return 0;\n        if (n % 2) return\
+    \ linear_sum(r, a, d, n - 1) + r.save_pow(n - 1) * (a - d * (n - 1));\n      \
+    \  return linear_sum(r, a, d, n / 2) * (r.save_pow(n / 2) + 1) -\n           \
+    \    d * (n / 2) * r.save_pow(n / 2) * geometric_progression(r, n / 2);\n    }\n\
+    \n    friend std::ostream& operator<<(std::ostream& s, ModInt<Mod> a) { return\
+    \ s << a.x; }\n    friend std::istream& operator>>(std::istream& s, ModInt<Mod>&\
+    \ a) {\n        long long tmp;\n        s >> tmp;\n        a = ModInt<Mod>(tmp);\n\
+    \        return s;\n    }\n    friend std::string to_string(ModInt<Mod> a) { return\
+    \ std::to_string(a.x); }\n};\n\n#ifndef CALL_FROM_TEST\nusing mint = ModInt<1000000007>;\n\
+    #endif\n"
   code: "template <class T> T pow(T x, long long n, const T UNION = 1) {\n    T ret\
     \ = UNION;\n    while (n) {\n        if (n & 1) ret *= x;\n        x *= x;\n \
     \       n >>= 1;\n    }\n    return ret;\n}\n\n/// @docs src/Math/ModInt.md\n\
@@ -95,29 +112,45 @@ data:
     \ { return ModInt(*this) *= rhs; }\n    ModInt operator-(ModInt rhs) const { return\
     \ ModInt(*this) -= rhs; }\n    ModInt operator/(ModInt rhs) const { return ModInt(*this)\
     \ /= rhs; }\n    bool operator==(ModInt rhs) const { return x == rhs.x; }\n  \
-    \  bool operator!=(ModInt rhs) const { return x != rhs.x; }\n\n    friend std::ostream&\
-    \ operator<<(std::ostream& s, ModInt<Mod> a) { return s << a.x; }\n    friend\
-    \ std::istream& operator>>(std::istream& s, ModInt<Mod>& a) {\n        long long\
-    \ tmp;\n        s >> tmp;\n        a = ModInt<Mod>(tmp);\n        return s;\n\
-    \    }\n    friend std::string to_string(ModInt<Mod> a) { return std::to_string(a.x);\
-    \ }\n};\n\n#ifndef CALL_FROM_TEST\nusing mint = ModInt<1000000007>;\n#endif\n"
+    \  bool operator!=(ModInt rhs) const { return x != rhs.x; }\n\n    // \u8A08\u7B97\
+    \u7D50\u679C\u3092map\u306B\u4FDD\u5B58\u3059\u308B\u3079\u304D\u4E57\n    ModInt\
+    \ save_pow(int n) const {\n        static std::map<std::pair<int, int>, int> tbl_pow;\n\
+    \        if (tbl_pow.count({x, n})) return tbl_pow[{x, n}];\n        if (n ==\
+    \ 0) return 1;\n        if (n % 2) return tbl_pow[{x, n}] = (*this * save_pow(n\
+    \ - 1)).x;\n        return tbl_pow[{x, n}] = (save_pow(n / 2) * save_pow(n / 2)).x;\n\
+    \    }\n    // 1 + r + r^2 + ... + r^(n-1)\u3092\u9006\u5143\u304C\u306A\u3044\
+    \uFF08mod\u304C\u7D20\u6570\u3067\u306A\u3044\uFF09\u5834\u5408\u306B\u8A08\u7B97\
+    \n    static ModInt geometric_progression(ModInt r, int n) {\n        if (n ==\
+    \ 0) return 0;\n        if (n % 2) return geometric_progression(r, n - 1) + r.save_pow(n\
+    \ - 1);\n        return geometric_progression(r, n / 2) * (r.save_pow(n / 2) +\
+    \ 1);\n    }\n    // a + r * (a - d) + r^2 * (a - 2d) + ... + r^(n-1) * (a - (n\
+    \ - 1)d)\n    static ModInt linear_sum(ModInt r, ModInt a, ModInt d, int n) {\n\
+    \        if (n == 0) return 0;\n        if (n % 2) return linear_sum(r, a, d,\
+    \ n - 1) + r.save_pow(n - 1) * (a - d * (n - 1));\n        return linear_sum(r,\
+    \ a, d, n / 2) * (r.save_pow(n / 2) + 1) -\n               d * (n / 2) * r.save_pow(n\
+    \ / 2) * geometric_progression(r, n / 2);\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ s, ModInt<Mod> a) { return s << a.x; }\n    friend std::istream& operator>>(std::istream&\
+    \ s, ModInt<Mod>& a) {\n        long long tmp;\n        s >> tmp;\n        a =\
+    \ ModInt<Mod>(tmp);\n        return s;\n    }\n    friend std::string to_string(ModInt<Mod>\
+    \ a) { return std::to_string(a.x); }\n};\n\n#ifndef CALL_FROM_TEST\nusing mint\
+    \ = ModInt<1000000007>;\n#endif\n"
   dependsOn: []
   isVerificationFile: false
   path: src/Math/ModInt.hpp
   requiredBy: []
-  timestamp: '2020-08-29 04:09:47+09:00'
+  timestamp: '2021-03-05 23:09:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/1073.test.cpp
-  - test/yukicoder/1073_matrix_static.test.cpp
-  - test/aoj/DPL_5_B.test.cpp
+  - test/aoj/DPL_5_F.test.cpp
   - test/aoj/DPL_5_E.test.cpp
   - test/aoj/DPL_5_D.test.cpp
   - test/aoj/DPL_5_A.test.cpp
-  - test/aoj/DPL_5_F.test.cpp
+  - test/aoj/DPL_5_B.test.cpp
   - test/aoj/DPL_5_D_runtime.test.cpp
-  - test/yosupo/point_set_range_composite.test.cpp
+  - test/yukicoder/1073_matrix_static.test.cpp
+  - test/yukicoder/1073.test.cpp
   - test/yosupo/range_affine_range_sum.test.cpp
+  - test/yosupo/point_set_range_composite.test.cpp
 documentation_of: src/Math/ModInt.hpp
 layout: document
 redirect_from:

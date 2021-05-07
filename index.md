@@ -114,6 +114,9 @@ data:
     - icon: ':warning:'
       path: src/Helper/GccTree.hpp
       title: src/Helper/GccTree.hpp
+    - icon: ':warning:'
+      path: src/Helper/MakeFixPoint.hpp
+      title: src/Helper/MakeFixPoint.hpp
     - icon: ':heavy_check_mark:'
       path: src/Helper/MakeVec.hpp
       title: src/Helper/MakeVec.hpp
@@ -195,9 +198,6 @@ data:
     - icon: ':warning:'
       path: src/old/Divisor.hpp
       title: src/old/Divisor.hpp
-    - icon: ':warning:'
-      path: src/old/DynamicModInt.hpp
-      title: src/old/DynamicModInt.hpp
     - icon: ':warning:'
       path: src/old/ErdosGallai.hpp
       title: src/old/ErdosGallai.hpp

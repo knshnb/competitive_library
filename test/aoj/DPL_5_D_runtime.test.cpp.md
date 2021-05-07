@@ -9,6 +9,7 @@ data:
     title: src/Math/ModInt.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -50,20 +51,36 @@ data:
     \ }\n    ModInt operator-(ModInt rhs) const { return ModInt(*this) -= rhs; }\n\
     \    ModInt operator/(ModInt rhs) const { return ModInt(*this) /= rhs; }\n   \
     \ bool operator==(ModInt rhs) const { return x == rhs.x; }\n    bool operator!=(ModInt\
-    \ rhs) const { return x != rhs.x; }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ s, ModInt<Mod> a) { return s << a.x; }\n    friend std::istream& operator>>(std::istream&\
-    \ s, ModInt<Mod>& a) {\n        long long tmp;\n        s >> tmp;\n        a =\
-    \ ModInt<Mod>(tmp);\n        return s;\n    }\n    friend std::string to_string(ModInt<Mod>\
-    \ a) { return std::to_string(a.x); }\n};\n\n#ifndef CALL_FROM_TEST\nusing mint\
-    \ = ModInt<1000000007>;\n#endif\n#line 1 \"src/Math/Combination.hpp\"\ntemplate\
-    \ <class T> struct Combination {\n    std::vector<T> fact, fact_inv;\n    Combination(int\
-    \ n = 1000003) : fact(n + 1, 1), fact_inv(n + 1) {\n        for (int i = 0; i\
-    \ < n; i++) fact[i + 1] = fact[i] * (i + 1);\n        fact_inv[n] = (T)1 / fact[n];\n\
-    \        for (int i = n - 1; i >= 0; i--) fact_inv[i] = fact_inv[i + 1] * (i +\
-    \ 1);\n        // for (int i = 0; i < n + 1; i++) assert(fact[i] * fact_inv[i]\
-    \ == 1);\n    }\n    T operator()(int n, int r) { return fact[n] * fact_inv[r]\
-    \ * fact_inv[n - r]; }\n};\n#line 20 \"test/aoj/DPL_5_D_runtime.test.cpp\"\n#undef\
-    \ CALL_FROM_TEST\n\nusing mint = ModInt<-1>;\nsigned main() {\n    mint::set_runtime_mod(1000000007);\n\
+    \ rhs) const { return x != rhs.x; }\n\n    // \u8A08\u7B97\u7D50\u679C\u3092map\u306B\
+    \u4FDD\u5B58\u3059\u308B\u3079\u304D\u4E57\n    ModInt save_pow(int n) const {\n\
+    \        static std::map<std::pair<int, int>, int> tbl_pow;\n        if (tbl_pow.count({x,\
+    \ n})) return tbl_pow[{x, n}];\n        if (n == 0) return 1;\n        if (n %\
+    \ 2) return tbl_pow[{x, n}] = (*this * save_pow(n - 1)).x;\n        return tbl_pow[{x,\
+    \ n}] = (save_pow(n / 2) * save_pow(n / 2)).x;\n    }\n    // 1 + r + r^2 + ...\
+    \ + r^(n-1)\u3092\u9006\u5143\u304C\u306A\u3044\uFF08mod\u304C\u7D20\u6570\u3067\
+    \u306A\u3044\uFF09\u5834\u5408\u306B\u8A08\u7B97\n    static ModInt geometric_progression(ModInt\
+    \ r, int n) {\n        if (n == 0) return 0;\n        if (n % 2) return geometric_progression(r,\
+    \ n - 1) + r.save_pow(n - 1);\n        return geometric_progression(r, n / 2)\
+    \ * (r.save_pow(n / 2) + 1);\n    }\n    // a + r * (a - d) + r^2 * (a - 2d) +\
+    \ ... + r^(n-1) * (a - (n - 1)d)\n    static ModInt linear_sum(ModInt r, ModInt\
+    \ a, ModInt d, int n) {\n        if (n == 0) return 0;\n        if (n % 2) return\
+    \ linear_sum(r, a, d, n - 1) + r.save_pow(n - 1) * (a - d * (n - 1));\n      \
+    \  return linear_sum(r, a, d, n / 2) * (r.save_pow(n / 2) + 1) -\n           \
+    \    d * (n / 2) * r.save_pow(n / 2) * geometric_progression(r, n / 2);\n    }\n\
+    \n    friend std::ostream& operator<<(std::ostream& s, ModInt<Mod> a) { return\
+    \ s << a.x; }\n    friend std::istream& operator>>(std::istream& s, ModInt<Mod>&\
+    \ a) {\n        long long tmp;\n        s >> tmp;\n        a = ModInt<Mod>(tmp);\n\
+    \        return s;\n    }\n    friend std::string to_string(ModInt<Mod> a) { return\
+    \ std::to_string(a.x); }\n};\n\n#ifndef CALL_FROM_TEST\nusing mint = ModInt<1000000007>;\n\
+    #endif\n#line 1 \"src/Math/Combination.hpp\"\ntemplate <class T> struct Combination\
+    \ {\n    std::vector<T> fact, fact_inv;\n    Combination(int n = 1000003) : fact(n\
+    \ + 1, 1), fact_inv(n + 1) {\n        for (int i = 0; i < n; i++) fact[i + 1]\
+    \ = fact[i] * (i + 1);\n        fact_inv[n] = (T)1 / fact[n];\n        for (int\
+    \ i = n - 1; i >= 0; i--) fact_inv[i] = fact_inv[i + 1] * (i + 1);\n        //\
+    \ for (int i = 0; i < n + 1; i++) assert(fact[i] * fact_inv[i] == 1);\n    }\n\
+    \    T operator()(int n, int r) { return fact[n] * fact_inv[r] * fact_inv[n -\
+    \ r]; }\n};\n#line 20 \"test/aoj/DPL_5_D_runtime.test.cpp\"\n#undef CALL_FROM_TEST\n\
+    \nusing mint = ModInt<-1>;\nsigned main() {\n    mint::set_runtime_mod(1000000007);\n\
     \    Int n, k;\n    std::cin >> n >> k;\n    Combination<mint> comb(n + k - 1);\n\
     \    std::cout << comb(n + k - 1, n) << std::endl;\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/5/DPL_5_D\"\
@@ -84,7 +101,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DPL_5_D_runtime.test.cpp
   requiredBy: []
-  timestamp: '2020-08-29 04:09:47+09:00'
+  timestamp: '2021-03-05 23:09:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_5_D_runtime.test.cpp

@@ -6,6 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo/unionfind_dynamic.test.cpp
     title: test/yosupo/unionfind_dynamic.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

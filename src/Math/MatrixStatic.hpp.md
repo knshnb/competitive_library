@@ -6,6 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/1073_matrix_static.test.cpp
     title: test/yukicoder/1073_matrix_static.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

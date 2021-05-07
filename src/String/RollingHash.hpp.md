@@ -6,6 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo/zalgorithm_rolling_hash.test.cpp
     title: test/yosupo/zalgorithm_rolling_hash.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
