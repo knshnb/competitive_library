@@ -164,6 +164,9 @@ data:
     - icon: ':warning:'
       path: src/Math/PascalTriangle.hpp
       title: src/Math/PascalTriangle.hpp
+    - icon: ':warning:'
+      path: src/Math/XorBasis.hpp
+      title: src/Math/XorBasis.hpp
   - name: src/String
     pages:
     - icon: ':warning:'
